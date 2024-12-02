@@ -7,3 +7,8 @@ I managed to flag within 5 minutes without scripting anything, even if the file 
 <p align="center">
   <img src="Screenshots/S2.png" alt="Desc">
 </p>
+Filtering on data significantly reduced the amount of packet and it seemed like the data had been exfiltrated through ICMP protocol. Indeed a well-known exfiltration method is based on ICMP protocol, in which echo-reply packets can embed data : 
+<p align="center">
+  <img src="Screenshots/S3.png" alt="Desc">
+</p>
+
