@@ -1,4 +1,4 @@
-# Wrapped Packet (2nd)
+# Wrapped Packet (day2)
 In this 2nd challenge we were asked to retreive data that had been exfiltrated after endpoint compromission. Hence, a trafic capture (pcapng file) is provided in which we are likely to find data embedded in packets. The flag mights be something like _RM{FLAG...}_.
 <p align="center">
   <img src="Screenshots/S1.png" alt="Desc">
