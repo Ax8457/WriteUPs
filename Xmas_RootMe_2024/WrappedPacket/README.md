@@ -11,4 +11,9 @@ Filtering on data significantly reduced the amount of packet and it seemed like 
 <p align="center">
   <img src="Screenshots/S3.png" alt="Desc">
 </p>
+By inspecting very first packets, it seems that the data exfiltrated had been padded (with 0) and sent through ICMP packet,in the data filed : 
+<p align="center">
+  <img src="Screenshots/S4.png" alt="Desc">
+</p>
+
 
