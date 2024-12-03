@@ -4,9 +4,11 @@ This first challenge is a web challenge in which we are asked to retreive the fl
 <p align="center">
   <img src="Screenshots/S1.png" alt="Desc">
 </p>
-
-<p align="center">
-  <img src="Screenshots/S2.png" alt="Desc">
+<p>
+  <img src="Screenshots/S8.png" alt="Desc">
+</p>
+<p>
+  <img src="Screenshots/S9.png" alt="Desc">
 </p>
 
 Flag : _RM{Mayb3_S4nt4_Cl4uS_Als0_G3t_A_Flag}_
