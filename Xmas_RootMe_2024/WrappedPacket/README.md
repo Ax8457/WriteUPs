@@ -27,6 +27,7 @@ By moving to the very last ICMP packet, we can retreive the chars below which lo
 - **Second convertion :** M3} ... M3} ... M3}
 
 So it seems like we are able to retreive the flag extracted by hand (because he is likely to be short, ~20 chars). By doing exactlty the same thing for upper packets starting from the last ICMP packet (with filter data in wireshark indeed) we can progressively retreived plain texts below :
+
 - _4s_R00T-4s_R00T-4s_R_
 - __Chr1stM_Chr1stM_Chr_
 - _RM{M3rryRM{M3rryRM{M_
