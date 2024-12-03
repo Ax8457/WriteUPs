@@ -32,7 +32,7 @@ So it seems like we are able to retreive the flag extracted by hand (because he 
 - __Chr1stM_Chr1stM_Chr_
 - _RM{M3rryRM{M3rryRM{M_
 
-It seems like the different parts of the flag had been sent multiple times in different packets . After retreiving each part of the flag, we can reconstruct it :
+It appears that the different parts of the flag had been sent multiple times in different packets . After retreiving each part of the flag, we can reconstruct it :
 
 Flag : _RM{M3rry_Chr1stM4s_R00T-M3}_
 
