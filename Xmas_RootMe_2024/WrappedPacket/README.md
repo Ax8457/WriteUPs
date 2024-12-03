@@ -27,6 +27,12 @@ By moving to the very last ICMP packet, we can retreive the chars below which lo
 - **second convertion :** M3} ... M3} ... M3}
 
 So it seems like we are able to retreive the flag extracted by end (because he is likely to be short, ~20 chars). By doing exactlty the same thing for upper packet starting from the last ICMP packet (with filter data in wireshark indeed) we can progressively retreived plain texts below :
-- 4s_R00T-4s_R00T-4s_R
+- _4s_R00T-4s_R00T-4s_R_
+- __Chr1stM_Chr1stM_Chr_
+- _RM{M3rryRM{M3rryRM{M_
+
+It seems like the different part of the flag had been sent multiple times in different packets (pretty relevant considering the protocol used). After retreiving each part of the flag, we can reconstruct it :
+  Flag : _RM{M3rry_Chr1stM4s_R00T-M3}_
+
 
 
