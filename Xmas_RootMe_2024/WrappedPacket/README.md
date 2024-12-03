@@ -15,5 +15,18 @@ By inspecting very first packets, it seems that the data exfiltrated had been pa
 <p align="center">
   <img src="Screenshots/S4.png" alt="Desc">
 </p>
+By copy-pasting data in a hexaTostr converter, we can undestand the data isn't encrypted, for instance for the very first packet we get the data : 
+
+- **First Packet data :** 08080c000000000036313663363936343230363137323637363136633639363432303631373236373631366336393634
+- **First convertion (hex->str) :** _garbage_ + 616c696420617267616c696420617267616c6964 (so a second hex string)
+- **second convertion** : alid argalid argalid (plain text)
+  
+By moving to the very last ICMP packet, we can retreive the chars below which look like the end of a flag :
+- **Last Packet data :** 113903000000000034643333376430610000000000000000346433333764306100000000000000003464333337643061
+- **First convertion (hex->str) :** _garbage_ + 4d337d0a + _garbage_ + _garbage_ + 4d337d0a
+- **second convertion :** M3} ... M3} ... M3}
+
+So it seems like we are able to retreive the flag extracted by end (because he is likely to be short, ~20 chars). By doing exactlty the same thing for upper packet starting from the last ICMP packet (with filter data in wireshark indeed) we can progressively retreived plain texts below :
+- 4s_R00T-4s_R00T-4s_R
 
 
