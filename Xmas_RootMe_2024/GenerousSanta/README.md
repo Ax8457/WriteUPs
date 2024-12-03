@@ -12,7 +12,7 @@
 
 <p align="center"><img src="Screenshots/S10.png" alt="Desc"></p>
 
-<p align="justify">Considering that, I tried to inject a payload to perform a path traversal/LFI attack and load the flag file _flag.txt_ instead of the gift porperties. I managed to trigger the load of the flag but I got the mistake _Unexpected Identifier_ , meaning that an attempt to open the specified file had been triggered but that the content of the file couldn't have been be printed properly. </p>
+<p align="justify">Considering that, I tried to inject a payload to perform a path traversal/LFI attack and load the flag file flag.txt instead of the gift porperties. I managed to trigger the load of the flag but I got the mistake 'Unexpected Identifier' , meaning that an attempt to open the specified file had been triggered but that the content of the file couldn't have been be printed properly. </p>
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
@@ -37,7 +37,7 @@ router.post('/add', async (req, res) => {
 
 <p align="center"><img src="Screenshots/S9.png" alt="Desc" style="width: 50%"></p>
 
-<p align="justify">So I intercepted again the POST request sent to server while uploading PNG file; so I could analyze the Content-Type. I was looking for a permissive content-type which could had let me upload other file as javacript files for instance. Fortunately, the content-type was set to _Content-Type multipart/form-data_ that did mean that I was authorized to load js files. The location of the uploaded file was also sent in the server response, which was very useful : </p>
+<p align="justify">So I intercepted again the POST request sent to server while uploading PNG file; so I could analyze the Content-Type. I was looking for a permissive content-type which could had let me upload other file as javacript files for instance. Fortunately, the content-type was set to 'Content-Type multipart/form-data' that did mean that I was authorized to load js files. The location of the uploaded file was also sent in the server response, which was very useful : </p>
 
 <p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
 
