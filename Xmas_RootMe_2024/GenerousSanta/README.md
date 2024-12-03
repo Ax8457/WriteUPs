@@ -16,7 +16,7 @@
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
-<p align="justify">Indeed, by looking at the source code in _hotte.js_ it was clear that the json data sent to server wasn't cleared properly and restricted to gifts of the models folder (_cf require function_) which can explains why did I manage to perform perform a LFI attack with path traversal payload : </p>
+<p align="justify">Indeed, by looking at the source code in hotte.js; it was clear that the json data sent to server wasn't cleared properly and restricted to gifts of the models folder (cf require function) which can explains why did I manage to perform perform a LFI attack with path traversal payload : </p>
 
 ```javascript
 router.post('/add', async (req, res) => {
