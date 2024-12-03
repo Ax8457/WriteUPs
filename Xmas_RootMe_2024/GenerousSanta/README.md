@@ -1,4 +1,6 @@
 # Generous Santa (day1)
+
+This first challenge is a web challenge in which we are asked to retreive the flag stored in the file flag.txt on the host machine. The server does run under nodejs and the source script is provided, with a docker set-up so you can run the server locally. 
 <p align="center">
   <img src="Screenshots/S1.png" alt="Desc">
 </p>
