@@ -43,7 +43,7 @@
 
 <p align="justify">It appears that the different parts of the flag had been sent multiple times in different packets . After retreiving each part of the flag, we can reconstruct it : </p>
 
-Flag : _RM{M3rry_Chr1stM4s_R00T-M3}_
-
+Flag : _RM{M3rry_Chr1stM4s_R00T-M3}_ , thanks _MIKA_ for this challenge !
+ 
 
 
