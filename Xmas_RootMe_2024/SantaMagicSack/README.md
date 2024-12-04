@@ -2,11 +2,11 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
-In this challenge, a game written in javascript is deployed on a website. It consists in collected gifts falling by moving a santa sack laterally. The clock is limited to 20 seconds and the goal is to beat Santa's score which is 133337 points. Obviously it's impossible to beat this score within only 20 seconds and a way to cheat must be found to beat it. 
+<p align="justify"> In this challenge, a game written in javascript had been deployed on a website. It consisted in collected gifts falling by moving a santa sack laterally. The clock was limited to 20 seconds and the goal was to beat Santa's score which is 133337 points. Obviously it was impossible to beat this score within only 20 seconds and a way to cheat was necessary to beat it. </p>
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc" style="width:70%"></p>
 
-The source code wasn't porvided directly but was available in the browser inspection section so the very first thing I did had been copy-pasting the code I got inspecting the browser to <a href="https://beautifier.io"> beautifier.io </a> to make the javascript code readable. The source code is provided under Xmas3_Src.js in this repo. I quickly identified the function which was in charge of sending score to server. It appeared that the score was sent through JSON to server, with a crypto algorithm to "garant" its integrity :  
+<p align="justify"> The source code wasn't porvided directly but was available in the browser inspection section so the very first thing I did had been copy-pasting the code I got by inspecting the browser to <a href="https://beautifier.io"> beautifier.io </a> to make the javascript code readable. The source code is provided under Xmas3_Src.js in this repo. I quickly identified the function which was in charge of sending score to server. It appeared that the score was sent through JSON to server, with a crypto algorithm to "garant" its integrity :  </p>
 
 ````javascript
 async function Vd(e, t) {
@@ -35,7 +35,7 @@ async function Vd(e, t) {
         }
     }
 `````
-Below the algorithm used to "make sure" that the score cant be change, by computing a random checksum and encrypting it using AES :
+<p align="justify"> Below the algorithm used to "make sure" that the score cant be change, by computing a random checksum and encrypting it using AES : </p>
 
 ````javascript
 const gf = Rf(Md),
@@ -56,19 +56,20 @@ function $d(e, t) {
 }
 ````
 
-So the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY (no IV, it seems to be ECB?) used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate the checksum and finally relay the score to the server with our score modified. So I opened Burp and intercepted the POST request : 
+<p align="justify"> So the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY (no IV, it seems to be ECB?) used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate the checksum and finally relay the score to the server with our score modified. So I opened Burp and intercepted the POST request : </p>
 
 <p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
 
-As expected I got the cipher text that I managed to decrypt by implementing a tiny js script available under Xmas3_Decrypt.js in this repo. Hence, I managed to retreive the salt and I finally got the pivot element to recalculate the checksum after I modified my score. 
+<p align="justify"> As expected I got the cipher text that I managed to decrypt by implementing a tiny js script available under Xmas3_Decrypt.js in this repo. Hence, I managed to retreive the salt and I finally got the pivot element to recalculate the checksum after I modified my score. </p>
 
 <p align="center"><img src="Screenshots/S6.png" alt="Desc"></p>
 
-After that I automated the payload submission with the script below available under flagXmas3.js. To sum up what I've done is :
+<p align="justify"> After that I automated the payload submission with the script below available under flagXmas3.js. To sum up what I've done is : </p>
+
 - Modifying my score
 - Using the salt, my score, and my name to compute a valid checksum
 - Encrypting the JSON payload using AES and the AES KEY retreived in source code
-- Sending the payload to server and printing response
+- Sending the payload to server and printing response 
 
 ````javascript
 const CryptoJS = require("crypto-js");
@@ -142,7 +143,7 @@ async function sendDataToServer(encryptedData) {
 main();
 ````
 
-For some reasons I got an error with TLS/SSL handshake using fetch or simple curl in my shell so I had to override the HTTP agent and force it to reject/avoid the SSL check while submitting request to the server, which explains the content of the submission function. Finally by running the script I received the flag :
+<p align="justify"> For some reasons I got an error with TLS/SSL handshake using fetch or simple curl in my shell so I had to override the HTTP agent and force it to reject/avoid the SSL check while submitting request to the server, which explains the content of the submission function. Finally by running the script I received the flag : </p>
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
