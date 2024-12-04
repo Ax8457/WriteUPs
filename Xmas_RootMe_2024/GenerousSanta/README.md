@@ -33,7 +33,7 @@ router.post('/add', async (req, res) => {
 });
 ````
 
-<p align="justify">This code snippets also explains why the flag content wasn't load. Indeed, the server was expecting a Gift object (so a js file) in input ( by providing the name of a valid product in JSON input) and not a simple plaintext file. So the goal at this time was to find a way to create,load and access a Gift model with the flag in description instead of the proprer gift description. Fortunately, the second feature of this website helped me out. Actually this second feature was an upload form in which you could suggest gift to santa with a picture that you have to upload :  </p>
+<p align="justify">This code snippets also explains why the flag content wasn't load. Indeed, the server was expecting a Gift object (so a js file) in input ( by providing the name of a valid product in JSON input) and not a simple plaintext file. So the goal at this time was to find a way to create,load and access a Gift model with the flag in description instead of the proprer gift description. Fortunately, the second feature of this website helped me out. Actually this second feature was an upload form in which you was able to suggest gift to santa with a picture that you had to upload :  </p>
 
 <p align="center"><img src="Screenshots/S9.png" alt="Desc" style="width: 50%"></p>
 
