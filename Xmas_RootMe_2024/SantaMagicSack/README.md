@@ -6,7 +6,7 @@ In this challenge, a game written in javascript is deployed on a website. It con
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc" style="width:70%"></p>
 
-The source code wasn't porvided directly but was available in the browser inspection section so the very first thing I did had been copy-pasting the code I got inspecting the browser to <a href="https://beautifier.io"> beautifier.io </a> to make the javascript code readable. The source code is provided under Xmas3_Src.js in this repo. I quickly identified the function which was in charge of sending score to server. It appeared that the score was sent through JSON to server :  
+The source code wasn't porvided directly but was available in the browser inspection section so the very first thing I did had been copy-pasting the code I got inspecting the browser to <a href="https://beautifier.io"> beautifier.io </a> to make the javascript code readable. The source code is provided under Xmas3_Src.js in this repo. I quickly identified the function which was in charge of sending score to server. It appeared that the score was sent through JSON to server, with a crypto algorithm to "garant" its integrity :  
 
 ````javascript
 async function Vd(e, t) {
@@ -35,8 +35,7 @@ async function Vd(e, t) {
         }
     }
 `````
-
-Besides, the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate and finally relay the score to the server and enjoy beating santa efforlessly :
+Below the algorithm used to "make sure" that the score cant be change, by encrypting it with randow using AES :
 
 ````javascript
 const gf = Rf(Md),
@@ -56,6 +55,12 @@ function $d(e, t) {
     }
 }
 ````
+
+So the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate the checksum and finally relay the score to the server with our score modified. So I opened Burp and intercepted the POST request : 
+
+
+
+
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
