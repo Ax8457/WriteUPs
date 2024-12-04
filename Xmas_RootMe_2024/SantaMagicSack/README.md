@@ -35,7 +35,7 @@ async function Vd(e, t) {
         }
     }
 `````
-Below the algorithm used to "make sure" that the score cant be change, by encrypting it with randow using AES :
+Below the algorithm used to "make sure" that the score cant be change, by computing a random checksum and encrypting it using AES :
 
 ````javascript
 const gf = Rf(Md),
@@ -56,11 +56,23 @@ function $d(e, t) {
 }
 ````
 
-So the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate the checksum and finally relay the score to the server with our score modified. So I opened Burp and intercepted the POST request : 
+So the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY (no IV, it seems to be ECB?) used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate the checksum and finally relay the score to the server with our score modified. So I opened Burp and intercepted the POST request : 
 
+<p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
 
+As expected I got the cipher text that I managed to decrypt by implementing a tiny js script available under Xmas3_Decrypt.js in this repo. Hence, I managed to retreive the salt and I finally got the pivot element to recalculate the checksum after I modified my score. 
 
+<p align="center"><img src="Screenshots/S6.png" alt="Desc"></p>
 
+After that I automated the payload submission with the script below available under flagXmas3.js. To sum up what I've done is :
+- Modifying my score
+- Using the salt, my score, and my name to compute a valid checksum
+- Encrypting the JSON payload using AES and the AES KEY retreived in source code
+- Sending the payload to server and printing response
+
+````javascript
+
+````
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
