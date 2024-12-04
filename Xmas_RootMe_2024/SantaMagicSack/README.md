@@ -36,9 +36,17 @@ async function Vd(e, t) {
     }
 `````
 
-Besides, the JSON seemed to be sent with a checksum (to ensure the integrity of the score) and ecrypted with AES algorithm as the code snippet below shows :
+Besides, the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate and finally relay the score to the server and enjoy beating santa efforlessly :
 
 ````javascript
+const gf = Rf(Md),
+    Ud = "S4NT4_S3CR3T_K3Y_T0_ENCRYPT_DATA";
+
+function Wd(e) {
+    const t = JSON.stringify(e);
+    return gf.AES.encrypt(t, Ud).toString()
+}
+
 function $d(e, t) {
     const r = Math.floor(Math.random() * 9) + 1,
         n = `${e}-${t}-${r}`;
