@@ -1,4 +1,4 @@
-# Challenge Build & Drustroy (day4)
+# Build & Drustroy (day4)
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
