@@ -1,4 +1,4 @@
-# Challenge Santa's Magic Sack (day3)
+# Santa's Magic Sack (day3)
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
