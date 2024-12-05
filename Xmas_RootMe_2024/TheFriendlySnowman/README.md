@@ -1,4 +1,4 @@
-# Challenge The Friendly Snowman (day5)
+# The Friendly Snowman (day5)
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
