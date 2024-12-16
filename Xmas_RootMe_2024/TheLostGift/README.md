@@ -10,6 +10,8 @@
 
 <p align="justify">  On google map, coordinates indicated me that the drone did fall while flying over a lake. Considering that the flag was the name of a street, it was clear that those coordinates wern't the exact position where the drone had fallen. </p>
 
+<p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
+
 <p align="justify">  Looking at the landscape one the picture provided and the location of the drone during last transmission I managed to identify the street thanks to street view feature : </p> 
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
