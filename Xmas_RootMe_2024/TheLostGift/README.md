@@ -4,6 +4,7 @@ This challenge  was an OSINT challenge, in which we were asked to retreive the t
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
+The network capture did contain IEE 802.11 protocol packets. By inspecting the content of those packets, I quickly managed to extract gps coordinates that helped me loct
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
