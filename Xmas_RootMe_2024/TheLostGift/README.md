@@ -6,3 +6,5 @@ This challenge  was an OSINT challenge, in which we were asked to retreive the t
 
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
+
+Flag : _RM{closdeleterrerouge}_
