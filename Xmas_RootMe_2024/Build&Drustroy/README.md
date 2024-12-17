@@ -38,4 +38,4 @@ project_dir/
 
 <p align="justify"> For tcp tunneling I used ngrok, and after I received the remote connection I managed to print the flag : </p>
 
-Flag : _OffenSkillSaysHi2024RustAbuse_ , thanks Laluka for tor this challenge !
+Flag : _OffenSkillSaysHi2024RustAbuse_ , thanks _Laluka_ for tor this challenge !
