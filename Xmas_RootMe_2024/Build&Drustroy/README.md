@@ -2,7 +2,7 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
-<p align="justify"> In this challenge a Rust compilator was available online; it was possible to send raw rust code to the online service which was returning a binary containing our Rust code compiled. The code was sent through JSON payload, using the following cmdline (provided with the chall). The source code of the compilator was also provided, docker file and server files also so you could have deployed the service locally : </p>
+<p align="justify"> In this challenge a Rust compilator was available online; it was possible to send raw rust code to the online service which was returning a binary containing the Rust code compiled. The code was sent through JSON payload, using the following cmdline (provided with the chall). The source code of the compilator was also provided, docker file and server files also so you could have deployed the service locally : </p>
 
 ````bash
 curl -sSk -X POST -H 'Content-Type: application/json' https://day4.challenges.xmas.root-me.org/remote-build -d '{"src/main.rs":"fn main() { println!(\"Hello, world!\"); }"}' --output binary
