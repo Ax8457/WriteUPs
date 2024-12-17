@@ -16,4 +16,4 @@
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"  style="width: 50%"></p>
 
-Flag : _RM{closdeleterrerouge}_ , thanks Chic0s for this challenge ! 
+Flag : _RM{closdeleterrerouge}_ , thanks _Chic0s_ for this challenge ! 
