@@ -8,4 +8,4 @@
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
 
-Flag : _RM{Sn0wman_1s_4_g00d_guY}_ , thanks Nishacid for this challenge ! 
+Flag : _RM{Sn0wman_1s_4_g00d_guY}_ , thanks _Nishacid_ for this challenge ! 
