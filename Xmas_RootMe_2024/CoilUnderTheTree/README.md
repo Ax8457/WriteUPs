@@ -1,6 +1,6 @@
 # Coil Under The Tree (day16)
 
-<p align="justify">This challenge was an industrial challenge in which we were asked to communicate with a PLC (portable logic controler) through MODBUS protocol in order to modify hodling registers on the target PLC. </p>
+<p align="justify">This challenge was an industrial challenge in which we were asked to communicate with a PLC (Programmable logic controler) through MODBUS protocol in order to modify hodling registers on the target PLC. </p>
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc" style="width:35%"></p>
 
@@ -17,11 +17,15 @@
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
 
-</p>After I retreived the valid slave ID, I used it to connect to the Master and modify the slave's register value at address 0x10 and put the value 0xff. Once it was done, I read input registers as specify in challenge description and got an int array. The script is available under exploit.py : </p>
+<p align="justify"> After I retreived the valid slave ID, I used it to connect to the Master and modify the slave's register value at address 0x10 and put the value 0xff. Once it was done, I read input registers as specify in challenge description and got an int array. The script is available under exploit.py in this repo : </p>
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
+After I converted the list into a string, I got what looked like base64 data encoded : 
+
 <p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
+
+Once I decoded the string, I finaly got the flag : 
 
 <p align="center"><img src="Screenshots/S6.png" alt="Desc"></p>
 
