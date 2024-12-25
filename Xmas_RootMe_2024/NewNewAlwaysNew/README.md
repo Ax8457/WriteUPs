@@ -38,3 +38,7 @@ curl -k -X POST https://day15.challenges.xmas.root-me.org/register -H "Content-T
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
+
+Flag : _RM{I_Thought_Th1s_VUlnerability_W4s_N0t_Imp0rtant}_, thanks _Elweth_ for this challenge !
+
+ 
