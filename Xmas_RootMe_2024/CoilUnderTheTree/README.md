@@ -17,6 +17,8 @@
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
 
+</p>After I retreived the valid slave ID, I used it to connect to the Master and modify the slave's register value at address 0x10 and put the value 0xff. Once it was done, I read input registers as specify in challenge description and got an int array. The script is available under exploit.py : </p>https://github.com/Ax8457/WriteUPs/tree/main/Xmas_RootMe_2024https://github.com/Ax8457/WriteUPs/tree/main/Xmas_RootMe_2024
+
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
 <p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
