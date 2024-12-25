@@ -56,7 +56,7 @@ function $d(e, t) {
 }
 ````
 
-<p align="justify"> So the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY (no IV, it seems to be ECB?) used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what we will be able to do is intercept the POST request sent to the score API, decrypt the payload, modifie it, recalculate the checksum and finally relay the score to the server with our score modified. So I opened Burp and intercepted the POST request : </p>
+<p align="justify"> So the JSON seemed to be sent, with a checksum randomly generated (to ensure the integrity of the score), and encrypted with AES algorithm. Nonetheless, the AES KEY (no IV, it seems to be ECB?) used is handled in plaintext and the checksum can be retreive because the random part is sent to the server as the salt in the JSON payload . Hence what was able to do was intercept the POST request sent to the score API, decrypt the payload, modify it, recalculate the checksum and finally relay the score to the server with our score modified. So I opened Burp and intercepted the POST request : </p>
 
 <p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
 
