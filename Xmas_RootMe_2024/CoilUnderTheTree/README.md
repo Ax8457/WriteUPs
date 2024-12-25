@@ -1,10 +1,10 @@
 # Coil Under The Tree (day16)
 
-This challenge was an industrial challenge in which we were asked to communicate with a PLC (portable logic controler) through MODBUS protocol in order to modify hodling registers on the target PLC.  
+<p align="justify">This challenge was an industrial challenge in which we were asked to communicate with a PLC (portable logic controler) through MODBUS protocol in order to modify hodling registers on the target PLC. </p>
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc" style="width:35%"></p>
 
-The MODBUS protocol is a communication protocol used in industrial automation systems. As described in the diagram below, a master communicates with each slave, identifying them through unique IDs (up to 255). According to the challenge description, our tasks were:
+<p align="justify">The MODBUS protocol is a communication protocol used in industrial automation systems. As described in the diagram below, a master communicates with each slave, identifying them through unique IDs (up to 255). According to the challenge description, our tasks were:</p>
 
 - Connecting to PLC
 - Scaning the PLC to find the target slaveID
@@ -13,7 +13,7 @@ The MODBUS protocol is a communication protocol used in industrial automation sy
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
-Hence the first thing I did was to script something to connect to the master (the IP/PORT provided in the challenge) and scan it to enumerate valid slave IDs. 
+<p align="justify">Hence the first thing I did was to script something to connect to the master (the IP/PORT provided in the challenge) and scan it to enumerate valid slave IDs. The script available under FindSlaveID.py in this repo implements it using Pymodbus library to connect to PLC through TCP and enumerate valid slave ID using readcoils method. After I ran it I managed to identify the valid I, namely the 105th :</p>
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
 
