@@ -8,7 +8,7 @@
 ````bash
 $ cat hello.gs | socat - TCP:dyn-01.xmas.root-me.org:PORT
 ````
-<p align="justify"> To solve this challenge, I found an intresting Write-Up showing how to exploit a CVE based on string format in ghostscript weakness, allowing hackers to gain code execution, and for instance read tmp folder and print its content. More informations are here : <a href="https://codeanlabs.com/blog/research/cve-2024-29510-ghostscript-format-string-exploitation/">CVE-2024-29510</a>
+<p align="justify"> To solve this challenge, I found an intresting Write-Up showing how to exploit a CVE based on string format in a ghostscript weakness, allowing hackers to gain code execution, and for instance read tmp folder and print its content. More informations are here : <a href="https://codeanlabs.com/blog/research/cve-2024-29510-ghostscript-format-string-exploitation/">CVE-2024-29510</a>
 
 <p align="justify"> Hence, I came up with a first payload that listed the content of the target folder. That's the line below that allow to do so:
 
