@@ -51,7 +51,7 @@ curl -k -X POST https://day15.challenges.xmas.root-me.org/register -H "Content-T
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
-<p align="justify">Finaly, I accessed the admin section and go the flag : </p>
+<p align="justify">Finaly, I accessed the admin section and got the flag : </p>
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
