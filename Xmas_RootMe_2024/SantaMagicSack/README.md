@@ -2,7 +2,7 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
-<p align="justify"> In this challenge, a game written in javascript had been deployed on a website. It consisted in collected gifts falling by moving a santa sack laterally. The clock was limited to 20 seconds and the goal was to beat Santa's score which was 133337 points. Obviously it was impossible to beat this score within only 20 seconds and a way to cheat was necessary to beat it. </p>
+<p align="justify"> In this challenge, a game written in javascript had been deployed on a website. It consisted in collecting gifts falling by moving a santa sack laterally. The clock was limited to 20 seconds and the goal was to beat Santa's score which was 133337 points. Obviously it was impossible to beat this score within only 20 seconds and a way to cheat was necessary to beat it. </p>
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc" style="width:70%"></p>
 
