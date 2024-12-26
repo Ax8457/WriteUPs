@@ -4,7 +4,7 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
-<p align="justify">The first thing I did was creating an account and looking for a way to credit my account. After a few read of the source code, it seemed like a coupon was generated for every new account and credit the account with 5$. Unfortunately coupon were submitted to veririfcation before being used to avoid re-use or impersonation. </p>
+<p align="justify">The first thing I did was creating an account and looking for a way to credit my account. After a few read of the source code, it seemed like a coupon was generated for every new account and credit the account with 5$. Unfortunately coupons were submitted to veririfcation before being used to avoid re-use or impersonation. </p>
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
