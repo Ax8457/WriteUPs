@@ -6,7 +6,7 @@
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc" style="width:70%"></p>
 
-<p align="justify"> The source code wasn't porvided directly but was available in the browser inspection section so the very first thing I did had been copy-pasting the code I got by inspecting the browser to <a href="https://beautifier.io"> beautifier.io </a> to make the javascript code readable. The source code is provided under Xmas3_Src.js in this repo. I quickly identified the function which was in charge of sending score to server. It appeared that the score was sent through JSON to server, with a crypto algorithm to "garant" its integrity :  </p>
+<p align="justify"> The source code wasn't provided initialy but was available in the browser inspection section so the very first thing I did had been copy-pasting the code I got by inspecting the browser to <a href="https://beautifier.io"> beautifier.io </a> to make the javascript code readable. The source code is provided under Xmas3_Src.js in this repo. I quickly identified the function which was in charge of sending score to server. It appeared that the score was sent through JSON to server, with a crypto algorithm to "garant" its integrity :  </p>
 
 ````javascript
 async function Vd(e, t) {
