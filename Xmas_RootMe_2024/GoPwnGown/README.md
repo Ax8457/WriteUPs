@@ -2,6 +2,20 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
+````c
+void unsafeFunction(char *gown) {
+    char buffer[64];
+    memcpy(buffer, gown, 128); // UTF8 AMIRIGHT ?!
+    printf("Received: %s\n", buffer);
+}
+
+void laluBackdoor() {
+    char *bash_path = "/bin/bash";
+    extern char **environ;
+    execle(bash_path, bash_path, "-c", "echo $(${GOWN})", NULL, environ);
+}
+````
+
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
