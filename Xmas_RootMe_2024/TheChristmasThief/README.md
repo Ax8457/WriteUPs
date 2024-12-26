@@ -15,7 +15,7 @@
 - **root-me challenges** : _OqJIc9IEBD8Q2pGWmrt/z2o+AeupVnesPQk3Mj1BANhzdP4o8jc3WV2QulpGc95WdBw+BlS72kTDrndkzQ==_
 - **root-me v2** : _TWK/BPwZG5rXMQv0LH8mALWbdDguNCOi5UHE6oc108iLT+1V63HR/jqhq76QAkPNCm54CrLjSJPKwV4Nv+0dFKNGZeI3KO8s/oinc+wtZ7SwcqA=_
 
-<p align="justify">Actually those passwords were encrypted with AES GCM (counter mode) and all the elements required to decrypt its were available in the XML file, in their respective node tag. Indeed in confCons.xml file,for each encrypted password the salt, the nonce and the tag/Messager authentication code can be retreived. As a result, the key used can be computed and the cipher password decrypted. After a few research I found a script to retreived those password availabe <a href="https://github.com/gquere/mRemoteNG_password_decrypt/blob/master/mremoteng_decrypt.py">here</a>. After I ran it with the extracted.xml file given in input, I got the flag : </p>
+<p align="justify">Actually those passwords were encrypted with AES GCM (counter mode) and all the elements required to decrypt its were available in the XML file, in their respective node tag. Indeed in confCons.xml file,for each encrypted password the salt, the nonce and the tag/Messager authentication code can be retreived. As a result, the key used can be computed and the cipher password decrypted. After a few research I found a script to retreive those password availabe <a href="https://github.com/gquere/mRemoteNG_password_decrypt/blob/master/mremoteng_decrypt.py">here</a>. After I ran it with the extracted.xml file given in input, I got the flag : </p>
   
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc" style="width:75%"></p>
