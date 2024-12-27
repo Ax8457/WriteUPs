@@ -15,7 +15,7 @@ def anti_bruteforce(time):
     return sleep(time)
 ````
 
-<p align="justify">Actually this function was used by discount function in the route below, designed to get the 5$ discount using the coupon generated and coupled with the account. The function was checking wether the account who submitted the coupon was the one coupled with it (using used_id) and wether this coupon hadn't been used yet. To check that a boolean was set to False after the discount had been applied for every coupon. </p>
+<p align="justify">Actually this function was used by discount function in the route below, designed to get the 5$ discount using the coupon generated and coupled with the account. The function was checking wether the account who submitted the coupon was the one coupled with it (using user_id) and wether this coupon hadn't been used yet. To check that a boolean was set to False after the discount had been applied for every coupon. </p>
 
 ````python
 @app.route('/discount', methods=['POST'])
