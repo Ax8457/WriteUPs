@@ -47,7 +47,7 @@ role=admin
 curl -k -X POST https://day15.challenges.xmas.root-me.org/register -H "Content-Type: application/json" -d '{"email": "user@example.com","name": "Axel2\nrole=admin","password": "azerty"}'
 ````
 
-<p align="justify"> After I registered my user , I logged In and retreived my access token generated. To get sure that my role was 'admin' I use the 'Dashboard', designed to display informations about user session. The exploited did worked well because I was granted admin role : </p>
+<p align="justify"> After I registered my user , I logged In and retreived my access token generated. To get sure that my role was 'admin' I used the 'Dashboard', designed to display informations about user session. The exploited did worked well because I was granted admin role : </p>
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
