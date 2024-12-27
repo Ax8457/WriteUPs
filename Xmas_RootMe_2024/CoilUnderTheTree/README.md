@@ -13,7 +13,7 @@
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
-<p align="justify">Hence the first thing I did was to script something to connect to the master (the IP/PORT provided in the challenge) and scan it to enumerate valid slave IDs. The script available under FindSlaveID.py in this repo implements it using Pymodbus library to connect to PLC through TCP and enumerate valid slave ID using readcoils method. After I ran it I managed to identify the valid I, namely the 105th :</p>
+<p align="justify">Hence the first thing I did was to script something to connect to the master (the IP/PORT provided in the challenge) and scan it to enumerate valid slave IDs. The script available under FindSlaveID.py in this repo implements it using Pymodbus library to connect to PLC through TCP and enumerate valid slave ID using readcoils method. After I ran it I managed to identify the valid ID, namely the 105th :</p>
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
 
