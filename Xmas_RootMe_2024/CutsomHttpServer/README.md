@@ -4,7 +4,7 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc" style="width:40%"></p>
 
-After a few read of the source code I spoted the snippet below giving me informations about the way I could have retreived the flag :
+<p align="justify">After a few read of the source code I spoted the snippet below giving me informations about the way I could have retreived the flag :</p>
 
 ````javascript
 const cookie = {
