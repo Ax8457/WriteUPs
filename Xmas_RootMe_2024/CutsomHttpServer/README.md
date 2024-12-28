@@ -23,7 +23,7 @@ const cookie = {
 - Then I had to adjust payload for firefox browser especially, because playright bot works over firefox
 - Finaly I had to submit the payload on the report api so that the bot could have been trapped and sent its cookies
 
-<p align="justify">At first I thought I had to bypass filter applied to XSS API as shown in the code snippet below. But after a few tries I gave up because of the sanitazer which was too restrictive (the filter is availabe under sanitizer.js in the source code zip) :</p>
+<p align="justify">At first I thought I had to bypass filter applied to XSS API as shown in the code snippet below. But after a few tries I gave up because of the sanitizer which was too restrictive (the filter is availabe under sanitizer.js in the source code zip) :</p>
 
 ````javascript
 router.get('/api/xss', async (req, res) => {
