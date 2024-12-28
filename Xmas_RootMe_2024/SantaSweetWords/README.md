@@ -36,7 +36,7 @@ get '/source' do
 end
 ````
 
-<p align="justify">After a quick read, it appeared to me that the vulnerability was located on the message api, which was taking a parameter 'number' and concatenated .txt to it for file download. Because of the extension added to the filename a simple local file inclusion thanks to path traversal payload wasn't exploitable. After a few read I found (<a href="https://cheatsheetseries.owasp.org/cheatsheets/Ruby_on_Rails_Cheat_Sheet.html">doc)</a> it was possible to run commands and escape the filename handled with the open() method, using | char. Hence what I've tried at first was to escape the filename variable with only one | . Nonetheless as shown below, It only triggered download of an empty file the name of my command :</p>  
+<p align="justify">After a quick read, it appeared to me that the vulnerability was located in the message API, which was taking a 'number' parameter and concatenating '.txt' to it for file download. Because of the extension added to the filename a simple local file inclusion thanks to path traversal payload wasn't exploitable. After a few read I found (<a href="https://cheatsheetseries.owasp.org/cheatsheets/Ruby_on_Rails_Cheat_Sheet.html">doc)</a> it was possible to run commands and escape the filename handled with the open() method, using | char. Hence what I've tried at first was to escape the filename variable with only one | . Nonetheless as shown below, It only triggered download of an empty file the name of my command :</p>  
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
