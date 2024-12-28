@@ -20,7 +20,7 @@ const cookie = {
 <p align="justify">Indeed the flag was actually javascript bot's cookie (playright) set on the local domain. As a matter of fact; the website offered a report method (in the file app.js : /api/report) in which it was possible to send an url to the bot, so that it could have checked it and as result be trapped. Hence to solve this challenge I had to find a way to exfiltrate the cookie through XSS attack.  The schema of the challenge had been the following one : </p>
 
 - First, I had to find a way to steal my own cookie , craft a valid payload
-- Then I had to adjust payload for firefox browser especially because playright bot works through firefox
+- Then I had to adjust payload for firefox browser especially, because playright bot works over firefox
 - Finaly I had to submit the payload on the report api so that the bot could have been trapped and sent its cookies
 
 <p align="justify">At first I thought I had to bypass filter applied to XSS API as shown in the code snippet below. But after a few tries I gave up because of the sanitazer which was too restrictive (the filter is availabe under sanitizer.js in the source code zip) :</p>
