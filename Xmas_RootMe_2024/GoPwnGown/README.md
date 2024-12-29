@@ -69,6 +69,7 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Request handled\n"))
 	}()
 }
+````
 
 To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. It came that I had to sent 72 char before being able to overwritte the ret address and access 
 
