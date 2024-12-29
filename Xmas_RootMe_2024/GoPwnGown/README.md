@@ -20,7 +20,7 @@ void laluBackdoor() {
 }
 ````
 
-The flaw here was caused by the use of a buffer of size 64 in which 128 bytes were copied. The parameter gown was read from the website and then handled thanks to the function below, calling the unsafeFunction() containing the weakness : 
+<p align="justify">  The flaw here was caused by the use of a buffer of size 64 in which 128 bytes were copied. The parameter gown was read from the website and then handled thanks to the function below, calling the unsafeFunction() containing the weakness : </p>
 
 ````c
 func handleRequest(w http.ResponseWriter, r *http.Request) {
@@ -48,9 +48,18 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 }
 ````
 
-To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. It came that I had to sent 72 char before being able to overwritte the ret address and access 
+<p align="justify">To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. The method I followed is described below : </p>
+
+- I started by extracting the server binary running in the docker
+- Then I extrated the address of the lalubackdoor using gdb
+- I used this address in little endian format crafting the payload like this : payload = 64* 'A' + [little endian backdoor address]. I started with 64 bytes because it was the size of the buffer
+- Then I sent the payload to the server and added one char at each loop, checking the logs in the meantine to identify the exact number of bytes required to perform a bof
+
+<p align="justify">It came that I had to sent 72 chars before being able to overwritte the ret address and access lalubackdoor, as shown in the snippet below with the error on the execution of /bin/bash meaning that I well overwrote the ret address : </p>
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
+
+
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
 
