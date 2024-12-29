@@ -59,7 +59,7 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
-
+The payload size once defined; I implemented a second C script to send command to run to the server so that I could have been able to read the flag, the script is available in exploit2.c in this repo. 
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
 
