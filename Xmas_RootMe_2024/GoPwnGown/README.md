@@ -1,8 +1,10 @@
 # Go Pwn Gown (day7)
 
-<p align="center">This challenge was a Pwn challenge in which the goal was to perform a buffer overflow to read the flag stored on the server. 
+<p align="justify">This challenge was a Pwn challenge in which the goal was to perform a buffer overflow to read the flag stored on the server. Source code was provided with a docker file so that the server could have been ran locally, which revealed very helpful insofar as I had access to server logs. </p>
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
+
+<p align="justify"> Looking at source code, it seemed that a backdoor was already included in the code of the running server. This backdoor shown in the snippet below could have been used to run command remotely: </p>
 
 ````c
 void unsafeFunction(char *gown) {
