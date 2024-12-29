@@ -31,6 +31,6 @@ class Gift:
         return cipher.decrypt(bytes.fromhex(data)).decode()
 ````
 
-<p align="justify">The cryptography weakness here was due to a mis-implementation of AES counter mode. Indeed, the key, the nounce and the IV were not renewed for flag encryption and for gift wrapping. Hence it was possible to exploit determinism and linearity of AES block encryption to retreive the flag. That is what I've done in the script available under exploit1.py in this repo. I guessed the flag using the AES oracle to wrap (encrypt) my payload and I compared it char by char with the encrypted flag received. My initial payload was 'RM{' to which I progressively added chars guessed to finaly retreive the flag. (see the script for better understanding)</p>
+<p align="justify">The cryptography weakness here was due to a mis-implementation of AES counter mode. Indeed, the key, the nounce and the IV were not renewed for flag encryption and for gift wrapping. Hence it was possible to exploit determinism and linearity of AES block encryption to retreive the flag. That is what I've done in the script available under exploit1.py in this repo. I guessed the flag using the AES oracle to wrap (encrypt) my payload and I compared it char by char with the encrypted flag received. My initial payload was 'RM{' to which I progressively added chars guessed to finaly retreive the flag (see the script for better understanding).</p>
 
 Flag : _RM{D0NT_WR4P_YOUR_GIFTS_W1TH_W3AK_CRYPTOGRAPHY:(}_ , Thanks _Mika_ for this challenge ! 
