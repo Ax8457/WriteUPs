@@ -4,7 +4,7 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
-<p align="justify"> Looking at source code, it seemed that a backdoor was already included in the code of the running server. This backdoor shown in the snippet below could have been used to run command remotely: </p>
+<p align="justify"> Looking at source code, it seemed that a backdoor was already included in the code of the running server. This backdoor shown in the snippet below could have been used to run command remotely : </p>
 
 ````c
 void unsafeFunction(char *gown) {
@@ -19,6 +19,8 @@ void laluBackdoor() {
     execle(bash_path, bash_path, "-c", "echo $(${GOWN})", NULL, environ);
 }
 ````
+
+The flaw here is caused by the use of a buffer of size 64 in which 128 bytes are copied. To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. 
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
