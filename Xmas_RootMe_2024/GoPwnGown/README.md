@@ -1,5 +1,7 @@
 # Go Pwn Gown (day7)
 
+<p align="center">This challenge was a Pwn challenge in which the goal was to perform a buffer overflow to read the flag stored on the server. 
+
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
 ````c
