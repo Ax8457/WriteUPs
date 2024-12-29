@@ -4,7 +4,7 @@
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
-<p align="justify"> Looking at source code, it seemed that a backdoor was already included in the code of the running server. This backdoor shown in the snippet below could have been used to run command remotely : </p>
+<p align="justify"> Looking at source files, it seemed that a backdoor was already included in the code of the running server. This backdoor shown in the snippet below could have been used to run command remotely : </p>
 
 ````c
 void unsafeFunction(char *gown) {
