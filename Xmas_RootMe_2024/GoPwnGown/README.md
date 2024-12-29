@@ -46,29 +46,6 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Request handled\n"))
 	}()
 }
-````func handleRequest(w http.ResponseWriter, r *http.Request) {
-	log.Println("Calling handleRequest")
-	defer func() {
-		log.Println(r.URL.Path)
-		gown := r.URL.Query().Get("gown")
-		if gown == "" {
-			http.Error(w, "Gown parameter is missing", http.StatusBadRequest)
-			return
-		}
-
-		cGown := C.CString(gown)
-		if i := strings.IndexByte(gown, '\x00'); i != -1 {
-			gown = gown[:i]
-		}
-		os.Setenv("GOWN", string(gown))
-		fmt.Println("Getenv(GOWN) = ", os.Getenv("GOWN"))
-		defer C.free(unsafe.Pointer(cGown))
-
-		C.unsafeFunction(cGown)
-		// C.laluBackdoor()
-		w.Write([]byte("Request handled\n"))
-	}()
-}
 ````
 
 To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. It came that I had to sent 72 char before being able to overwritte the ret address and access 
