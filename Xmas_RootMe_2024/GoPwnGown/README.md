@@ -1,6 +1,6 @@
 # Go Pwn Gown (day7)
 
-<p align="justify">This challenge was a Pwn challenge in which the goal was to perform a buffer overflow to read the flag stored on the server. Source code was provided with a docker file so that the server could have been ran locally, which revealed very helpful insofar as I had access to server logs. </p>
+<p align="justify">This challenge was a Pwn challenge in which the goal was to perform a buffer overflow on a website to read the flag stored on the server. Source code was provided with a docker file so that the server could have been ran locally, which revealed very helpful insofar as I had access to server logs. </p>
 
 <p align="center"><img src="Screenshots/S1.png" alt="Desc"></p>
 
@@ -20,7 +20,57 @@ void laluBackdoor() {
 }
 ````
 
-The flaw here is caused by the use of a buffer of size 64 in which 128 bytes are copied. To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. 
+The flaw here was caused by the use of a buffer of size 64 in which 128 bytes were copied. The parameter gown was read from the website and then handled thanks to the function below, calling the unsafeFunction() containing the weakness : 
+
+````c
+func handleRequest(w http.ResponseWriter, r *http.Request) {
+	log.Println("Calling handleRequest")
+	defer func() {
+		log.Println(r.URL.Path)
+		gown := r.URL.Query().Get("gown")
+		if gown == "" {
+			http.Error(w, "Gown parameter is missing", http.StatusBadRequest)
+			return
+		}
+
+		cGown := C.CString(gown)
+		if i := strings.IndexByte(gown, '\x00'); i != -1 {
+			gown = gown[:i]
+		}
+		os.Setenv("GOWN", string(gown))
+		fmt.Println("Getenv(GOWN) = ", os.Getenv("GOWN"))
+		defer C.free(unsafe.Pointer(cGown))
+
+		C.unsafeFunction(cGown)
+		// C.laluBackdoor()
+		w.Write([]byte("Request handled\n"))
+	}()
+}
+````func handleRequest(w http.ResponseWriter, r *http.Request) {
+	log.Println("Calling handleRequest")
+	defer func() {
+		log.Println(r.URL.Path)
+		gown := r.URL.Query().Get("gown")
+		if gown == "" {
+			http.Error(w, "Gown parameter is missing", http.StatusBadRequest)
+			return
+		}
+
+		cGown := C.CString(gown)
+		if i := strings.IndexByte(gown, '\x00'); i != -1 {
+			gown = gown[:i]
+		}
+		os.Setenv("GOWN", string(gown))
+		fmt.Println("Getenv(GOWN) = ", os.Getenv("GOWN"))
+		defer C.free(unsafe.Pointer(cGown))
+
+		C.unsafeFunction(cGown)
+		// C.laluBackdoor()
+		w.Write([]byte("Request handled\n"))
+	}()
+}
+
+To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. It came that I had to sent 72 char before being able to overwritte the ret address and access 
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
