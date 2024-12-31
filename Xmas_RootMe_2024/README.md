@@ -2,7 +2,7 @@
 
 _Summary :_
 
-- Solved challenge : 15/24
+- Solved challenges : 15/24
 - Categories : IA, Crypto, Forensics, Network, Misc, Web, Web3, PWN, OSINT, Industrial
 - Ranking : 64th /625 (~) 
   
