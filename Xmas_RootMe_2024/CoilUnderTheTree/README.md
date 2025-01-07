@@ -7,7 +7,7 @@
 <p align="justify">The MODBUS protocol is a communication protocol used in industrial automation systems. As described in the diagram below, a master communicates with each slave, identifying them through unique IDs (up to 255). According to the challenge description, our tasks were:</p>
 
 - Connecting to PLC
-- Scaning the PLC to find the target slaveID
+- Scanning the PLC to find the target slaveID
 - Modifying holding register at address 0x10 and putting 0xff value
 - Reading input registers to retreive the flag
 
