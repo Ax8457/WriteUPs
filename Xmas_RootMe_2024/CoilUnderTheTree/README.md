@@ -25,7 +25,7 @@ After I converted the list into a string, I got what looked like base64 data enc
 
 <p align="center"><img src="Screenshots/S5.png" alt="Desc"></p>
 
-Once I decoded the string, I finaly got the flag : 
+Once I decoded the string, I finally got the flag : 
 
 <p align="center"><img src="Screenshots/S6.png" alt="Desc"></p>
 
