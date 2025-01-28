@@ -1,5 +1,5 @@
 # The Internal Blog 
-<p align="justify">The goal of this Web challenge was to find a way to steal bot's cookies. To do so, a blog website was deployed and vulnerable to XSS attack. No specific informations were provided in the description of the challenge, no source files. </p>
+<p align="justify">The goal of this Web challenge was to find a way to steal bot's cookies. To do so, a blog website was deployed and vulnerable to XSS attack. No specific informations were provided in the description of the challenge, no source files. Even if the source code wasn't provided this WU will include source snippets for more precision in explanations </p>
 
 <p align="center"> 
   <img src="Screenshots/S1.png" style="width:50%">
@@ -17,4 +17,6 @@
   <img src="Screenshots/S2.png" >
 </p>
 
-<p align="justify">Indeed, regarding articles released by Administrator, the bot was visiting the profile only. So it meant the payload should have been stored on user profile. At this step, the goal was to identify the target field. Hence the first thing to do was to inject simple javascript tag in each field at registration to see how they were reflected once the profile created.</p>
+<p align="justify">Indeed, regarding articles released by Administrator, the bot was visiting the profile only. So it meant the payload should have been stored on user profile. At this step, the goal was to identify the target field. Hence the first thing to do was to inject simple javascript tag in each field at registration to see how they were reflected once the profile created. Injecting the profile creation, it appeared that the profile creation was  submitted to sanitize fonction, to counter XSS injection : </p>
+
+
