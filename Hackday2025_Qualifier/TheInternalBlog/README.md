@@ -1,5 +1,5 @@
 # The Internal Blog 
-<p align="justify">The goal of this Web challenge was to find a way to steal bot's cookies. To do so, a blog website was deployed and vulnerable to XSS attack. No specific informations were provided in the description of the challenge, no source files.</p>
+<p align="justify">The goal of this Web challenge was to find a way to steal bot's cookies. To do so, a blog website was deployed and vulnerable to XSS attack. No specific informations were provided in the description of the challenge, no source files were provided.</p>
 
 <p align="center"> 
   <img src="Screenshots/S1.png" style="width:50%">
@@ -77,7 +77,7 @@ script>
   <img src="Screenshots/S6.png" style="width:50%" >
 </p>
 
-_FLAG=HACKDAY{0rd3R_M4tteRs_In_Ur_C0d3!!!!}_ 
+_FLAG=HACKDAY{0rd3R_M4tteRs_In_Ur_C0d3!!!!}_  <a href="https://github.com/Ax8457/HACKDAY/tree/main/Hackday2025/Qualif">Source files available here</a>
 
 
 
