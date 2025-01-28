@@ -17,11 +17,13 @@
   <img src="Screenshots/S2.png" >
 </p>
 
-<p align="justify">Indeed, regarding articles released by Administrator, the bot was visiting the profile only. So it meant the payload should have been stored on user profile. At this step, the goal was to identify the target field. Hence the first thing to do was to inject simple javascript tag in each field at registration to see how they were reflected once the profile created. Injecting the profile creation, it appeared that the profile creation was  submitted to sanitize fonction, to counter XSS injection : </p>
+<p align="justify">Indeed, regarding articles released by Administrator, the bot was visiting the profile only. So it meant the payload should have been stored on user profile. At this step, the goal was to identify the target field. Hence the first thing to do was to inject simple javascript tag in each field at registration to see how they were reflected once the profile created. Injecting the profile creation, it appeared that the profile creation was submitted to sanitize fonction, to counter XSS injection : </p>
 
 <p align="center"> 
   <img src="Screenshots/S3.png" >
 </p>
+
+<p align="justify">Thanks to the leak provided as a hint, it appeared that the filter actually useless beacause the filter function was called after the profile created was saved and written into the database as show in the snippet below : </p>
 
 ````javascript
 await newProfile.save();
@@ -36,3 +38,12 @@ await newProfile.save();
         res.status(500).send('Error while creating profile.');
     }
 ````
+
+<p align="justify">Hence, it was possible to access the profile containing javascript payload, despite filter function. It seemed it was actually the name file in the registration form which was vulnerable to XSS and reflected the javascript payload : </p>
+
+
+
+
+
+
+
