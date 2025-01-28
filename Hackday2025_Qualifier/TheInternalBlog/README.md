@@ -19,4 +19,20 @@
 
 <p align="justify">Indeed, regarding articles released by Administrator, the bot was visiting the profile only. So it meant the payload should have been stored on user profile. At this step, the goal was to identify the target field. Hence the first thing to do was to inject simple javascript tag in each field at registration to see how they were reflected once the profile created. Injecting the profile creation, it appeared that the profile creation was  submitted to sanitize fonction, to counter XSS injection : </p>
 
+<p align="center"> 
+  <img src="Screenshots/S3.png" >
+</p>
 
+````javascript
+await newProfile.save();
+
+        const isXSSDetected = sanitizeJson(profileData, res);
+        if (isXSSDetected) return;
+
+        console.log('Profile created :', profileData);
+        res.redirect(`/user?token=${token}`);
+    } catch (err) {
+        console.error('Error while creating profile :', err);
+        res.status(500).send('Error while creating profile.');
+    }
+````
