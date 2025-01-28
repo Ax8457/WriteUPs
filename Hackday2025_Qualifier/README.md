@@ -1,1 +1,1 @@
-# Hackday 2025 
+# Hackday 2025 Qualifier Event
