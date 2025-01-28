@@ -74,7 +74,7 @@ script>
 <p align="justify">Once the profile created containing the payload and an article realeased using the token associated, the flag is finally sent as a message : </p>
 
 <p align="center"> 
-  <img src="Screenshots/S6.png" >
+  <img src="Screenshots/S6.png" style="width:50%" >
 </p>
 
 _FLAG=HACKDAY{0rd3R_M4tteRs_In_Ur_C0d3!!!!}_ 
