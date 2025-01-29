@@ -39,7 +39,7 @@ await newProfile.save();
     }
 ````
 
-<p align="justify">Hence, it was possible to access the profile containing javascript payload, despite filter function. It seemed it was actually the name field in the registration form which was vulnerable to XSS and reflected the javascript payload : </p>
+<p align="justify">Hence, it was possible to access the profile containing javascript payload, despite of filter function. It seemed it was actually the name field in the registration form which was vulnerable to XSS and reflected the javascript payload : </p>
 
 <p align="center"> 
   <img src="Screenshots/S4.png" >
