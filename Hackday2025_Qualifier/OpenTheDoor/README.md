@@ -20,5 +20,17 @@
 ````
 
 <p align="center">
-<img src="Screenshots/S3.png">
+<img src="Screenshots/S5.png">
 </p>
+
+<p align="justify">Loading knockd configuration file revealed the sequence required to open the targeted port. Finally using to payload below, it triggered port openning and printed the flag once the HTML page downloaded : </p>
+
+````bash
+knock -v 172.17.0.6 4789 1456 2478 & sleep 0.5 & curl http://172.17.0.6:14456
+````
+
+<p align="center">
+<img src="Screenshots/S4.png">
+</p>
+
+Flag : _HACKDAY{P0rt_Kn0ck1ng_1snt_S3cr3t_1f_U_C4n_P3rf0rm_Lf1_0r_RFI}_ <a href="">Source and Docker files available here</a>
