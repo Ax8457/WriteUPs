@@ -14,7 +14,7 @@
 <p align="justify">To retreive files extracted, it was important to understand what type of files had been exfiltrated. To do so the very first packet extracted revealed very helpful because it could have contained some magic bytes : </p>
 
 <p align="center">
-<img src="Screenshots/S3.png" style="width: 50%">
+<img src="Screenshots/S3.png" >
 </p>
 
 <p align="justify">Indeed it was the case insofar as the first cookie, once decoded, revealed PNG magic bytes, meaning that the files that were supposed to be retreived were actually PNGs : </p>
