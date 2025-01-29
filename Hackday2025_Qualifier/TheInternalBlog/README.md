@@ -23,7 +23,7 @@
   <img src="Screenshots/S3.png" >
 </p>
 
-<p align="justify">Thanks to the leak provided as a hint, it appeared that the filter actually useless beacause the filter function was called after the profile created was saved and written into the database as show in the snippet below : </p>
+<p align="justify">Thanks to the leak provided as a hint, it appeared that the filter was actually useless beacause the filter function was called after the profile created was saved and written into the database as show in the snippet below : </p>
 
 ````javascript
         await newProfile.save();
