@@ -44,7 +44,7 @@
   <img src="Screenshots/S4.png" >
 </p>
 
-<p align="justify">After the name field was identified, a fetch to request endpoint triggered a CSP applied to user profile page. To get the flag and trap the bot, a bypass was required. 2 solutions where possible : </p>
+<p align="justify">After the name field was identified, a fetch to requestbin endpoint triggered a CSP applied to user profile page. To get the flag and trap the bot, a bypass was required. 2 solutions where possible : </p>
   
 - Using a redirection payload
 - Using message feature to send the flag on a controlled profile, using contact ID
