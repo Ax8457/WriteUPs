@@ -1,4 +1,4 @@
-# Hackday 2025 Qualifier Event
+# HACKDAY 2025 Qualifier Event
 Official WUs for the challenges I made for Hackday 2025 qualifier CTF 
 
 <a href="https://github.com/Ax8457/HACKDAY/tree/main/Hackday2025/Qualif">Source files available here</a>
