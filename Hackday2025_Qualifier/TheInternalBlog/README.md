@@ -8,7 +8,7 @@
 <p align="justify">The first step was the recon stage. Indeed, before perform any XSS and trap the bot, the field vulnerable had to be found. Actually the blog site offered many possible fields : </p>
 
 - **Registration route** : Profiles were created with token here, contact ID, Name, Username, Location, Description
-- **Article route** : Article were released here. To publish account token, content andtitle were required
+- **Article route** : Article were released here. To publish account token, content and title were required
 - **Message route** : Messages were sent here. To send message contact ID and content were required
 
 <p align="justify">Hence it seemed that many fields could have potentientially been exploited to perform XSS. Nonetheless given the hints printed on the home page, it reduced the scope to the profile : </p>
