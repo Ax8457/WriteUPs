@@ -23,7 +23,7 @@
 <img src="Screenshots/S5.png">
 </p>
 
-<p align="justify">Loading knockd configuration file revealed the sequence required to open the targeted port. Finally using to payload below, it triggered port openning and printed the flag once the HTML page downloaded : </p>
+<p align="justify">Loading knockd configuration file revealed the sequence required to open the targeted port. Finally using the payload below, it triggered port openning and printed the flag once the HTML page downloaded : </p>
 
 ````bash
 knock -v 172.17.0.6 4789 1456 2478 & sleep 0.5 & curl http://172.17.0.6:14456
