@@ -1,7 +1,7 @@
 # Open The Door 
 <p align="justify"> In this challenge the goal was to open port 14456 on the server machine, which was initially closed. To do so, disclose of /etc/knockd.conf was necessary to reveal the port knocking sequence and open the port for a few seconds. Hence the goal here was to perform an LFI attack, allowing load of knockd configuration files. </p>
 
-<p align="justify">Looking at the website deployed, it appeared that it was possible to create/generate PDF based on 1 image file, and 1 text file. Actually injecting image field was useless insofar as an image was expected and push an other file type to PDF generation was triggering an internal server error. </p>
+<p align="justify">Looking at the website deployed, it appeared that it was possible to create/generate PDF based on 1 image file, and 1 text file. Actually injecting image field was useless insofar as an image was expected and pushing an other file type to PDF generation was triggering an internal server error. </p>
 
 <p align="center">
 <img src="Screenshots/S1.png">
