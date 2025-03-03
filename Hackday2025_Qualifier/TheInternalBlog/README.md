@@ -17,7 +17,7 @@
   <img src="Screenshots/S2.png" >
 </p>
 
-<p align="justify">Indeed, regarding articles released by Administrator, the bot was visiting the profile only. So it meant the payload should have been stored on user profile. At this step, the goal was to identify the target field. Hence the first thing to do was to inject simple javascript tag in each field at registration to see how they were reflected once the profile created. Injecting the profile creation, it appeared that the profile creation was submitted to sanitize function, to counter XSS injection : </p>
+<p align="justify">Indeed, regarding articles released by Administrator, the bot was visiting the profile only. So it meant the payload should have been stored on user profile. At this step, the goal was to identify the target field. Hence the first thing to do was to inject simple javascript tag in each field at registration to see how they were reflected once the profile was created. Injecting the profile creation, it appeared that the profile creation was submitted to sanitize function, to counter XSS injection : </p>
 
 <p align="center"> 
   <img src="Screenshots/S3.png" >
