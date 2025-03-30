@@ -10,4 +10,8 @@
 <img src="Screenshots/S1.png" style="width: 40%">
 </p>
 
-<h2> creenshot from 2025-03-30 22-02-57Step 1 : Time based attack on rust server </h2>
+<h2> Step 1 : Time based attack on rust server </h2>
+
+<p align="center">
+<img src="Screenshots/S2.png" style="width: 40%">
+</p>
