@@ -1,1 +1,2 @@
-# Hackday 2025
+# HACKDAY 2025 Finals Event
+
