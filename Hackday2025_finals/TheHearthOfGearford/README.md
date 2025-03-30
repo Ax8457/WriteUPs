@@ -12,6 +12,36 @@
 
 <h2> Step 1 : Time based attack on rust server </h2>
 
+
+<p align="justify">Once on the page of the challenge, a message was redirecting on the /auth route so that the client could have received his token authentication. By default all clients were authenticated as Guest as shown in the snippet below : </p>
+
 <p align="center">
 <img src="Screenshots/S2.png" style="width: 40%">
 </p>
+
+<p align="justify">Actually, those tokens were signed with HMAC authentication algorithm. As show in the snipper below, token was composed of two parts; the first one which is the plaintext payload containing username and role, and the second </p>
+
+````rust
+pub fn receive_token(key: &[u8], plaintext_token: &[u8], authentication_tag: &[u8]) -> bool {
+    let mut mac = Hmac::<Sha256>::new(key.into()); //format conversion
+    mac.update(plaintext_token);
+    let computed_tag = mac.finalize().into_bytes();
+    verify(&computed_tag, authentication_tag)  
+}
+````
+
+````rust
+pub fn verify(expected: &[u8], received: &[u8]) -> bool {
+    if expected.len() != received.len() {
+        return false;
+    }
+    for (a, b) in expected.iter().zip(received.iter()) {
+        if a != b {
+            return false;
+        }
+        println!("Byte is valid.");
+        thread::sleep(time::Duration::from_millis(10)); //longer check to make bruteforce attacks harder
+    }
+    true
+}
+````
