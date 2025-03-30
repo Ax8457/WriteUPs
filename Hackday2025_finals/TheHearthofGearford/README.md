@@ -1,1 +1,0 @@
-# The Hearth of Gearford 
