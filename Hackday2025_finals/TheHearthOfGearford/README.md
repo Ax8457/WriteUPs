@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/79d7adbc-5dfd-4d4e-a8cc-672a5872c290)# The Hearth of the Gearford Write-Up
+# The Hearth of the Gearford Write-Up
 
 <p align="justify">This challenge was a MISC one, in which the server machine must have been rooted to read the flag. To do so authentication mecanism source code was provided and is attached in this repo under cryptoAuth/... . The challenge was made of 3 parts: </p>
 
