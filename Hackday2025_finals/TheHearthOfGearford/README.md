@@ -50,7 +50,7 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 <p align="justify"> Running the server localy (it means with no latency in the response) it was possible to retreive the token, and then access the admin panel. Below is an example of token for 'guest' username with admin role you could have retreived with a local time attack : </p>
 
 <p align="center">
-<img src="Screenshots/S3.png" style="width: 40%">
+<img src="Screenshots/S3.png">
 </p>
 
 <h2> Step 2 : RCE & Webshell on the admin panel using log poisoning exploit</h2>
@@ -58,5 +58,10 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 <p align="justify">Once logged on in the admin panel using the admin token, it seemed that panel was kind of administrative panel coded in php, offering various features including : </p>
 
 - Overview of auth.log file
-- Load 
+- Load of other log file such as access log
+- Text field and notes upload
+- Log line visualization
+- Enumeration of ssh users whom failed to log in on the server machine
+
+
 
