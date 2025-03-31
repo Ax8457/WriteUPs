@@ -1,4 +1,4 @@
-# The Hearth of the Gearford Write-Up
+![image](https://github.com/user-attachments/assets/79d7adbc-5dfd-4d4e-a8cc-672a5872c290)# The Hearth of the Gearford Write-Up
 
 <p align="justify">This challenge was a MISC one, in which the server machine must have been rooted to read the flag. To do so authentication mecanism source code was provided and is attached in this repo under cryptoAuth/... . The challenge was made of 3 parts: </p>
 
@@ -63,7 +63,7 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 - Log line visualization
 - Enumeration of ssh users whom failed to log in on the server machine
 
-<p align="justify">For this step and this part of the chall, no source code was provided and it was kind of blackbox part. Nontheless in the load feature, an LFI was easily exploitable and allowed to extract php source code as shown the snippet below : </p>
+<p align="justify">For this step and this part of the chall, no source code was provided and it was kind of blackbox part. Nonetheless in the load feature, an LFI was easily exploitable and allowed extract php source code as shown the snippet below : </p>
 
 ````php
 // load file feature
@@ -71,6 +71,24 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
             return isset($logfile) && !empty($logfile) ? include($logfile) : "No file specified.";
         }
 ````
-<p align="justify">At this point it was interesting because this weakness in the php (which wasn't sanitizing the input) also allowed to use php wrappers, for instance base64 encode/decoe which revealed useful for the exploit. Below is a POC with /etc/passwd: </p>
+<p align="justify">At this point it was interesting because this weakness in the php (which wasn't sanitizing inputs) also allowed to use php wrappers, for instance base64 encode/decode which revealed useful for the exploit. Below is a POC with index.php file: </p>
 
-<p align="justify">To perform a log poisoning as expected to get a webshell, there were 2 possibilities : poison access.log file and load it and poison auth
+<p align="center">
+<img src="Screenshots/S8.png" style="width: 50%">
+</p>
+
+<p align="justify">Actually to perform a log poisoning as expected to get a webshell, there were 2 main possibilities : poison access.log file and load it or poison auth.log. Regarding access.log it was harder to exploit it than auth.log; because once the file was poisoned it was impossible to control it nor the re write it nor clear it, and a php injection in it was quickly disturbing page rendering. For auth.log it was way simple because as shown in the snippet below, the ssh users whom failed to log in on the machine were extracted amoung the 20 last lines and stored in a file named userloginfail.txt in the directory of the server, which suggested that port 22 was opened (confirmed by a nmap scan). Besides, the panel provided a button to clear it which all boils down to a way to control this file by an attacker. Hence the scheme of the exploit to get a webshell properly rendered on the page was the following one : </p>
+
+- Clear userloginfail.txt
+- Poison auth.log file with a webshell encoded in base64 and used as a ssh user to attempt to connect remotely on port 22
+- Verify that the base64 payload doesn't contain any / to avoid truncation and is well stored as ssh user in userloginfail.txt
+- Render poison userloginfail.txt containing base64 payload using the load feature of the panel and using a php wrapper to decode it
+- Execute commands and validate that the input is welled printed into the ad hoc section
+
+````bash
+http://ip/HiddenAdministrativeControlPanel.php?load=php%3A%2F%2Ffilter%2Fconvert.base64-decode%2Fresource%3Duserloginfail.txt&cmd=id
+````
+<p align="center">
+<img src="Screenshots/S10.png" style="width: 50%">
+</p>
+    
