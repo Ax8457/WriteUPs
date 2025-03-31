@@ -63,5 +63,14 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 - Log line visualization
 - Enumeration of ssh users whom failed to log in on the server machine
 
+<p align="justify">For this step and this part of the chall, no source code was provided and it was kind of blackbox part. Nontheless in the load feature, an LFI was easily exploitable and allowed to extract php source code as shown the snippet below : </p>
 
+````php
+// load file feature
+        function load_external_log($logfile = '') {
+            return isset($logfile) && !empty($logfile) ? include($logfile) : "No file specified.";
+        }
+````
+<p align="justify">At this point it was interesting because this weakness in the php (which wasn't sanitizing the input) also allowed to use php wrappers, for instance base64 encode/decoe which revealed useful for the exploit. Below is a POC with /etc/passwd: </p>
 
+<p align="justify">To perform a log poisoning as expected to get a webshell, there were 2 possibilities : poison access.log file and load it and poison auth
