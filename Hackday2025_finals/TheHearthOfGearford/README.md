@@ -4,7 +4,7 @@
 
 - Step 1 : Get an admin access (token signed with HMAC), attacking the authentication mecanism
 - Step 2 : Get a RCE (and a webshell) on the admin panel using log poisoning method
-- Step 3 : Get a revshell and perform a privesc to read the flag located in /root/flag.txt
+- Step 3 : Get a revshell and perform a privesc to read the flag located in /root/flag.txt, leveraging wildcard injection method
 
 <p align="center">
 <img src="Screenshots/S1.png" style="width: 40%">
