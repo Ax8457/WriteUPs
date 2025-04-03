@@ -128,7 +128,7 @@ chmod +x /tmp/revshell
 <img src="Screenshots/S12.png" style="width: 50%">
 </p>
 
-<p align="justify">Indeed this crontab was vulnerable to an exploit named wildcard injection perfectly explained by Ley0x in his blog : <a href="https://blog.ley0x.me/posts/linux-wildcard-injection">Doc here.</a> Actually the binary tar uses flags while running, which can be leveraged to execute arbitrary script, and when tar runs as root it means than command could be potentialy run as root:</p>
+<p align="justify">Indeed, this crontab was vulnerable to an exploit named wildcard injection; perfectly explained by Ley0x in his blog : <a href="https://blog.ley0x.me/posts/linux-wildcard-injection">Doc here.</a> Actually the binary tar uses flags while running, which can be leveraged to execute arbitrary script, and when tar runs as root it means than command could be potentialy run as root:</p>
 
  ````bash
 #tar flags
