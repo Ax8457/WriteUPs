@@ -45,7 +45,7 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
     true
 }
 ````
-<p align="justify"> Hence, in order to retreive a valid token, authentication tag must have been retreived using time reponse when submitting a token to /auth and triggering verify() function. A python script is available in this repository under HMAC_timeattack.py, to perfom the exploit localy. Unfortunately because of too much latency over VLANs, this part of the challenge has been neutralized and the admin access granted for everybody, since it was ti hard to retreive all authentication bytes using time responses from the server. </p>
+<p align="justify"> Hence, in order to retreive a valid token, authentication tag must have been retreived using time reponse when submitting a token to /auth and triggering verify() function. A python script is available in this repository under HMAC_timeattack.py, to perfom the exploit localy. Unfortunately because of too much latency over VLANs, this part of the challenge has been neutralized and the admin access granted for everybody, since it was too hard to retreive all authentication bytes using time responses from the server. </p>
 
 <p align="justify"> Running the server localy (it means with no latency in the response) it was possible to retreive the token, and then access the admin panel. Below is an example of token for 'guest' username with admin role you could have retreived with a local time attack : </p>
 
@@ -77,7 +77,13 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 <img src="Screenshots/S8.png" style="width: 50%">
 </p>
 
-<p align="justify">Actually to perform a log poisoning as expected to get a webshell, there were 2 main possibilities : poison access.log file and load it or poison auth.log. Regarding access.log it was harder to exploit it than auth.log; because once the file was poisoned it was impossible to control it nor the re write it nor clear it, and a php injection in it was quickly disturbing page rendering. For auth.log it was way simple because as shown in the snippet below, the ssh users whom failed to log in on the machine were extracted amoung the 20 last lines and stored in a file named userloginfail.txt in the directory of the server, which suggested that port 22 was opened (confirmed by a nmap scan). Besides, the panel provided a button to clear it which all boils down to a way to control this file by an attacker. Hence the scheme of the exploit to get a webshell properly rendered on the page was the following one : </p>
+<p align="justify">Actually to perform a log poisoning as expected to get a webshell, there were 2 main possibilities : poison access.log file and load it or poison auth.log. Regarding access.log it was harder to exploit it than auth.log; because once the file was poisoned it was impossible to control it nor the re write it nor clear it, and a php injection in it was quickly disturbing page rendering. For auth.log it was way simple because as shown in the snippet below, the ssh users whom failed to log in on the machine were extracted amoung the 20 last lines and stored in a file named userloginfail.txt in the directory of the server, which suggested that port 22 was opened (confirmed by a nmap scan). Besides, the panel provided a button to clear it which all boils down to a way to control this file by an attacker. 
+
+<p align="center">
+<img src="Screenshots/S9.png" style="width: 50%">
+</p>
+
+Hence the scheme of the exploit to get a webshell properly rendered on the page was the following one : </p>
 
 - Clear userloginfail.txt
 - Poison auth.log file with a webshell encoded in base64 and used as a ssh user to attempt to connect remotely on port 22
