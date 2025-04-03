@@ -122,7 +122,7 @@ chmod +x /tmp/revshell
 <img src="Screenshots/S11.png" style="width: 50%">
 </p>
 
-<p align="justify">At this step the challenge was solved at 90%, the very last step was to find a way to escalate privileges to read the flag. To do so, no SUID or weak permissions/capabilitties but an intteresting crontab in charge of backup /home/user directory and which was run as root. Besided right were granted to adm group, in which user www-data was inlcuded : </p>
+<p align="justify">At this step the challenge was solved at 90%, the very last step was to find a way to escalate privileges to read the flag. To do so, no SUID or weak permissions/capabilities but an interesting crontab in charge of backup /home/user directory and which was run as root. Besided right were granted to adm group, in which user www-data was inlcuded : </p>
 
 <p align="center">
 <img src="Screenshots/S12.png" style="width: 50%">
