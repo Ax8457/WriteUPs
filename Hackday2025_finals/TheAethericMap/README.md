@@ -42,12 +42,12 @@ srand(start_pos);
 
 <p align="justify">Hence, to solve this challenge it was necessary to :</p>
 
-- Regenerate the file position with enough bits (modulo 8) to catch the size of the flag
-- Then using this position file extract bits using cursor position as random seed
-- Trying to read the output message
+- Regenerate the file position with enough bits (modulo 8) to catch the size of the flag, , using cursor position as random seed
+- Then use the positions file to extract bits
+- Try to read the output message
 - Iterate over different cursor positions until the correct one was found
 
-<p align="justify">As a matter of fact the intended cursor position was 100. I attached in this repo a file named rand.c which recompute bits posiitons (I coded it knowing the flag size, which was different for players whom didn't know it). I also attached a file solve.c which take the cursor position and positions list as parameters. Finally after running those script using 100 as cursor position, it possible to retreive the flag :</p>
+<p align="justify">As a matter of fact the intended cursor position was 100. I attached in this repo a file named rand.c which recompute bits positions (I coded it knowing the flag size, which was different for players whom didn't know it). I also attached a file solve.c which take the cursor position and positions list as parameters. Finally after running those script using 100 as cursor position, it possible to retreive the flag :</p>
 
 <p align="center">
 <img src="Screenshots/S2.png" >
