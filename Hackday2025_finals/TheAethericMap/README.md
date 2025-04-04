@@ -49,7 +49,8 @@ srand(start_pos);
 
 <p align="justify">As a matter of fact the intended cursor position was 100. I attached in this repo a file named rand.c which recompute bits posiitons (I coded it knowing the flag size, which was different for players whom didn't know it). I also attached a file solve.c which take the cursor position and positions list as parameters. Finally after running those script using 100 as cursor position, it possible to retreive the flag :</p>
 
-
-
+<p align="center">
+<img src="Screenshots/S2.png" >
+</p>
 
 FLAG : _HACKDAY{h1dd3n_1n_pl41n_s1ght}_
