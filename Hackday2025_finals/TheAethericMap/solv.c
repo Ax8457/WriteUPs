@@ -40,7 +40,7 @@ void extract_LSB(const char *filename, const char *positions_file) {
 	fclose(file);
 	fclose(pos_file);
 	
-	extracted_message[flag_index / 8] = '\0'; // Assurer une terminaison correcte
+	extracted_message[flag_index / 8] = '\0'; 
 	printf("\n[+] Extracted message: %s\n", extracted_message);
 }
 
