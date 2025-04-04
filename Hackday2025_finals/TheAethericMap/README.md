@@ -12,7 +12,7 @@
 void hide(const char *filename, int start_pos, const char *message)
 ````
 
-<p align="justify">Looking at the source code, it appeared that the data had been hidden using the loop below. It seemed that this loop randomly replaced some least significant bits of the BMP file with the bits of the message, here the flag. The diferent positions of the bits were saved into a external file named pos.txt, which wasn't provided. Hence it appeared that it was impossible de retreive the flag by simply looking at the LSB of the BMP file because of randomization of positions.</p>
+<p align="justify">Looking at the source code, it appeared that the data had been hidden using the loop below. It seemed that this loop randomly replaced some least significant bits of the BMP file with the bits of the message, here the flag. The diferent positions of the bits were saved into an external file named pos.txt, which wasn't provided. Hence it appeared that it was impossible de retreive the flag by simply looking at the LSB of the BMP file because of randomization of positions.</p>
 
 ````c
 for (int i = 0; i < total_bits; i++) {
