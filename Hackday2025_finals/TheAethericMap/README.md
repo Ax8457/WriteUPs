@@ -6,7 +6,7 @@
 <img src="Screenshots/S1.png" style="width: 40%">
 </p>
 
-<p align="justify">To solve this challenge it was necessary to understand how the script used had hidden data into the bmp file. Looking at sourc code it appears that it was one main function used, which took filename, cursor position , and the message as parameters. </p>
+<p align="justify">To solve this challenge it was necessary to understand how the script used had hidden data into the bmp file. Looking at source code it appears that it was one main function used, which took filename, cursor position , and the message as parameters. </p>
 
 ````c
 void hide(const char *filename, int start_pos, const char *message)
