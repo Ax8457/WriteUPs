@@ -52,7 +52,7 @@ pub fn handle_request(mut stream: TcpStream) {
 
     let response_json = serde_json::to_string(&response).unwrap();
 
-    // Réponse HTTP avec JSON
+    //json
     let response = format!(
         "HTTP/1.1 200 OK\r\n\
         Content-Type: application/json\r\n\
