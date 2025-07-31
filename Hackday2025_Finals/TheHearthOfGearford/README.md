@@ -63,7 +63,7 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 - Log line visualization
 - Enumeration of ssh users whom failed to log in on the server machine
 
-<p align="justify">For this step and this part of the chall, no source code was provided and it was kind of blackbox part. Nonetheless in the load feature, an LFI was easily exploitable and allowed extract php source code as shown the snippet below : </p>
+<p align="justify">For this step and this part of the chall, no source code was provided and it was kind of blackbox part. Nonetheless in the load feature, an LFI was easily exploitable and allowed extract php source code as shown in the snippet below : </p>
 
 ````php
 // load file feature
@@ -77,7 +77,7 @@ pub fn verify(expected: &[u8], received: &[u8]) -> bool {
 <img src="Screenshots/S8.png" style="width: 50%">
 </p>
 
-<p align="justify">Actually to perform a log poisoning as expected to get a webshell, there were 2 main possibilities : poison access.log file and load it or poison auth.log. Regarding access.log it was harder to exploit it than auth.log; because once the file was poisoned it was impossible to control it nor the re write it nor clear it, and a php injection in it was quickly disturbing page rendering. For auth.log it was way simple because as shown in the snippet below, the ssh users whom failed to log in on the machine were extracted amoung the 20 last lines and stored in a file named userloginfail.txt in the directory of the server, which suggested that port 22 was opened (confirmed by a nmap scan). Besides, the panel provided a button to clear it which all boils down to a way to control this file by an attacker. 
+<p align="justify">Actually to perform a log poisoning as expected to get a webshell, there were 2 main possibilities : poison access.log file and load it or poison auth.log. Regarding access.log it was harder to exploit it than auth.log; because once the file was poisoned it was impossible to control it nor re write it nor clear it, and a php injection in it was quickly disturbing page rendering. For auth.log it was way simple because as shown in the snippet below, the ssh users whom failed to log in on the machine were extracted amoung the 20 last lines and stored in a file named userloginfail.txt in the directory of the server, which suggested that port 22 was opened (confirmed by a nmap scan). Besides, the panel provided a button to clear it which all boils down to a way to control this file by an attacker. 
 
 <p align="center">
 <img src="Screenshots/S9.png" style="width: 50%">
