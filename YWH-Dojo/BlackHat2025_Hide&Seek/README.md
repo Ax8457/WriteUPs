@@ -83,9 +83,7 @@ The file hide.py contains 3 interesting functions used in main script :
 
 ## CVE-2023-32309 :  arbitrary file read in pymdownx extension
 <p align="justify"> The source code is vulnerable to arbitrary file read. The vulnerability comes from a CVE released in 2023 <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-32309">(CVE-2023-32309)</a>. In the affected versions (prior to 10.0) of pymdownx extensions, a file read is possible using include syntax. The version of the application used here (9.3) is vulnerable.</p>
-<p align="justify">The vulnerability can be tested easily in a python interpreter. Using the exact syntax of application code, /etc/passwd content can be leaked using include payload of CVE Proof of concept:</p>
-
-<img src="Screenshots/S1.png">
+<p align="justify">The vulnerability can be tested easily in a python interpreter. Using the exact syntax of application code, /etc/passwd content can be leaked using include payload of CVE Proof of concept.</p>
 
 <p align="justify">Which can be reproduced on challenge server: </p>
 
