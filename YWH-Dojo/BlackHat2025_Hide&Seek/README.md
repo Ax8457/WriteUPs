@@ -85,7 +85,11 @@ The file hide.py contains 3 interesting functions used in main script :
 <p align="justify"> The source code is vulnerable to arbitrary file read. The vulnerability comes from a CVE released in 2023 <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-32309">(CVE-2023-32309)</a>. In the affected versions (prior to 10.0) of pymdownx extensions, a file read is possible using include syntax. The version of the application used here (9.3) is vulnerable.</p>
 <p align="justify">The vulnerability can be tested easily in a python interpreter. Using the exact syntax of application code, /etc/passwd content can be leaked using include payload of CVE Proof of concept:</p>
 
+<img src="screenshots/S1.png">
+
 <p align="justify">Which can be reproduced on challenge server: </p>
+
+<img src="screenshots/S2.png">
 
 ## Flag Read
 <p align="justify"> To extract the flag from source files leveraging the vulnerability depicted before, hide.py can’t be displayed because at this step the file is no longer on the disk. Indeed as explained previously, the file had been removed before the payload was processed by the server.</p>
@@ -110,7 +114,9 @@ The file hide.py contains 3 interesting functions used in main script :
 ````bash
 --8<-- "/tmp/lib/__pycache__/hide.cpython-312.pyc"
 ````
-FLAG{A_B1t_0f_F0r3nsic5_T0_F1nd_M3}
+<img src="screenshots/S3.png">
+
+Flag : FLAG{A_B1t_0f_F0r3nsic5_T0_F1nd_M3}
 
 
 
