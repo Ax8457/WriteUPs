@@ -88,4 +88,30 @@ The file hide.py contains 3 interesting functions used in main script :
 <p align="justify">Which can be reproduced on challenge server: </p>
 
 ## Flag Read
+<p align="justify"> To extract the flag from source files leveraging the vulnerability depicted before, hide.py can’t be displayed because at this step the file is no longer on the disk. Indeed as explained previously, the file had been removed before the payload was processed by the server.</p>
+
+<p align="justify">Nonetheless, when python runs code, function definitions and variables declared are actually compiled and stored in a .pyc file (python bytes cache file) available under /tmp/lib/filename.cpython-version.pyc. It explains why functions defined in hide.py remains available while the file has been deleted.</p>
+
+<p align="justify"> Below is the schema of the folder : </p>
+
+````txt
+                /tmp
+                ├── templates
+                │   └── index.html
+                ├── lib
+                │   ├── hide.py
+                │   └── __pycache__
+                │       └── hide.cpython-312.pyc
+                └── app.py              
+````
+
+<p align="justify">Finally using the following payload, it was possible to disclose flag (according version of python using here and the name of the file) :</p>
+
+````bash
+--8<-- "/tmp/lib/__pycache__/hide.cpython-312.pyc"
+````
+FLAG{A_B1t_0f_F0r3nsic5_T0_F1nd_M3}
+
+
+
 
