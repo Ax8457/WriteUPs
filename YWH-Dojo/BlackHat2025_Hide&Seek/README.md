@@ -89,7 +89,7 @@ The file hide.py contains 3 interesting functions used in main script :
 
 <p align="justify">Which can be reproduced on challenge server: </p>
 
-<img src="Screenshots/S2.png" style="width:50%">
+<p align="center"><img src="Screenshots/S2.png" style="width:50%"></p>
 
 ## Flag Read
 <p align="justify"> To extract the flag from source files leveraging the vulnerability depicted before, hide.py can’t be displayed because at this step the file is no longer on the disk. Indeed as explained previously, the file had been removed before the payload was processed by the server.</p>
@@ -114,7 +114,7 @@ The file hide.py contains 3 interesting functions used in main script :
 ````bash
 --8<-- "/tmp/lib/__pycache__/hide.cpython-312.pyc"
 ````
-<img src="Screenshots/S3.png">
+<p align="center"><img src="Screenshots/S3.png" style="width:50%"></p>
 
 Flag : FLAG{A_B1t_0f_F0r3nsic5_T0_F1nd_M3}
 
