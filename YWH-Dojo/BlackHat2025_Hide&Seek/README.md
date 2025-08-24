@@ -89,7 +89,7 @@ The file hide.py contains 3 interesting functions used in main script :
 
 <p align="justify">Which can be reproduced on challenge server: </p>
 
-<img src="Screenshots/S2.png">
+<img src="Screenshots/S2.png" style="width:50%">
 
 ## Flag Read
 <p align="justify"> To extract the flag from source files leveraging the vulnerability depicted before, hide.py can’t be displayed because at this step the file is no longer on the disk. Indeed as explained previously, the file had been removed before the payload was processed by the server.</p>
