@@ -114,7 +114,7 @@ The file hide.py contains 3 interesting functions used in main script :
 ````
 <p align="center"><img src="Screenshots/S3.png" style="width:50%"></p>
 
-_Flag : FLAG{A_B1t_0f_F0r3nsic5_T0_F1nd_M3}_
+_Flag : FLAG{A_B1t_0f_F0r3nsic5_T0_F1nd_M3}_ , thanks _BrumensYWH_ for this one !
 
 
 
