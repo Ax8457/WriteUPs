@@ -11,7 +11,7 @@ firmware:
     echo $FLAG
 ````
 
-## solve2 
+## solve 2  
 
 ````bash
 firmware:
