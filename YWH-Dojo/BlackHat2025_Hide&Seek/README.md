@@ -1,3 +1,5 @@
+# YesWeHack BlackHat2025 Dojo - Hide&Seek Write Up
+
 <p align="justify">This Write Up depicts vulnerabilities identified & exploited on <a href="https://dojo-yeswehack.com/challenge-of-the-month/blackhat-2025">BlackHat 2025 - hide & seek lab</a> on YWH Dojo challenge of the month, which led to information (flag) disclosure.It includes vulnerabilities explanations and a POC, namely methods used to retrieve the flag.</p>
 <p align="justify">The application deployed lies on a python backend taking a user input and using pymdownx & markdown python lib to render it in a friendly interface replicating iphone messages. Below is a schema of the application folder based on source code:</p>
 
@@ -9,6 +11,7 @@
         │   └── hide.py
         └── app.py
 ````
+
 <p align="justify">As a matter of fact, the version details of Python & libs used (if available) in this application are :</p>
 
 <div align="center">
