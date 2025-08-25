@@ -1,1 +1,1 @@
-# Yes We Hack Dojo program Write-Ups
+# YesWeHack Dojo program Write-Ups
