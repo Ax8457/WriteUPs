@@ -1,7 +1,15 @@
+# YesWeHack Dojo43 CCTV Manager Write-Up
 
+<p align="justify">The application implements a weak token-based authentication mechanism, where the server-generated token could be predicted or matched by an attacker. Combined with the insecure use of yaml.load() on untrusted input, this enabled malicious YAML payloads to trigger Python built-in functions and achieve Remote Code Execution (RCE). This flaw allowed attackers to bypass authentication, execute arbitrary code, and disclose sensitive information such as environment variables (including the flag). </p>
+
+## Code analysis
+
+<p align="justify">
+  
 ````bash
 curl -sI https://dojo-yeswehack.com | grep -i '^date:' | cut -d' ' -f2-
 ````
+  
 ## solve 1 
 
 ````bash
