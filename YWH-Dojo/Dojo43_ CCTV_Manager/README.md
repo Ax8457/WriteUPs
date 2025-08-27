@@ -32,10 +32,10 @@ curl -sI https://dojo-yeswehack.com | grep -i '^date:' | cut -d' ' -f2-
 ````
 
 ## CVE-2017-18342
-<p align="justify"> This use of PyYaml load method is the subject of a CVE known as <a href="https://nvd.nist.gov/vuln/detail/cve-2017-18342">CVE-2017-18342</a>. This is actually a case of insecure YAML deserialization in which an attacker can leverage insecure YAML data load to use Python object constructors and as a result run commands in the environement of the challenge.</p>
+<p align="justify"> This use of PyYaml load method is the subject of a CVE known as <a href="https://nvd.nist.gov/vuln/detail/cve-2017-18342">CVE-2017-18342</a>. This is actually a case of insecure YAML deserialization in which an attacker can leverage insecure YAML data load to use Python object constructors and as a result run commands in the environment of the challenge.</p>
 
 ## Flag read
-<p align="justify">In this challenge, Flag is stored in FLAG venv and can be disclose easly using echo or cat.</p>
+<p align="justify">In this challenge, Flag is stored in FLAG venv and can be disclose easly using echo or cat. Once token auth is bypassed payloads below can be used to deisplay the Flag. A python script is attached to this repo with the full exploit.</p>
 
 ### solve 1 
 <p align="justify">This first YAML payload return the flag in server output using os.system python object:</p>
@@ -46,6 +46,9 @@ firmware:
   - |
     echo $FLAG
 ````
+<div align="center">
+<img src="Screenshots/S2.png" style="width:75%">
+</div>
 
 ### solve 2  
 
@@ -63,4 +66,8 @@ firmware:
     threading.Thread(target=leak_flag).start() # starting thread in server context triggers error relfected in output server (see snippet below)
 ````
 
+<div align="center">
+<img src="Screenshots/S1.png" style="width:75%">
+</div>
 
+_Flag: FLAG{37e579d4f69510d4e79258973ae0aa8f}_, thanks _BrumensYWH_ for this challenge !
