@@ -60,7 +60,7 @@ $$
 <p align="justify">And Euler Totient function simplifies to: </p>
 
 $$
-\phi(n) = N - 1
+\phi(n) = n - 1
 $$  
 
 
