@@ -73,4 +73,4 @@ b'C = 32182009238083765007550290155455374091766988250459649805170030640835333524
 
 <p align="justify">This is a second RSA challenge which follows exactly the same logic. The script solv2.py implements the solv, but instead of using factors to compute totient, it leverages the Euler totient simplification (because n is  prime) and simply substracts 1 to N to get the totient.</p>
 
-FLAG: ECW{c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2}
+FLAG: _ECW{c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2}_ , thanks _ESNA_ for this challenge !
