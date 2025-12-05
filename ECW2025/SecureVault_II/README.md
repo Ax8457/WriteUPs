@@ -47,7 +47,7 @@ $$
 
 <p align="justify">It means the security lies on the fact that the key and different nonces used to compute keytream are keept secret, and also on the rotation of nonce at each encryption. Indeed, nonce reuse represents a huge security flaw in CTR mod encryption implementation because keystream can easily retreived if a malicious actor can process multiple encryption (for instance with an AES-GCM oracle). </p>
 
-<p align="justify">But what if the same nonce is reused for multiple encryption ? Let's defined the keeystream with:</p>
+<p align="justify">But what if the same nonce is reused for multiple encryptions ? Let's defined the keystream with:</p>
 
 $$
 Keystream = E_K(\\text{nonce} \| \text{counter}) 
