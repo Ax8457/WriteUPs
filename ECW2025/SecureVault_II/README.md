@@ -85,7 +85,16 @@ $$
 <p align="justify">Finally looking at the script used to encrypt the PNG file containing the flag, it appears that the encrypted file can be easily decrypted using this logic (because the nonce is reused)! Nonetheless, the hash function raises a major problem. Indeeed, the 306210010937948737844847939557021440793 hashing tasks performed would be way too long to compute, to let anybody encrypt a second file and then extract the keystream to decrypt the flag file. </p> 
 
 ### Cycle detection using Brent Algorithm 
-<p align="justify">The idea to solve this challenge is to now reduce the number of steps performed to compute the key. 
+<p align="justify">The idea to solve this challenge is to now reduce the number of steps performed to compute the key. To do so, <a href ="https://en.wikipedia.org/wiki/Cycle_detection#Brent's_algorithm">the Brent cycle detection algorithm</a> can be used to identify cycle lengh in hash function. Because the function very_secure_hash describes an endomorphism (it means it associates an element a finite field to an other in the same finite field), cycle can be identified using Brent algorithm.</p>
+
+
+````python3
+#SHA3-512 so very secure! :)
+def very_secure_hash(state):
+	h = SHA3_512.new()
+	h.update(state)
+	return h.digest()[:6]
+````
 
 FLAG : _ECW{B4d_CrypT0_H4SH_fUncT1on...}_, thanks _Université de Limoges_ for this challenge !
 
