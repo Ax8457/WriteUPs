@@ -46,5 +46,8 @@ open(filename + ".enc", "wb").write(cipher.encrypt(open(filename, "rb").read()))
 
 ````bash
 python3 vol.py -f image.raw windows.filescan | grep "0TT4fjq1BN8k.png"
+
+#0xbd0616e80d20.0\Users\crypto\Desktop\0TT4fjq1BN8k.png
+#0xbd0618b728f0	\Users\crypto\Desktop\0TT4fjq1BN8k.png
 ````
 
