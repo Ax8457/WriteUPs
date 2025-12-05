@@ -120,18 +120,18 @@ N_r = \mu + ((\text{N} - \mu) \bmod \lambda)
 $$
 
 ### Solv
-<p align="justify">To sum up, below are the step to follow to retreive the decrypted PNG and the flag:</p>
+<p align="justify">To sum up, below are the steps to follow to retreive the decrypted PNG and the flag:</p>
 
 * Run the Brent cycle detection algorihtm to retreive mu and lambda (Brent_cycle_detection.py)
 * Reduce the steps using mu and lambda (reduce_steps.py)
 * Encrypt a file of the size of the encrypted PNG flag.png.enc with new steps variable reduced
-* Extract Keystream following logic below and decrypt the png
+* Extract Keystream following logic below and decrypt the PNG
 
 $$
 DecFlagPNG =  CipherControlled \oplus PlaintextControlled \oplus FlagPNGEnc 
 $$
 
-<p align="justify">After running the cycle detection and reduced the steps the solv script attached finally output the Flag PNG decrypted!</p>
+<p align="justify">After running the cycle detection and reducing the steps, the solv script attached finally outputs the Flag PNG decrypted!</p>
 
 FLAG : _ECW{B4d_CrypT0_H4SH_fUncT1on...}_, thanks _Université de Limoges_ for this challenge !
 
