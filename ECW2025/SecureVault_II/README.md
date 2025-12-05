@@ -113,16 +113,26 @@ def very_secure_hash(state):
 	return h.digest()[:6]
 ````
 
-<p align="justify">Hence, given a huge element N of the set S can be reduced to: </p>
+<p align="justify">Hence, given mu and lambda, a huge element N of the set S can be reduced to: </p>
 
 $$
 N_r = \mu + ((\text{N} - \mu) \bmod \lambda)
 $$
 
 ### Solv
-<p align="justify">
+<p align="justify">To sum up, below are the step to follow to retreive the decrypted PNG and the flag:</p>
 
-<p align="justify">
+* Run the Brent cycle detection algorihtm to retreive mu and lambda (Brent_cycle_detection.py)
+* Reduce the steps using mu and lambda (reduce_steps.py)
+* Encrypt a file of the size of the encrypted PNG flag.png.enc with new steps variable reduced
+* Extract Keystream following logic below and decrypt the png
+
+$$
+DecFlagPNG =  CipherControlled \oplus PlaintextControlled \oplus FlagPNGEnc 
+$$
+
+<p align="justify">After running the cycle detection and reduced the steps the solv script attached finally output the Flag PNG decrypted!</p>
+
 FLAG : _ECW{B4d_CrypT0_H4SH_fUncT1on...}_, thanks _Université de Limoges_ for this challenge !
 
 <p align="center"><img src="flag_gcm_7583689.png"></p>
