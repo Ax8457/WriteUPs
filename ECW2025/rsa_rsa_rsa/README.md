@@ -1,4 +1,4 @@
-# RSA RSA RSA
+# Crypto - RSA RSA RSA
 
 <p align="justify"> In this challenge the goal was to retreive the plaintext of the ciphertext encrypted using RSA cryptosystem. To do so, a signle png was provided as well as information about cryptosystem used: the modulus n is actually a prime number.</p>
 
