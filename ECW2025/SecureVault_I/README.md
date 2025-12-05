@@ -73,3 +73,5 @@ python3 vol.py -f image.raw windows.dumpfiles --virtaddr 0xbd0618b728f0
 
 FLAG : _ECW{F0renS1c_is_s0_Much_fUn!!!}_ , thanks _Université de Limoges_ for this chall !
 
+<p align="center"><img src="known_flag.png"></p>
+
