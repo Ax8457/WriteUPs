@@ -2,7 +2,7 @@
 
 <p align="justify">In this challenge the goal was to retreive a file before he was encrypted, working on a raw memory dump. Looking at first hundreds of raw data file, it indicates that it must be a dump of a windows machine, hosted on a VirtualBox hypervisor.</p>
 
-<p align="center"><img src="Screenshots/S1.png"></p>
+<p align="center"><img src="Screenshots/S.png"></p>
 
 ### Forensics analysis using volatility3 
 
