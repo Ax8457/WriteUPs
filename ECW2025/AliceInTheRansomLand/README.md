@@ -227,4 +227,8 @@ key-complete.yinxuqab.ru
 tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq | grep file | awk -F- '{print $3}' | awk -F. '{print $1}' | tr -d '\n' > enc_hex.txt
 ````
 
+````bash
+Congratulation this is your final part : DNS_TUNNEL_SUCCESS_C0MPLETE
+````
+
 FLAG: _ECW{f68ba371b5fc66c802207b9bedd0838af9d6d7a46085765425d89f80f558b3f9}_ , thanks _Insomnia (ESNA)_ for this challenge !
