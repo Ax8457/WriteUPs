@@ -201,3 +201,20 @@ We are watching.
  SPHINXLOCK
 ````
 
+````bash
+tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq
+````
+
+````text
+file0-0-d2373cdd6d999679668b0d4587abbeb325bda034.yinxuqab.ru
+file0-1-3841f3cdb1e4ec8f7b597f75ddde462a9bbefb82.yinxuqab.ru
+file0-2-8318f3bc16af0f52dce3ffbfa34670557bf89ee9.yinxuqab.ru
+file0-3-8ce45da82eb45abd320c4b0a143e2569a6bd8a8f.yinxuqab.ru
+file0-4-8d7c0e52a76ff4b4505e82df2c204632.yinxuqab.ru
+file0-complete.yinxuqab.ru
+id-0-235350582d3330343142.yinxuqab.ru
+id-complete.yinxuqab.ru
+key-0-3de090e7059fb1d7f77dec50078405c855e3f1a4.yinxuqab.ru
+key-1-6589e72db2602c7d7e8403b8.yinxuqab.ru
+key-complete.yinxuqab.ru
+````
