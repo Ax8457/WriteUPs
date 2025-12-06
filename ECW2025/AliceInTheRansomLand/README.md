@@ -224,7 +224,7 @@ key-complete.yinxuqab.ru
 ````
 
 ````bash
-tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq | grep file | awk -F- '{print $3}' | awk -F. '{print $1}' | tr -d '\n' > enc_hex.txt
+tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq | grep file | awk -F- '{print $3}' | awk -F. '{print $1}' | tr -d '\n' 
 ````
 
 ````bash
