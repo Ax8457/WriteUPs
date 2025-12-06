@@ -218,3 +218,7 @@ key-0-3de090e7059fb1d7f77dec50078405c855e3f1a4.yinxuqab.ru
 key-1-6589e72db2602c7d7e8403b8.yinxuqab.ru
 key-complete.yinxuqab.ru
 ````
+
+````bash
+tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq | grep file | awk -F- '{print $3}' | awk -F. '{print $1}' | tr -d '\n' > enc_hex.txt
+````
