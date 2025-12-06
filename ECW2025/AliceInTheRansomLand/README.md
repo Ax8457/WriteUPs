@@ -163,13 +163,13 @@ Last-Modified: Sun, 22 Jun 2025 07:44:38 GMT
 [***] Some bytes
 ````
 
-
-
 ````text
 5d820e7bbb4e4bc266629cadfa474365
 ````
 
 <p aling="center"><img src="./Screenshots/malware2.png"></p>
+
+<p aling="center"><img src="./Screenshots/DNSexfiltration.png"></p>
 
 ````bash
 strings susqoUH.exe | grep -C 20 'ransomware'
