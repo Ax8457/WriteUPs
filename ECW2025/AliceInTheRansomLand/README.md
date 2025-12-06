@@ -163,4 +163,33 @@ Last-Modified: Sun, 22 Jun 2025 07:44:38 GMT
 [***] Some bytes
 ````
 
+````bash
+strings susqoUH.exe | grep -C 20 'ransomware'
+````
+
+````text
+message.txt---[ SPHINXLOCK RANSOMWARE GROUP ]---
+Your network has been compromised and all critical files have been encrypted.
+This includes documents, databases, backups, and internal project files.
+We are SPHINXLOCK 
+ specializing in corporate data extraction and ransomware-as-a-service.
+Do NOT attempt to recover your files using third-party tools. Doing so will permanently corrupt them.
+>>> How to restore your files:
+1. Purchase 5000 USD in Monero (XMR) cryptocurrency.
+2. Send the exact amount to the following wallet address:
+   84N2hXaVqgS5DzA1FpkGuD98Ex2cVXH6k8RwZ7PmUz1oBY9X6GZYMT3WJYkfY9AdELNH2tsBrxJZcdkLkJxYH5RZ73XKbPq
+3. After payment, email us at:
+   sphinxhelpdesk@sphinxlock.ru
+   Include in your message:
+   - Your unique victim ID: #SPX-3041B
+   - Proof of payment
+   - 1 encrypted files (max 1MB) for free decryption test
+>>> WARNING:
+If you fail to pay within 72 hours, we will:
+- Start posting confidential files.
+- Sell sensitive corporate data.
+This is your only opportunity to prevent a total data breach.
+We are watching.
+ SPHINXLOCK
+````
 
