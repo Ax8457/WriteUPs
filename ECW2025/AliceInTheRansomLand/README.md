@@ -85,5 +85,5 @@ Content-type: application/octet-stream
 Content-Length: 6395
 Last-Modified: Sun, 22 Jun 2025 07:36:39 GMT
 
-[***] some powershell lines
+[***] some powershell lines encoded
 ````
