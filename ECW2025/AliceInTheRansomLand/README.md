@@ -280,8 +280,9 @@ We are watching.
 ### DNS exfiltration & Encrypted extracted file decryption 
 <p align="justify">The final step of the compromission is the data efiltration. Looking at records of dns entries, data exfiltrated was very likely extracted over DNS. The extraction was made using yinxuqab.ru domain with respect to following format</p>
 <p align="center"> data_type - ID - hex_data . Domain</p>
+
 <p aling="center"><img src="./Screenshots/DNSexfiltration.png"></p>
-<p aling="justify">It seems there is only one file encrypted using symmetric cipher and extracted using 4 DNS records</p>
+<p aling="justify">It seems there is only one file encrypted using symmetric cipher and extracted using 4 DNS records. This key used is exfiltrated as well. Using regex with tshark it's possible to extract hex data and perform decryption </p>
 
 ````bash
 tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq
@@ -301,6 +302,7 @@ key-1-6589e72db2602c7d7e8403b8.yinxuqab.ru
 key-complete.yinxuqab.ru
 ````
 
+<p aling="justify">It seems there is only one file encrypted using symmetric cipher and extracted using 4 DNS records. This key used is exfiltrated as well. Using regex with tshark it's possible to extract hex data and perform decryption.</p>
 
 ````bash
 tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq | grep file | awk -F- '{print $3}' | awk -F. '{print $1}' | tr -d '\n'
@@ -310,8 +312,16 @@ tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fie
 # key hex : 3de090e7059fb1d7f77dec50078405c855e3f1a46589e72db2602c7d7e8403b8
 ````
 
+<p aling="justify">After a few tries, it looks like the encryption used is AES-GCM. The python script gcm_nonce12_dec.py performs decryption and finally outputs:</p>
+
 ````bash
 Congratulation this is your final part : DNS_TUNNEL_SUCCESS_C0MPLETE
 ````
 
+### Final FLAG
+The final can be computed using following elements : 
+
+````bash
+echo -n "" | sha256
+````
 FLAG: _ECW{f68ba371b5fc66c802207b9bedd0838af9d6d7a46085765425d89f80f558b3f9}_ , thanks _Insomnia (ESNA)_ for this challenge !
