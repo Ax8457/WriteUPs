@@ -1,12 +1,39 @@
 # Forensics - Alice In The Ransom Land
 
-<p aling="center"><img src="./Screenshots/desktop_pwn.png"></p>
-<p aling="center"><img src="./Screenshots/DC_pwn.png"></p>
-<p aling="center"><img src="./Screenshots/host_malware2.png"></p>
+<p align="justify">This challenge was a Forensics challenge in which following informations must have been retreived based on a single Pcapng network capture file : </p>
 
+* The email address used by the attacker 
+* The email address targeted within the company 
+* The MD5 hash of the first malware
+* The domain name contacted to download a script
+* The password used to connect to the server
+* The name of the scheduled task that was executed
+* The domain name contacted by the script to download the second malware
+* The MD5 hash of the malware present on the server
+* The domain name used for data exfiltration
+* The name of the ransomware gang 
+* The cryptocurrency wallet address used by the attackers
+* The final flag contained in a file exfiltrated by the malware
+
+### Network overview
+
+<p align="justify">To invistigate the network capture file, I firstly used the tool NetworkMiner, which requires pcap file instead of pcapng. So, the first thing to do is to convert pcapng file to pcap using tshark.</p>
+          
 ````bash
 tshark -r chall.pcapng -F pcap -w chall.pcap
 ````
+
+<p align="justify">Network miner provides a great overview of what happened during network capture. It unveils hosts, ip addresses, OS, files exchanged, DNS entries and much more helpful information to understand the key steps of a compromission (networkly speaking). Based on the different hosts identified, it seems the compromised network is on the range 192.168.50.0/24 and the attacker is very likely to have an address on the range 192.168.1.0/24 as shown on the snippets below: </p>
+
+<p aling="center"><img src="./Screenshots/desktop_pwn.png"></p>
+<p aling="center"><img src="./Screenshots/DC_pwn.png"></p>
+
+<p align="justify">Besided, given the details about tagert network's hosts (192.168.50.0/24), it seems there is only two hosts: one windows server (perhaps a domain controller, address 192.168.50.200) and one desktop machine (192.168.50.17).</p>
+
+<p aling="center"><img src="./Screenshots/host_malware2.png"></p>
+<p aling="center"><img src="./Screenshots/wsman.png"></p>
+
+<p align="justify">And given the details of the hosts on the range 192.168.1.0/24, the attacker is very likely to be the 192.168.1.132 host with the domain name 192.168.1.132 susqouh.ru . As a matter of fact, a python server is opened and could be used by the attacker to download malware and scripts one a host is compromised and the several amount of WSMAN packet indicates that the attacker probably used WSMAN to pivot from compromised desktop to Windows Server.</p>
 
 ````bash
 tshark -r chall.pcap -Y "tcp.stream eq 2"
