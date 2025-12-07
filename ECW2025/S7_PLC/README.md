@@ -95,4 +95,4 @@ int __stdcall sub_1000551B4(char a1, void *Dst)
 }
 ````
 
-Flag : _ECW{plcFLM12}_
+Flag : _ECW{plcFLM12}_, thanks _DGA_ for this challenge ! 
