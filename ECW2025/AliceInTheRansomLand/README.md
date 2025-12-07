@@ -1,6 +1,6 @@
 # Forensics - Alice In The Ransom Land
 
-<p align="justify">This challenge was a Forensics challenge in which following informations must have been retreived based on a single Pcapng network capture file : </p>
+<p align="justify">This challenge was a Forensics challenge in which following informations must have been retreived based on a single Pcapng network capture file realized during compromission of a network : </p>
 
 * The email address used by the attacker 
 * The email address targeted within the company 
@@ -28,12 +28,25 @@ tshark -r chall.pcapng -F pcap -w chall.pcap
 <p aling="center"><img src="./Screenshots/desktop_pwn.png"></p>
 <p aling="center"><img src="./Screenshots/DC_pwn.png"></p>
 
-<p align="justify">Besided, given the details about tagert network's hosts (192.168.50.0/24), it seems there is only two hosts: one windows server (perhaps a domain controller, address 192.168.50.200) and one desktop machine (192.168.50.17).</p>
+<p align="justify">Besided, given the details about tagert network's hosts (192.168.50.0/24), it seems there are only two hosts: one windows server (perhaps a domain controller, address 192.168.50.200) and one desktop machine (192.168.50.17).</p>
 
 <p aling="center"><img src="./Screenshots/host_malware2.png"></p>
 <p aling="center"><img src="./Screenshots/wsman.png"></p>
 
-<p align="justify">And given the details of the hosts on the range 192.168.1.0/24, the attacker is very likely to be the 192.168.1.132 host with the domain name 192.168.1.132 susqouh.ru . As a matter of fact, a python server is opened and could be used by the attacker to download malware and scripts one a host is compromised and the several amount of WSMAN packet indicates that the attacker probably used WSMAN to pivot from compromised desktop to Windows Server.</p>
+<p align="justify">And given the details of the hosts on the range 192.168.1.0/24, the attacker is very likely to be the 192.168.1.132 host with the domain name susqouh.ru . As a matter of fact, a python server is opened and could be used by the attacker to download malware and scripts oncee a host is compromised, and the several amount of WSMAN packet indicates that the attacker probably used WSMAN to pivot from compromised desktop to Windows Server.</p>
+
+<div align="center">
+          
+| Asset/Role | IP address       | Name|
+|--------------------|-------------------|--------------------|
+| Attacker     | 192.168.1.132 | FQDN: _susqouh.ru_  |
+| Server Host    | 192.168.50.200 | _Windows server_ |
+| Desktop Host  | 192.168.50.17  | Hostname: _DESKTOP-VEPKFA0, DESKTOP-VEPKFA0.local_ |
+
+</div>
+
+### TCP streams analysis : Victim phishing 
+<p align="justify">Now let's analyze tcp streams to understand how the network was compromised. Looking a the very first TCP streams, it seems that a phishing email was firstly received by the user logged in the dekstop machine. Indeed, the domain name of the sender is alices.corp instead of alice.corp, which is a classic case of typosquatting on phishing attack. The content of the mail indicates that a zip archive was attached, which is likley to contains the first malware used to get a remote access to the victim's machine.</p>
 
 ````bash
 tshark -r chall.pcap -Y "tcp.stream eq 2"
@@ -49,11 +62,11 @@ tshark -r chall.pcap -Y "tcp.stream eq 2"
 #  597 192.168.57.2  41.249170 192.168.57.17 TCP 60 [TCP Keep-Alive] 8025 → 54731 [ACK] Seq=1227 Ack=563 Win=64128 Len=0
 #  629 192.168.57.2  56.361004 192.168.57.17 TCP 60 [TCP Keep-Alive] 8025 → 54731 [ACK] Seq=1227 Ack=563 Win=64128 Len=0
 ````
+<p align="justify">Below is the content of the mail retreived which gives the mail address usded by the attacker (it-support@alices.corp) and the mail address of the victim (natacha.routi@alice.corp): </p>
 
 ````bash
 tshark -r chall.pcap -qz follow,tcp,ascii,2
 ````
-
 ````text
 To: natacha.routi@alice.corp
 Content-Transfer-Encoding: quoted-printable
@@ -83,6 +96,10 @@ Best regards,
 IT Support
 Alice Corp
 ````
+
+### Breaking archive password 
+
+<p align="justify">Following the onedrive link attached to the email, the archive indeed contains a malware name "desktop.exe", but as mentionned this archive is password-protected. The password isn't provided in the email, but is said to be a common password used within the company. It means the password is likely to be weak and breakable using john</p>
 
 ````bash
 $pkzip2$2*1*1*0*8*24*4c55*3bbb*0e2bd1fdaacaccb5e7f77397c54f02b2ad0af80984d4cc327a924fc86c1003091266b602*2*0*cd*178*d7b35ed0*0*2e*8*cd*d7b3*3d14*2866e7dce3807d99f0ff13582c62fd91def9b7af60c30116d9bbdf2f2c2eddea134e1d43f3cc589052df77309b0592478282665b1fb3a0c912c0d36abbc4922e3126d5e2cead183266350e6f174d37b4bebf797f60cf969bf708356f852b889d00d2c42afd39826780d0396e4dd31e4a5d27b22b3bb6b36d4135a8e32a4b4f4b17e42c1ce0995357a6a0643e89255d1e27d061a9d362eaa780119021ec7ae938bddfd12fb016b32f00753bde93d76bf7681cb2cc045387f1d27c973aa4778dc9174ada66164dcbb09d4ea74d49*$/pkzip2$
