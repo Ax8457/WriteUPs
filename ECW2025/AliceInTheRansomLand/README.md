@@ -39,7 +39,7 @@ tshark -r chall.pcapng -F pcap -w chall.pcap
           
 | Asset/Role | IP address       | Name|
 |--------------------|-------------------|--------------------|
-| Attacker     | 192.168.1.132 | Domain name: _susqouh.ru_  |
+| Attacker Hosts    | 192.168.1.132 - 111| Domain name: _susqouh.ru_  |
 | Server Host    | 192.168.50.200 | _Windows server_ |
 | Desktop Host  | 192.168.50.17  | Hostname: _DESKTOP-VEPKFA0, DESKTOP-VEPKFA0.local_ |
 
