@@ -322,6 +322,7 @@ Congratulation this is your final part : DNS_TUNNEL_SUCCESS_C0MPLETE
 The final can be computed using following elements : 
 
 ````bash
-echo -n "" | sha256
+echo -n "it-support@alices.corp:natacha.routi@alice.corp:8d8b36683ed095a7eebe4e8c70141bfc:ykfqaqa.ru:admin123sY*-+:DontTouchMe:susqoUh.ru:5d820e7bbb4e4bc266629cadfa474365:yinxuqab.ru:sphinxlock:84N2hXaVqgS5DzA1FpkGuD98Ex2cVXH6k8RwZ7PmUz1oBY9X6GZYMT3WJYkfY9AdELNH2tsBrxJZcdkLkJxYH5RZ73XKbPq:DNS_TUNNEL_SUCCESS_C0MPLETE" | sha256sum
+
 ````
 FLAG: _ECW{f68ba371b5fc66c802207b9bedd0838af9d6d7a46085765425d89f80f558b3f9}_ , thanks _Insomnia (ESNA)_ for this challenge !
