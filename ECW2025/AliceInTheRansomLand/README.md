@@ -282,7 +282,7 @@ We are watching.
 <p align="center"> data_type - ID - hex_data . Domain</p>
 
 <p aling="center"><img src="./Screenshots/DNSexfiltration.png"></p>
-<p aling="justify">It seems there is only one file encrypted using symmetric cipher and extracted using 4 DNS records. This key used is exfiltrated as well. Using regex with tshark it's possible to extract hex data and perform decryption </p>
+<p aling="justify">It seems there is only one file encrypted using symmetric cipher and extracted using 5 DNS records for the message. This key used is exfiltrated as well (2 records). Using regex with tshark it's possible to extract hex data and perform decryption </p>
 
 ````bash
 tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq
