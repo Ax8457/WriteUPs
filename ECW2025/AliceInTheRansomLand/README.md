@@ -245,7 +245,7 @@ Last-Modified: Sun, 22 Jun 2025 07:44:38 GMT
 5d820e7bbb4e4bc266629cadfa474365
 ````
 
-<p aling="justofy">Keeping in mind the scenario and the title of the challenge, the second malware must be the one which performs encryption and prints ransomware message. Using sritng and grep on the malware it's possible ti retreive the wallet address of ransom and the name of the ransom group responsible of the compromission:</p>
+<p aling="justofy">Keeping in mind the scenario and the title of the challenge, the second malware must be the one which performs encryption and prints ransomware message. Using srings and grep on the malware, it's possible to retreive the wallet address of ransom and the name of the ransomware group responsible of the compromission:</p>
 
 ````bash
 strings susqoUH.exe | grep -C 20 'ransomware'
