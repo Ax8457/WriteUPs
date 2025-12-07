@@ -118,7 +118,7 @@ md5sum helpdesk.exe
 #8d8b36683ed095a7eebe4e8c70141bfc
 ````
 
-### TCP stream analysis : Malware loader download
+### TCP stream analysis : Victim malware loader download
 
 <p align="justify">So far the logic of the compromission is:</p>
 
@@ -194,8 +194,14 @@ try {
 
 <p align="justify">This script uses administrator credentials to connect to the server (192.168.50.200) and download a second malware on the server http://susqoUh.ru:8000/. Then a scheduled task is registered for persistence. As a matter of fact, this assumes that the attacker found a way to dump admin credentials on victim's desktop machine.</p>
 
-
 ### TCP stream analysis: Sever malware download 
+<p align="justify">So far the logic of the compromission is:</p>
+
+- The victim (192.168.50.17) opened a phishing mail and downloaded the archive attached containing the malware
+- The victim executed the malware 
+- The malware executed by the victim logged onto the server (192.168.50.200) using administrator credentials, downloaded a second malware and registered a scheduled task
+
+<p align="justify">The TCP stream 37 shows the malware file susqoUh.exe download :</p>
 
 ````bash
 tshark -r chall.pcap -Y "tcp.stream eq 37"
@@ -229,13 +235,17 @@ Last-Modified: Sun, 22 Jun 2025 07:44:38 GMT
 [***] Some bytes
 ````
 
+<p aling="justify">Network Miner automatically extracts file shared in the capture and computes hashes:</p>
+
+<p aling="center"><img src="./Screenshots/malware2.png"></p>
+
+<p align="justify">Which gives the md5sum of the second malware:</p>
+
 ````text
 5d820e7bbb4e4bc266629cadfa474365
 ````
 
-<p aling="center"><img src="./Screenshots/malware2.png"></p>
-
-<p aling="center"><img src="./Screenshots/DNSexfiltration.png"></p>
+<p aling="justofy">Keeping in mind the scenario and the title of the challenge, the second malware must be the one which performs encryption and prints ransomware message. Using sritng and grep on the malware it's possible ti retreive the wallet address of ransom and the name of the ransom group responsible of the compromission:</p>
 
 ````bash
 strings susqoUH.exe | grep -C 20 'ransomware'
@@ -267,6 +277,12 @@ We are watching.
  SPHINXLOCK
 ````
 
+### DNS exfiltration & Encrypted extracted file decryption 
+<p align="justify">The final step of the compromission is the data efiltration. Looking at records of dns entries, data exfiltrated was very likely extracted over DNS. The extraction was made using yinxuqab.ru domain with respect to following format</p>
+<p align="center"> data_type - ID - hex_data . Domain</p>
+<p aling="center"><img src="./Screenshots/DNSexfiltration.png"></p>
+<p aling="justify">It seems there is only one file encrypted using symmetric cipher and extracted using 4 DNS records</p>
+
 ````bash
 tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq
 ````
@@ -284,6 +300,7 @@ key-0-3de090e7059fb1d7f77dec50078405c855e3f1a4.yinxuqab.ru
 key-1-6589e72db2602c7d7e8403b8.yinxuqab.ru
 key-complete.yinxuqab.ru
 ````
+
 
 ````bash
 tshark -r chall.pcap -Y "dns && ip.src == 192.168.57.200 && dns.qry.name" -T fields -e dns.qry.name | uniq | grep file | awk -F- '{print $3}' | awk -F. '{print $1}' | tr -d '\n'
