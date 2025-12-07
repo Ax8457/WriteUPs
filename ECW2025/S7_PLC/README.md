@@ -91,6 +91,42 @@ FLAG : _ECW{Variable-Flag-159}_ , Thanks _DGA_ for this challenge !
 
 <a href="https://conference.hitb.org/hitbsecconf2021ams/materials/D2%20COMMSEC%20-%20Breaking%20Siemens%20SIMATIC%20S7%20PLC%20Protection%20Mechanism%20-%20Gao%20Jian.pdf">this documentation</a>
 
+### TCP stream analysis : extract password hash
+
+````bash
+tshark -r ECW_PLC_PASSWORD.pcapng -Y "tcp.stream eq 0" | grep pass
+
+#  291  10.56.9.200  10.958265 10.56.9.2    S7COMM 91 ROSCTR:[Userdata] Function:[Request] -> [Security] -> [PLC password]
+#  293    10.56.9.2  11.961634 10.56.9.200  S7COMM 87 ROSCTR:[Userdata] Function:[Response] -> [Security] -> [PLC password] -> Errorcode:[0xd602]
+#  323  10.56.9.200  22.209712 10.56.9.2    S7COMM 91 ROSCTR:[Userdata] Function:[Request] -> [Security] -> [PLC password]
+#  325    10.56.9.2  23.213189 10.56.9.200  S7COMM 87 ROSCTR:[Userdata] Function:[Response] -> [Security] -> [PLC password] -> Errorcode:[0xd602]
+#  356  10.56.9.200  29.570897 10.56.9.2    S7COMM 91 ROSCTR:[Userdata] Function:[Request] -> [Security] -> [PLC password]
+# 358    10.56.9.2  30.574456 10.56.9.200  S7COMM 87 ROSCTR:[Userdata] Function:[Response] -> [Security] -> [PLC password] -> Errorcode:[0xd602]
+# 389  10.56.9.200  47.224956 10.56.9.2    S7COMM 91 ROSCTR:[Userdata] Function:[Request] -> [Security] -> [PLC password]
+# 391    10.56.9.2  48.228159 10.56.9.200  S7COMM 87 ROSCTR:[Userdata] Function:[Response] -> [Security] -> [PLC password] -> Errorcode:[0xd602]
+# 428  10.56.9.200  86.455321 10.56.9.2    S7COMM 91 ROSCTR:[Userdata] Function:[Request] -> [Security] -> [PLC password]
+# 430    10.56.9.2  87.458730 10.56.9.200  S7COMM 87 ROSCTR:[Userdata] Function:[Response] -> [Security] -> [PLC password] -> Errorcode:[0xd602]
+# 461  10.56.9.200  98.715999 10.56.9.2    S7COMM 91 ROSCTR:[Userdata] Function:[Request] -> [Security] -> [PLC password]
+# 462    10.56.9.2  98.719181 10.56.9.200  S7COMM 87 ROSCTR:[Userdata] Function:[Response] -> [Security] -> [PLC password]
+````
+
+````bash
+tshark -r ECW_PLC_PASSWORD.pcapng -Y "frame.number == 461" -V
+
+
+#Frame 461: 91 bytes on wire (728 bits), 91 bytes captured (728 bits) on interface \Device\NPF_{859C0BCE-02B6-4C74-9349-0B0E4DD5A4AB}, id 0
+#[***]
+#    Data
+#        Return code: Success (0xff)
+#        Transport size: OCTET STRING (0x09)
+#        Length: 8
+#        Data: 2539132a0a326e55
+````
+
+````text
+password hash: 2539132a0a326e55
+````
+
 ````Cpp
 int __stdcall sub_1000551B4(char a1, void *Dst)
 {
