@@ -39,7 +39,7 @@ FLAG : _ECW{S7-315-stop}_ , Thanks _DGA_ for this challenge !
 
 ## A Hidden Value
 
-<p aling="justify">In this challenge the idea was to read memory Datablocks on the PLC. Datablocks can be seen as raw byte arrays stored on the PLC, identified by a datablock number, and persistent. Those datablocks are used by software  and mostly contain informations about modules ... Those datablocks can be freely setup, and here store the flag. To solve this challenge, the first step is to undertsand on which datablocks the flag is stored. The snap7 library provides a method to read (or try to read) the content of the datablock:</p>
+<p aling="justify">In this challenge the idea was to read memory Datablocks on the PLC. Datablocks can be seen as raw byte arrays stored on the PLC (or files), identified by a datablock number, and persistent. Those datablocks are used by software  and mostly contain informations about modules ... Those datablocks can be freely setup, and here store the flag. To solve this challenge, the first step is to undertsand on which datablocks the flag is stored. The snap7 library provides a method to read (or try to read) the content of the datablock:</p>
 
 ````python3
 client.db_read(DATABLOCK_ID, DATABLOCK_START_OFFSET, DATABLOCK_LENGTH)
@@ -48,6 +48,9 @@ client.db_read(DATABLOCK_ID, DATABLOCK_START_OFFSET, DATABLOCK_LENGTH)
 
 - _DATABLOCK_ID_ is the DB number
 - _DATABLOCK_START_OFFSET_ is the offset in memory from which the data will be read, here 0
+- _DATABLOCK_LENGTH_ is the number of bytes read in memory, starting at address of db + offset
+
+<p aling="justify">The script below implements db reading and guess the db ID, at which flag is stored:</p>
 
 ````python3
 import snap7
@@ -65,7 +68,7 @@ for i in range(5000):
 
 client.disconnect()
 ````
-
+<p aling="justify">And finally to read the flag: </p>
 
 ````python3
 import snap7
@@ -76,11 +79,17 @@ buffer = client.db_read(dbn, 0, size)
 print(buffer)
 ````
 
+<p align="center"><img src="./Screenshots/S7_flag3.png"></p>
+
 FLAG : _ECW{Variable-Flag-159}_ , Thanks _DGA_ for this challenge !
 
 ---
 
 ## Old Proprietary Encryption
+
+<p aling="justify">This last challenge was a crypto challenge, based on an old encryption algorithm used to encrypt passwords in project files, on SIMATIC device. </p>
+
+<a href="https://conference.hitb.org/hitbsecconf2021ams/materials/D2%20COMMSEC%20-%20Breaking%20Siemens%20SIMATIC%20S7%20PLC%20Protection%20Mechanism%20-%20Gao%20Jian.pdf">this documentation</a>
 
 ````Cpp
 int __stdcall sub_1000551B4(char a1, void *Dst)
