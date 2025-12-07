@@ -10,8 +10,9 @@
 - Alice In The Ransom Land: Network Traffic analysis, Windows
 
 **[Siemens S7 PLC]**
-- Who Am I 
-- Stop This PLC
-- A Hidden Value
+- Who Am I (network)
+- Stop This PLC (network)
+- A Hidden Value (network)
+- Old Proprietary Encryption (Crypto)
 
 <p align="center"><img src="./ecw.png"></p>
