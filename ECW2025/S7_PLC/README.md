@@ -50,7 +50,7 @@ client.db_read(DATABLOCK_ID, DATABLOCK_START_OFFSET, DATABLOCK_LENGTH)
 - _DATABLOCK_START_OFFSET_ is the offset in memory from which the data will be read, here 0
 - _DATABLOCK_LENGTH_ is the number of bytes read in memory, starting at address of db + offset
 
-<p align="justify">The script below implements db reading and guess the db ID, at which flag is stored:</p>
+<p align="justify">The script below implements db reading and guesses the db ID, at which flag is stored:</p>
 
 ````python3
 import snap7
