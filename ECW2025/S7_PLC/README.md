@@ -1,5 +1,5 @@
 # Siemens S7 related Write-Ups 
-<p aling="justify">This folder contains WUs for all the challenges related to Siemens S7 programmable logic controller. Challenges included are:</p>
+<p align="justify">This folder contains WUs for all the challenges related to Siemens S7 programmable logic controller. Challenges included are:</p>
 
 - Who Am I ?
 - Stop This PLC
@@ -7,7 +7,7 @@
 - Old Proprietary Encryption
 
 ## Network1 - Who Am I 
-<p aling="justify">This challenge was a Network challenge in which the goal was to interact with Siemens PLC. To do so python provides libraries such as snap7 which embeds a client constructor to interact with a PLC. The code below questions the PLC about hardware components (CPU ...):</p>
+<p align="justify">This challenge was a Network challenge in which the goal was to interact with Siemens PLC. To do so python provides libraries such as snap7 which embeds a client constructor to interact with a PLC. The code below questions the PLC about hardware components (CPU ...):</p>
 
 ````python3
 import snap7
@@ -22,7 +22,7 @@ FLAG : _ECW{FRLCUR289}_, thanks _DGA_ for this challenge !
 
 ## Network 2 - Stop This PLC
 
-<p aling="justify">In this challenge the idea was to stop the PLC. To do so snap7 libraries provides plc_stop() method:</p>
+<p align="justify">In this challenge the idea was to stop the PLC. To do so snap7 libraries provides plc_stop() method:</p>
 
 ````python3
 import snap7
@@ -30,7 +30,7 @@ client = snap7.client.Client()
 client.connect(PLC_IP, PLC_RACK, PLC_SLOT, PLC_PORT)
 client.plc_stop()
 ````
-<p aling="justify">After the PLC was successfuly stopped, we must look at network traffic to see the packet containing the flag being sent :</p>
+<p align="justify">After the PLC was successfuly stopped, we must look at network traffic to see the packet containing the flag being sent :</p>
 <p align="center"><img src="./Screenshots/flagPLCs72.png"></p>
 
 FLAG : _ECW{S7-315-stop}_ , Thanks _DGA_ for this challenge !
@@ -39,18 +39,18 @@ FLAG : _ECW{S7-315-stop}_ , Thanks _DGA_ for this challenge !
 
 ## Network 3 - A Hidden Value
 
-<p aling="justify">In this challenge the idea was to read memory Datablocks on the PLC. Datablocks can be seen as raw byte arrays stored on the PLC (or files), identified by a datablock number, and persistent. Those datablocks are used by software  and mostly contain informations about modules ... Those datablocks can be freely setup, and here store the flag. To solve this challenge, the first step is to undertsand on which datablocks the flag is stored. The snap7 library provides a method to read (or try to read) the content of the datablock:</p>
+<p align="justify">In this challenge the idea was to read memory Datablocks on the PLC. Datablocks can be seen as raw byte arrays stored on the PLC (or files), identified by a datablock number, and persistent. Those datablocks are used by software  and mostly contain informations about modules... Those datablocks can be freely setup, and here store the flag. To solve this challenge, the first step is to undertsand on which datablocks the flag is stored. The snap7 library provides a method to read (or try to read) the content of the datablock:</p>
 
 ````python3
 client.db_read(DATABLOCK_ID, DATABLOCK_START_OFFSET, DATABLOCK_LENGTH)
 ````
-<p aling="justify">Where: </p>
+<p align="justify">Where: </p>
 
 - _DATABLOCK_ID_ is the DB number
 - _DATABLOCK_START_OFFSET_ is the offset in memory from which the data will be read, here 0
 - _DATABLOCK_LENGTH_ is the number of bytes read in memory, starting at address of db + offset
 
-<p aling="justify">The script below implements db reading and guess the db ID, at which flag is stored:</p>
+<p align="justify">The script below implements db reading and guess the db ID, at which flag is stored:</p>
 
 ````python3
 import snap7
@@ -68,7 +68,7 @@ for i in range(5000):
 
 client.disconnect()
 ````
-<p aling="justify">And finally to read the flag: </p>
+<p align="justify">And finally to read the flag: </p>
 
 ````python3
 import snap7
@@ -87,9 +87,11 @@ FLAG : _ECW{Variable-Flag-159}_ , Thanks _DGA_ for this challenge !
 
 ## Crypto - Old Proprietary Encryption
 
-<p aling="justify">This last challenge was a crypto challenge, based on an old encryption algorithm used to encrypt passwords in project files, on SIMATIC device. The goal was to break a password encrypted using the encryption algorithm. To do so, a S7COMM network packets capture was provided, as well as know plaintext passwords with their respective hashes. </p>
+<p align="justify">This last challenge was a crypto challenge, based on an old encryption algorithm used to encrypt passwords in project files, on SIMATIC device. The goal was to break a password encrypted using the encryption algorithm. To do so, a S7COMM network packets capture was provided, as well as know plaintext passwords with their respective ciphers. </p>
 
 ### TCP stream analysis : extract password hash
+
+<p align="justify">Analyzing the network traffic capture, encrypted password hexa an be extracted from S7COMM Security packets. As a matter of fact, S7COMM protocol doesn't embeds strong securoty feature and most of the traffic is sent in clear.</p>
 
 ````bash
 tshark -r ECW_PLC_PASSWORD.pcapng -Y "tcp.stream eq 0" | grep pass
@@ -120,14 +122,15 @@ tshark -r ECW_PLC_PASSWORD.pcapng -Y "frame.number == 461" -V
 #        Length: 8
 #        Data: 2539132a0a326e55
 ````
+<p align="justify">The following hex value is finally extracted: </p>
 
 ````text
-password hash: 2539132a0a326e55
+password hex: 2539132a0a326e55
 ````
 
 ### Cryptanalysis on SIMATIC password encryption algorithm
 
-<p aling="justify"><a href="https://conference.hitb.org/hitbsecconf2021ams/materials/D2%20COMMSEC%20-%20Breaking%20Siemens%20SIMATIC%20S7%20PLC%20Protection%20Mechanism%20-%20Gao%20Jian.pdf">this documentation</a></p>
+<p aling="justify">With the challenge, is provided a list of passwords and their ciphers. Given the hexa retreive , let's now understand how password encryption works under S7COMM.<a href="https://conference.hitb.org/hitbsecconf2021ams/materials/D2%20COMMSEC%20-%20Breaking%20Siemens%20SIMATIC%20S7%20PLC%20Protection%20Mechanism%20-%20Gao%20Jian.pdf">This documentation</a> shows a case of reverse engineering on S7 device, and how PLC passwords are actually encrypted :</p>
 
 ````Cpp
 int __stdcall sub_1000551B4(char a1, void *Dst)
@@ -155,22 +158,7 @@ int __stdcall sub_1000551B4(char a1, void *Dst)
   return CString::~CString((CString *)&a1);
 }
 ````
-
-$$
-C_0 = P_0 \oplus K
-$$
-
-$$
-C_1 = P_1 \oplus P_0 \oplus K
-$$
-
-$$
-C_2 = P_2 \oplus P_1 \oplus K
-$$
-
-$$
-C_3 = P_3 \oplus P_2 \oplus K
-$$
+<p aling="justify">So the logic is the following one:</p>
 
 ### Know plaintext attack
 
