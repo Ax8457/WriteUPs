@@ -6,7 +6,7 @@
 - A Hidden Value
 - Old Proprietary Encryption
 
-## Network1 - Who Am I 
+## Network 1 - Who Am I 
 <p align="justify">This challenge was a Network challenge in which the goal was to interact with Siemens PLC. To do so python provides libraries such as snap7 which embeds a client constructor to interact with a PLC. The code below questions the PLC about hardware components (CPU ...):</p>
 
 ````python3
