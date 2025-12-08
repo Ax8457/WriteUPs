@@ -160,6 +160,6 @@ int __stdcall sub_1000551B4(char a1, void *Dst)
 ````
 
 ### Know plaintext attack
-<p aling="justify">It seems the encryption is indeed very weak and only leverages xor operation over 16 bits WORD to encrypt PLC passwords. It means using a (plaintext | cipher) from the list provided, it's possible to extract the key used to encrypt password, and as a result to revert the encryption. The script attached and named solv_crypto.py implements a KPA and finally outputs the flag:</p>
+<p align="justify">It seems the encryption is indeed very weak and only leverages xor operation over 16 bits WORD to encrypt PLC passwords. It means using a (plaintext | cipher) from the list provided, it's possible to extract the key used to encrypt password, and as a result to revert the encryption. The script attached and named solv_crypto.py implements a KPA and finally outputs the flag:</p>
 
 Flag : _ECW{plcFLM12}_, thanks _DGA_ for this challenge ! 
