@@ -89,7 +89,7 @@ FLAG : _ECW{Variable-Flag-159}_ , Thanks _DGA_ for this challenge !
 
 <p align="justify">This last challenge was a crypto challenge, based on an old encryption algorithm used to encrypt passwords in project files, on SIMATIC device. The goal was to break a password encrypted using the encryption algorithm. To do so, a S7COMM network packets capture was provided, as well as know plaintext passwords with their respective ciphers. </p>
 
-### TCP stream analysis : extract password hash
+### TCP stream analysis : extract encrypted password hex
 
 <p align="justify">Analyzing the network traffic capture, encrypted password hexa an be extracted from S7COMM Security packets. As a matter of fact, S7COMM protocol doesn't embeds strong securoty feature and most of the traffic is sent in clear.</p>
 
