@@ -130,7 +130,7 @@ password hex: 2539132a0a326e55
 
 ### Cryptanalysis on SIMATIC password encryption algorithm
 
-<p align="justify">With the challenge, is provided a list of passwords and their ciphers. Given the hexa retreive , let's now understand how password encryption works under S7COMM.<a href="https://conference.hitb.org/hitbsecconf2021ams/materials/D2%20COMMSEC%20-%20Breaking%20Siemens%20SIMATIC%20S7%20PLC%20Protection%20Mechanism%20-%20Gao%20Jian.pdf">This documentation</a> shows a case of reverse engineering on S7 device, and how PLC passwords are actually encrypted :</p>
+<p align="justify">With the challenge, is provided a list of passwords and their ciphers. Given the hexa cipher retreived , let's now understand how password encryption works under S7COMM.<a href="https://conference.hitb.org/hitbsecconf2021ams/materials/D2%20COMMSEC%20-%20Breaking%20Siemens%20SIMATIC%20S7%20PLC%20Protection%20Mechanism%20-%20Gao%20Jian.pdf">This documentation</a> shows a case of reverse engineering on S7 device, and how PLC passwords are actually encrypted :</p>
 
 ````Cpp
 int __stdcall sub_1000551B4(char a1, void *Dst)
