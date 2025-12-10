@@ -91,7 +91,7 @@ FLAG : _ECW{Variable-Flag-159}_ , Thanks _DGA_ for this challenge !
 
 ### TCP stream analysis : extract encrypted password hex
 
-<p align="justify">Analyzing the network traffic capture, encrypted password hexa an be extracted from S7COMM Security packets. As a matter of fact, S7COMM protocol doesn't embeds strong securoty feature and most of the traffic is sent in clear.</p>
+<p align="justify">Analyzing the network traffic capture, encrypted password hexa can be extracted from S7COMM Security packets. As a matter of fact, S7COMM protocol doesn't embeds strong security features and most of the traffic is sent in clear.</p>
 
 ````bash
 tshark -r ECW_PLC_PASSWORD.pcapng -Y "tcp.stream eq 0" | grep pass
