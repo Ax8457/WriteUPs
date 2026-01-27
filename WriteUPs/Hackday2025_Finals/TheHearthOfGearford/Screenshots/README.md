@@ -1,0 +1,1 @@
+# Hearth of Gearford Screenshots
