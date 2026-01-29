@@ -6,7 +6,7 @@
 
 ## Compute Measure of Roughness for each key size 
 <p align="Justify">Given the ciphertext was big enough, it was possible to make a frequency analysis, but it assumes that key length is known. So the first step is to retreive the size of the key, and to
-do so the Measure of Roughness can be computed. The logic is the following<:/p>
+do so the Measure of Roughness can be computed. The logic is the following</p>
   
 - For each size of key L , the cipher text is divided in L subgroups 
 - For each letter of each subgroup, the relative frequency is computed
