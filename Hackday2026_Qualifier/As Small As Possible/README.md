@@ -140,4 +140,4 @@ python3 small_exploit.py
 #[!] SUCCESS: SECRET_FLAG: Hackday{D1ff13_H3llm4n_Sm4ll_Subgr0ups_4tt4ck_$$$!!}
 ````
 
-FLAG: _Hackday{D1ff13_H3llm4n_Sm4ll_Subgr0ups_4tt4ck_$$$!!_}_
+FLAG: _Hackday{D1ff13_H3llm4n_Sm4ll_Subgr0ups_4tt4ck_$$$!!}_
