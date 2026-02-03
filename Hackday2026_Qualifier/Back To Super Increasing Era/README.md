@@ -81,7 +81,7 @@ $$d = \frac{n}{\log_2(\max(Pubkey_i))}$$
 
 ````
 
-<p align="justify">But how the lattice reduction works on Merkle Hellman? This is perfeclty explained is this <a href="https://www.cs.sjsu.edu/faculty/stamp/papers/topics/topic16/Knapsack.pdf">paper</a>. Lattice reduction transforms a math problem (here how to find a vector U with the bits of the encrypted message) into a geometrical problem (basically find the shortest vector U in a matrix) thanks to Lattice networks. The scripts attached to this repo implements the Lattice reduction on each of the ciphertexts and must be run with sage (on <a href="https://cocalc.com/features/sage">cocalc</a>) The idea is to find a vector shortest U so that:</p>
+<p align="justify">But how the lattice reduction works on Merkle Hellman? This is perfeclty explained is this <a href="https://www.cs.sjsu.edu/faculty/stamp/papers/topics/topic16/Knapsack.pdf">paper</a>. Lattice reduction transforms a math problem (here how to find a vector U with the bits of the encrypted message) into a geometrical problem (basically find the shortest vector U in a matrix) thanks to Lattice networks. The scripts attached to this repo implements the Lattice reduction on each of the ciphertexts and must be run with sage (on <a href="https://cocalc.com/features/sage">cocalc</a>). The idea is to find a vector (shortest U) so that:</p>
 
 $$[b_0, b_1, \dots, b_{n-1}] \times \begin{bmatrix} u_0 \\ u_1 \\ \vdots \\ u_{n-1} \end{bmatrix} = [C]$$
 
