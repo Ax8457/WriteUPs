@@ -103,7 +103,7 @@ a \equiv r_n \pmod{q_n}
 
 
 ### Retreive Alice's key and compute shared secret Between Alice and Bob
-<p align="justify">Considering properties above, the attack must follows those steps:</p>
+<p align="justify">Considering properties above, the attack must follow those steps:</p>
 
 - for each factor $q_i$ the attacker forges a public key $g_i = g^{(p-1)/q_i} \pmod p$
 - The attacker sends this public key to Alice, who computes a secret, derivates a symmetric key and uses it to encrypt a message
