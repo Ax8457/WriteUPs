@@ -90,7 +90,7 @@ $$[b_0, b_1, \dots, b_{n-1}] \times \begin{bmatrix} u_0 \\ u_1 \\ \vdots \\ u_{n
 <p align="justify">The script solv.py attached to this repo implements a knapsack lattice reduction:</p>
   
 - The solution script uses a CJM marix with a BKZ reduction method to find the shortest vector (Shortest Vector Problem)
-- The section below aims to solve the probleme of negative vector found, indeed mathematically speaking $-W$ is as short as $W$ (because of the way the norm is computed)
+- The section below aims to solve the problem of negative vector found, indeed mathematically speaking $-W$ is as short as $W$ (because of the way the norm is computed)
 
 ````python
          #Reverted Bits
