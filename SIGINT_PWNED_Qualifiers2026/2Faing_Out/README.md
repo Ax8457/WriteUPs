@@ -88,7 +88,7 @@ app.post('/reset', (req, res) => {
 
 ## Flag:
 
-<p aling="justify">The script attached to this repository implements race condition and prints the token associated. Once the token is retreived, the following cmldine reset the password of the admin using the token: </p>
+<p align="justify">The script attached to this repository implements race condition and prints the token associated. Once the token is retreived, the following cmldine reset the password of the admin using the token: </p>
 
 ````bash
 curl -X POST "http://i_hate_2fa.quals.sigint.mx/reset" \
