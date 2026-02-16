@@ -21,7 +21,7 @@ with open("public_key.pem", "wb") as f:
 
 ## The Weakness
 
-<p align>The Weakness in the script used to generate RSA keys lies on the fact that $p$ and $q$ are very closed because $q$ is actually the first prime found after $p$. The <a href="https://en.wikipedia.org/wiki/Fermat's_factorization_method">Fermat's Factorization</a> states that if $p$ and $q$ are closed enough, it's easily to factorize $N$. $N$ can be written as an odd integer: </p>
+<p align>The Weakness in the script used to generate RSA keys lies on the fact that $p$ and $q$ are very closed because $q$ is actually the first prime found after $p$. The <a href="https://en.wikipedia.org/wiki/Fermat's_factorization_method">Fermat's Factorization</a> states that if $p$ and $q$ are closed enough, it's easy to factorize $N$. $N$ can be written as an odd integer: </p>
 
 $$n=a^{2}-b^{2} = (a-b)(a+b)$$
 
