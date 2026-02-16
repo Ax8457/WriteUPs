@@ -53,7 +53,7 @@ ssh -i id_rsa.key -p 5002 z3r0d4y@ssh_key_fuckery.quals.sigint.mx
 #the exact distribution terms for each program are described in the
 #individual files in /usr/share/doc/*/copyright.
 
-"Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+#Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 #permitted by applicable law.
 #Last login: Sat Feb 14 10:27:54 2026 from 10.0.128.92
 #pwnEd{d4mn_55h_k3y5_e6ea220a635e8aa45ecfdb7e91e371ad}Connection to ssh_key_fuckery.quals.sigint.mx closed.
