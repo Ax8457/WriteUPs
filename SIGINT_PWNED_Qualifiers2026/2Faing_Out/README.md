@@ -104,6 +104,6 @@ curl -X POST "http://i_hate_2fa.quals.sigint.mx/reset" \
 
 <p align="justify">Finally accessing the /dashboard once logged in as admin displays the flag: </p>
 
-<p align="center"><img src="./Screenshots/flag.png"></p>
+<p align="center"><img src="./Screenshots/burp.png"></p>
 
 FLAG: _PWNED{_!_h4ve_7o1d_y0u_t0_u$e_2f@}_
