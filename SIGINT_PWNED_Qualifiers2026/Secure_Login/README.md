@@ -2,7 +2,7 @@
 
 <p align="center"><img src="./Screenshots/chall.png"></p>
 
-<p align="justify">In this challenge the idea was to retreive prime integers $p$ and $q$ used to compute ssh format RSA keys and to use it to connect to a server.To do so, the script used to generate keys was provided and is attached to this repository :</p>
+<p align="justify">In this challenge the idea was to retreive prime integers $p$ and $q$ used to compute ssh format RSA keys and to use it to connect to a server.To do so, the script used to generate keys (as well as a pubkey) was provided and is attached to this repository :</p>
 
 ````python
 from Crypto.PublicKey import RSA
