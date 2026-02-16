@@ -21,27 +21,28 @@ with open("public_key.pem", "wb") as f:
 
 ## The Weakness
 
-<p align>The Weakness in the script used to generate RSA keys lies on the fact that $p$ and $q$ are very closed because q is actually the first prime found after $p$. The<a href="https://en.wikipedia.org/wiki/Fermat's_factorization_method">Fermat's Factorization</a> states that if $p$ and $q$ are closed enough, it's easily to factorize $N$. $N$ can be written as an odd integer:
+<p align>The Weakness in the script used to generate RSA keys lies on the fact that $p$ and $q$ are very closed because q is actually the first prime found after $p$. The <a href="https://en.wikipedia.org/wiki/Fermat's_factorization_method">Fermat's Factorization</a> states that if $p$ and $q$ are closed enough, it's easily to factorize $N$. $N$ can be written as an odd integer: </p>
 
-$$N=a^{2}-b^{2} = (a-b)(a+b)$$
+$$n=a^{2}-b^{2} = (a-b)(a+b)$$
 
-if $$N = pq$$ then : 
+<p align="justify">if $$N = pq$$ then : </p>
 
-$$N = \left(\frac{p+q}{2}\right)^2 - \left(\frac{p-q}{2}\right)^2$$
+$$n = \left(\frac{p+q}{2}\right)^2 - \left(\frac{p-q}{2}\right)^2$$
 
-$$p \approx \sqrt{n} \text{ et } q \approx \sqrt{n}$$
+<p align="justify"> So it means that $$a = \left(\frac{p+q}{2}\right) \approx \sqrt{n} $$ and $$b = \left(\frac{p-q}{2}\right) $$ is very small. So the logic of the Fermat's Fatcorization is to assign to $a$ the value of $$\sqrt{n}$$ and to check if $$b^2 = (a^2 - n)$$ is a perfect squarre. If it's the case then $n$ has been factorized. Once $a$ and $b$ have been retreived (namely $p$ and $q$), Euler's Totient and $d$ can be computed using:</p>
 
 $$\phi(n) = (p - 1)(q - 1)$$
-
+$$e \cdot d \equiv 1 \pmod{\phi(n)}$$
 
 ## Flag
+
+<p align="justify"> The first thing to do is to extract $n$ from the pubkey file :</p>
 
 ````python3
 from Crypto.PublicKey import RSA
 print(RSA.import_key(open("public_key.pem").read()).n)
 ````
-
-
+<p align="justify">Once $n$ is extracted, the script attached to this repo performs the Fermat's factorization and uses $d$ to craft the SSH private key. Then the following cmdline can be used to bind remote server and get the flag:</p>
 
 ````bash
 ssh -i id_rsa.key -p 5002 z3r0d4y@ssh_key_fuckery.quals.sigint.mx
