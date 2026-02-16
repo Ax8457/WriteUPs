@@ -69,7 +69,7 @@ app.post('/reset', (req, res) => {
 
 ## The exploit: Race condition to reset admin password
 
-<p aling="justify"> To solve the challenge the idea is to trigger admin rester password process and to find a way to get the token to successfuly reset his password and impersonate him at login. The weakness actually lies in the fact that token are generated and differentiated based on time shifting : 
+<p aling="justify">To solve the challenge the idea is to trigger admin rester password process and to find a way to get the token to successfuly reset his password and impersonate him at login. The weakness actually lies in the fact that token are generated and differentiated based on time shifting :</p> 
 
 ````javascript
     const token = crypto.createHash('sha256')
@@ -77,7 +77,7 @@ app.post('/reset', (req, res) => {
         .digest('hex');
 ````
 
-Actually Date.now() return milliseconds and the 3 bits right shift divides by $$2^3 = 8 ms$$, which means thaht token change every 8ms (because the numerator increases by 1 every 1 ms, as long as the numerator does not increase by 8, the quotient remains the same). This flaw lets 8 ms to an attacker to generate same token for both admin and standard user. The steps of the exploit are summarized on the chart below:
+<p aling="justify">Actually Date.now() return milliseconds and the 3 bits right shift divides by $$2^3 = 8 ms$$, which means thaht token change every 8ms (because the numerator increases by 1 every 1 ms, as long as the numerator does not increase by 8, the quotient remains the same). This flaw lets 8 ms to an attacker to generate same token for both admin and standard user. The steps of the exploit are summarized on the chart below:</p>
 
 - The attacker send 2 closed (8ms window) requests to reset password for attacker@example.com and admin@example.com
 - The server writes ResetToken in DB for both admin and attacker (same token)
@@ -87,5 +87,23 @@ Actually Date.now() return milliseconds and the 3 bits right shift divides by $$
 <p align="center"><img src="./Screenshots/arch.png"></p>
 
 ## Flag:
+
+<p aling="justify">The script attached to this repository implements race condition and prints the token associated. Once the token is retreived, the following cmldine reset the password of the admin using the token: </p>
+
+````bash
+curl -X POST "http://i_hate_2fa.quals.sigint.mx/reset" \
+     -H "Content-Type: application/json" \
+     -b "Instancer-Token=token_instance" \
+     -b "connect.sid=sid_token" \
+     -d '{
+       "username": "admin@example.com",
+       "newPassword": "azerty",
+       "resetToken": "<token>"
+     }'
+````
+
+<p align="justify">Finally accessing the /dashboard once logged in as admin displays the flag: </p>
+
+<p align="center"><img src="./Screenshots/flag.png"></p>
 
 FLAG: _PWNED{_!_h4ve_7o1d_y0u_t0_u$e_2f@}_
