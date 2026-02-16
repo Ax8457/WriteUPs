@@ -20,7 +20,7 @@ python3 hastad.py
 #[*] Submitting to original session...
 
 #[SERVER RESPONSE]
-#[+] Receiving all data: Done (60B)
+#[+] Receiving all data: Done 
 #[*] Closed connection to localhost port 5003
 #Congratulations! Here is your prize: pwnEd{LOCAL_FLAG_TEST}
 ````
