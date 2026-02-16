@@ -86,7 +86,7 @@ app.post('/reset', (req, res) => {
 
 <p align="center"><img src="./Screenshots/arch.png"></p>
 
-## Flag:
+## Flag
 
 <p align="justify">The script attached to this repository implements race condition and prints the token associated. Once the token is retreived, the following cmldine reset the password of the admin using the token: </p>
 
