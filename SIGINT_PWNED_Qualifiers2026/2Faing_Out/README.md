@@ -2,7 +2,7 @@
 
 <p align="center"><img src="./Screenshots/chall.png"></p>
 
-<p align="justify">In the challenge the goal was to log in as admin user to retreive the flag. To do so, the solution was to reset the admin password and access his account. The source code was provided as a simple user account: </p>
+<p align="justify">In the challenge the goal was to log in as admin user to retreive the flag. To do so, the solution was to reset the admin password and access his account. The source code was provided as well as simple user account: </p>
 
 ````bash
 username: attacker
