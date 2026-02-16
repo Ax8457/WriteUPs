@@ -28,7 +28,7 @@ password: attacker
     }
 ````
 
-<p aling="justify">And this the way the server handles forgot password POST requests. When the user POST-requests this route, a token is generated and written in his DB profile (based on the email address in the input). Then the user is redirected on /reset route. Because there is no sanitization on the email provided, the attacker user can perfectly trigger a password reset process for admin@example.com: </p>
+<p align="justify">And this is the way the server handles forgot password POST requests. When the user POST-requests this route, a token is generated and written in his DB profile (based on the email address in the input). Then the user is redirected on /reset route. Because there is no sanitization on the email provided, the attacker user can perfectly trigger a password reset process for admin@example.com: </p>
 
 ````javascript
 app.post('/forgot-password', (req, res) => {
