@@ -13,7 +13,7 @@ password: attacker
 
 <p aling="justify">The application deployed implements a simple reset password feature based on a token. Once logged in user can click on password reset and then: </p>
 
-- A token is generated and writen into db entry associated entry of the user (based on the email provided)
+- A token is generated and written into db associated entry of the user (based on the email provided)
 - The user is redirected on a reset link and can enter a new password
 - In the reset form submitted, if the token matches the one written in DB, the password is updated in DB
 
