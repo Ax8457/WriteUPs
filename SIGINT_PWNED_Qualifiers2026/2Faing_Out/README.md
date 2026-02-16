@@ -11,13 +11,13 @@ password: attacker
 
 ## Source code analysis
 
-<p aling="justify">The application deployed implements a simple reset password feature based on a token. Once logged in user can click on password reset and then: </p>
+<p align="justify">The application deployed implements a simple reset password feature based on a token. Once logged in user can click on password reset and then: </p>
 
 - A token is generated and written into db associated entry of the user (based on the email provided)
 - The user is redirected on a reset link and can enter a new password
 - In the reset form submitted, if the token matches the one written in DB, the password is updated in DB
 
-<p aling="justify">According the source code, below is the way user profiles are handled in DB: </p>
+<p align="justify">According the source code, below is the way user profiles are handled in DB: </p>
 
 ````javascript
     {
@@ -48,7 +48,7 @@ app.post('/forgot-password', (req, res) => {
     res.send(`Token generated! <a href="/reset">Click here to reset password</a>`);
 });
 ````
-<p aling="justify">After the token was successfuly generated, the user can access reset page and submit his new password thanks to a autocompleted form containing his username, his token and the NewPassord he entered. If the username and the token submitted don't match DB entry associated to user, the process fails: </p>
+<p align="justify">After the token was successfuly generated, the user can access reset page and submit his new password thanks to a autocompleted form containing his username, his token and the NewPassord he entered. If the username and the token submitted don't match DB entry associated to user, the process fails: </p>
 
 ````javascript
 app.post('/reset', (req, res) => {
@@ -69,7 +69,7 @@ app.post('/reset', (req, res) => {
 
 ## The exploit: Race condition to reset admin password
 
-<p aling="justify">To solve the challenge the idea is to trigger admin rester password process and to find a way to get the token to successfuly reset his password and impersonate him at login. The weakness actually lies in the fact that token are generated and differentiated based on time shifting :</p> 
+<p align="justify">To solve the challenge the idea is to trigger admin rester password process and to find a way to get the token to successfuly reset his password and impersonate him at login. The weakness actually lies in the fact that token are generated and differentiated based on time shifting :</p> 
 
 ````javascript
     const token = crypto.createHash('sha256')
@@ -77,7 +77,7 @@ app.post('/reset', (req, res) => {
         .digest('hex');
 ````
 
-<p aling="justify">Actually Date.now() return milliseconds and the 3 bits right shift divides by $$2^3 = 8 ms$$, which means thaht token change every 8ms (because the numerator increases by 1 every 1 ms, as long as the numerator does not increase by 8, the quotient remains the same). This flaw lets 8 ms to an attacker to generate same token for both admin and standard user. The steps of the exploit are summarized on the chart below:</p>
+<p align="justify">Actually Date.now() return milliseconds and the 3 bits right shift divides by $$2^3 = 8 ms$$, which means thaht token change every 8ms (because the numerator increases by 1 every 1 ms, as long as the numerator does not increase by 8, the quotient remains the same). This flaw lets 8 ms to an attacker to generate same token for both admin and standard user. The steps of the exploit are summarized on the chart below:</p>
 
 - The attacker send 2 closed (8ms window) requests to reset password for attacker@example.com and admin@example.com
 - The server writes ResetToken in DB for both admin and attacker (same token)
