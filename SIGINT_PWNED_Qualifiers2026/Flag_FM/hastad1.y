@@ -42,7 +42,7 @@ def solve():
                 N_total = gmpy2.mpz(1)
                 for n in N_s: N_total *= n
                 
-                ## Gauss method to retreive M^e
+                ## Gauss method to retreive M^e <=> crt() 
                 result_crt = gmpy2.mpz(0)
                 for c_i, n_i in zip(ciphers, N_s):
                     M_i = N_total // n_i
