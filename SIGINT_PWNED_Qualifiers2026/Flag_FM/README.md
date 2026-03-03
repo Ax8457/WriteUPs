@@ -106,6 +106,8 @@ $$N_{total} = \prod_{i=1}^{k} N_i = N_1 \cdot N_2 \cdot \dots \cdot N_k$$
     
 $$i \approx \frac{message length \times minimal e length}{sizeofNorinformationbroughtbyonesample}  = \frac{512 \times 257}{2048}  = \mathbf{64,25}$$
 
+<p align="justify">The script attached to this repository is optimized to find the message with a minimum ciphers/modulis required:</p>
+    
 ````bash
 python3 hastad2.py
 
