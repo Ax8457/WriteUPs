@@ -1,7 +1,8 @@
 # Flag FM challenge WU
 
 <p align="center"><img src="./Screenshots/chall.png"></p>
-
+<p align="justify">In this challenge the idea was to exploit a misconfiguration in a RSA orcale and guess the flag message. The source code was provided and is attached this repository.</p>
+ 
 ## Hastad Broadcast attack
 
 $$\begin{cases}
