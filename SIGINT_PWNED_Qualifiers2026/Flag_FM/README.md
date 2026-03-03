@@ -104,7 +104,7 @@ $$N_{total} = \prod_{i=1}^{k} N_i = N_1 \cdot N_2 \cdot \dots \cdot N_k$$
 
 <p align="justify">Because $e$ is 9-bytes long, it is bounded by 257 and 511. Which means that 511 messages would ideally be needed to recover $M$ and apply the CRT. Nonetheless because of the logic of 'Wrap around' of modular arithmetic (and RSA). Because the message is 64 bytes long and given the minimal length of $e$, the number of message ideally needed can be reduced to:</p>
     
-$$i \approx \frac{message length \times minimal e length}{sizeofNorinformationbroughtby one sample}  = \frac{512 \times 257}{2048}  = \mathbf{64,25}$$
+$$i \approx \frac{message length \times minimal e length}{sizeofNorinformationbroughtbyonesample}  = \frac{512 \times 257}{2048}  = \mathbf{64,25}$$
 
 ````bash
 python3 hastad2.py
