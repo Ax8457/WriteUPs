@@ -5,7 +5,7 @@
 
 ## Source code analysis and RSA cryptosystem
 
-<p align="justify">Looking at source code it seems that RSA parameter $e$ is initialized once and are persistent along the connection. Also primes used are stored in a dynamic list, deterring the use of RSA common primes attack.As a matter of fact, $e$ is generated using 9 random digits:</p>
+<p align="justify">Looking at source code it seems that RSA parameter $e$ is initialized once and are persistent along the connection. Also primes used are stored in a dynamic list, deterring the use of RSA common primes attack.As a matter of fact, $e$ is generated using 9 random bytes:</p>
 
 ````python
 class FlagFMChallenge():
@@ -92,7 +92,7 @@ m^e \equiv c_2 \pmod{N_2} \\
 m^e \equiv c_k \pmod{N_k}
 \end{cases}$$
 
-<p align="justify">And the Chinese Remainder Theorem can be used to retreive $$M^e$$, with </p>
+<p align="justify">And the Chinese Remainder Theorem can be used to retreive $$M^e$$ and the attacker can find the squarred root to retreive the message: </p>
 
 $$C \equiv m^e \pmod{N_{total}}$$
 
@@ -100,34 +100,11 @@ $$C \equiv m^e \pmod{N_{total}}$$
 
 $$N_{total} = \prod_{i=1}^{k} N_i = N_1 \cdot N_2 \cdot \dots \cdot N_k$$
 
-
-
-
 ## Flag
 
-
-
-````bash
-python3 hastad.py 
-
-#[+] Starting Håstad's Broadcast Attack
-#[+] Opening connection to localhost on port 5003: Done
-#[+] Connected to localhost:5003
-#[*] Collecting 512 samples...
- #   [PROGRESS] 512/512 collected
-#[+] Computing CRT...
-#[*] Searching for e and computing e-th root...
-
-#[!!!] SUCCESS! Found e = 317
-#[+] Recovered hex: 4612ce170c67e169744f7e3476e69eba3afe864a6548de1a9d661baf3816a6cd038ecf193e5270af048dffc0b570de1663b13b8047af3480491d811307c05b71
-#[*] Submitting to original session...
-
-#[SERVER RESPONSE]
-#[+] Receiving all data: Done 
-#[*] Closed connection to localhost port 5003
-#Congratulations! Here is your prize: pwnEd{LOCAL_FLAG_TEST}
-````
-$$i \approx \frac{512 \times 257}{2048} = \frac{131\,584}{2048} = \mathbf{64,25}$$
+<p align="justify">Because $e$ is 9-bytes long, it is bounded by 257 and 511. Which means that 511 messages would ideally be needed to recover $M$ and apply the CRT. Nonetheless because of the logic of 'Wrap around' of modular arithmetic (and RSA). Because the message is 64 bytes long and given the minimal length of $e$, the number of message ideally needed can be reduced to:</p>
+    
+$$i \approx \frac{message length \times minimal e length}{sizeofNorinformationbroughtby one sample}  = \frac{512 \times 257}{2048}  = \mathbf{64,25}$$
 
 ````bash
 python3 hastad2.py
