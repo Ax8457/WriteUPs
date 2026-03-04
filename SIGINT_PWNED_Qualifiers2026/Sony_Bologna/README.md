@@ -8,6 +8,8 @@
 
 ## Flag
 
+<p align="justify">The script attached to this repository implements the attack and send the expected message signed using Alice private key retreived.</p>
+
 ````bash
 python3 ecdsa_exploit.py
 
