@@ -15,7 +15,7 @@ def get_z(msg):
     e = bytes_to_long(SHA256.new(data=msg).digest())
     return leftmost_n_bits(e, n.bit_length())
 
-# bind socker
+# bind socket
 io = remote('sony_bologna.quals.sigint.mx', 5000)
 io.recvuntil(b"r=")
 r = int(io.recvline().strip())
