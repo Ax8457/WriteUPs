@@ -4,7 +4,24 @@
 
 <p align="justify">In this challenge the idea was to be able to sign a message using elliptic curve signature algorithm ECDSA. The source code was provided and is attached to this repository.</p>
 
+## ECDSA algorithm
+
 ## Source code analysis
+
+````python
+curve = EllipticCurve(p=0xffffffffffffffffffffffffffffffff000000000000000000000001,
+                          a=0xfffffffffffffffffffffffffffffffefffffffffffffffffffffffe,
+                          b=0xb4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4,
+                          G=Point(0xb70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21,
+                                   0xbd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e34),
+                          n=0xffffffffffffffffffffffffffff16a2e0b8f03e13dd29455c5c2a3d,
+                          h=0x1)
+    dA, k = getRandomInteger(curve.n.bit_length()), getRandomInteger(curve.n.bit_length())
+    QA = curve.multiply_point(dA, curve.G)
+
+    r, s1 = sign_message(b"I'm a cat!", dA, curve, k=k)
+    r, s2 = sign_message(b"Wuff! Wuff!", dA, curve, k=k)
+````
 
 ## Flag
 
