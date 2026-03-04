@@ -6,6 +6,18 @@
 
 ## ECDSA algorithm
 
+$$[n]G = \mathcal{O}$$
+
+$$Q_A = [d_A]G$$
+
+$e = H(m)$
+
+$P(x_1, y_1) = [k]G$
+
+$$r = x_1 \pmod{n}$$
+
+$$s = k^{-1}(z + r \cdot d_A) \pmod{n}$$
+
 ## Source code analysis
 
 ````python
