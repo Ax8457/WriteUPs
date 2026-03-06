@@ -6,17 +6,25 @@
 
 ## ECDSA algorithm
 
+<p align="justify">Let's assume that Alice want's to send a signed message to Bob. The first step of the ECDSA algorithm is the curve, and the order selection. Then a generator point $G$ is selected on the curve so that:</p>
+
 $$[n]G = \mathcal{O}$$
+
+<p align="justify">The Alice computes her public key and sends it to bob (where $d_A$ is Alice's private key and $Q_A$ her public one:</p>
 
 $$Q_A = [d_A]G$$
 
-$e = H(m)$
+<p align="justify">After Bob received parameters as well as Alice's public key, Alice computes following element she will use to sign her message:</p>
 
-$P(x_1, y_1) = [k]G$
+$$e = H(m)$$
+
+$$P(x_1, y_1) = [k]G$$
 
 $$r = x_1 \pmod{n}$$
 
 $$s = k^{-1}(z + r \cdot d_A) \pmod{n}$$
+
+<p align="justify">Where k is a random integer from $[1,n-1]$. The signature is finally the pair $(r,s)$.</p> 
 
 ## Source code analysis
 
