@@ -28,6 +28,8 @@ $$s = k^{-1}(z + r \cdot d_A) \pmod{n}$$
 
 ## Source code analysis
 
+<p align="justify">Looking at the source code it seems that the weakness lies on the fact that $k$ is used to sign 2 messages (which means 2 $s_i$). With the two signatures received and knowing $r$, an attacker can easily retreive the private key used to compute signatures.</p>
+
 ````python
 curve = EllipticCurve(p=0xffffffffffffffffffffffffffffffff000000000000000000000001,
                           a=0xfffffffffffffffffffffffffffffffefffffffffffffffffffffffe,
@@ -42,11 +44,14 @@ curve = EllipticCurve(p=0xffffffffffffffffffffffffffffffff0000000000000000000000
     r, s1 = sign_message(b"I'm a cat!", dA, curve, k=k)
     r, s2 = sign_message(b"Wuff! Wuff!", dA, curve, k=k)
 ````
+
 ## The attack
 
-$s_1 \equiv k^{-1}(z_1 + r \cdot d_A) \pmod{n}$
+<p align="justify">Mathematically speaking, knowing $r$, $s1$ and $s2$, an attacker can easily retreive $d_A$: </p>
 
-$s_2 \equiv k^{-1}(z_2 + r \cdot d_A) \pmod{n}$
+$$s_1 \equiv k^{-1}(z_1 + r \cdot d_A) \pmod{n}$$
+
+$$s_2 \equiv k^{-1}(z_2 + r \cdot d_A) \pmod{n}$$
 
 $$s_1 - s_2 \equiv k^{-1}(z_1 + r \cdot d_A) - k^{-1}(z_2 + r \cdot d_A) \pmod{n}$$$$s_1 - s_2 \equiv k^{-1}(z_1 - z_2) \pmod{n}$$
 
