@@ -147,7 +147,7 @@ Te: trailers
 
 reference=test_account_POC-JAN1
 ````
-<p align="justify">So far, it's clear that the SSRF cannot be triggered directly by using book-again or leave_appointment requests and the url cached must poisoned instead. The logic of the rebooking mecanism is depicted in details on the figure below : </p> 
+<p align="justify">So far, it's clear that the SSRF cannot be triggered directly by using book-again or leave_appointment requests and the url cached must be poisoned instead. The logic of the rebooking mecanism is depicted in details on the figure below : </p> 
 
 <p align="center"><img src="Screenshots/scheme.png" style="width: 50%"></p>
 
