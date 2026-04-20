@@ -102,7 +102,7 @@ USERNAME-JAN1
 
 ## Step2 : Understand how the re-booking feature works 
 <p align="justify">As mentionned in the note; at each book made by the user, the whole URL is backed up with the reference of the meeting so that when a user delete a meeting he created,
-  he can then quickly rebook it. Actually when the user click on book again, the reference of the meeting is sent to the server (only element sent in the form when clicking on book-again) and the backend retreive the associated URL (namely the one containing the associated d and m parameters). Below is the requests sent when clicking on leave and book-again :</p>
+  he can then quickly rebook it. Actually when the user clicks on book again, the reference of the meeting is sent to the server (only element sent in the form when clicking on book-again) and the backend retreives the associated URL (namely the one containing the associated d and m parameters). Below are the requests sent when clicking on leave and book-again :</p>
 
 ````txt
 POST /leave_appointment HTTP/2
