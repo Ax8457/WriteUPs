@@ -158,7 +158,7 @@ reference=test_account_POC-JAN1
  - 4: The user deletes his meeting and make
  - 5: The book-again shows up after he successfuly deleted
  - 6: The user clicks on book-again and makes a POST request with the reference of the meeting associated 
- - 7: The server get the associated url in db and replay the book process in the name of the user
+ - 7: The server gets the associated url in db and replays the book process in the name of the user
 
  <p align="justify">Hence the key to trigger the SSRF is to understand how and when the url is cached up to allow users to quicly rebook dates.</p>
 
