@@ -63,7 +63,7 @@ WARNING: Do not expose port 5000 to the public gateway.
 
 <p align="justify">The key feature of the application is the book and book-again mecanism. Creating an account on the application and trying to book a first meeting, it seem's that the book process follows the logic below: </p>
 
-- The user click on a card of the dashboard triggerring GET request on /book?d=??&m=??? and redirecting him on the book form as shown on the snippet below :
+- The user clicks on a card of the dashboard triggerring GET request on /book?d=??&m=??? and redirecting him on the book form as shown on the snippet below :
 <p align="center"><img src="Screenshots/book.png" style="width: 50%"></p>
 
 - The form is filed automaticaly with the reference of the date included in the URL as parameters _d_ and _m_
