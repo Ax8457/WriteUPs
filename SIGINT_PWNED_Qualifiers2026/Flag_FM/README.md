@@ -1,11 +1,11 @@
 # Flag FM challenge WU
 
 <p align="center"><img src="./Screenshots/chall.png"></p>
-<p align="justify">In this challenge the idea was to exploit a misconfiguration in a RSA orcale and guess the flag message. The source code was provided and is attached this repository.</p>
+<p align="justify">In this challenge the idea was to exploit a misconfiguration in an RSA orcale and guess the flag message. The source code was provided and is attached this repository.</p>
 
 ## Source code analysis and RSA cryptosystem
 
-<p align="justify">Looking at source code it seems that RSA parameter $e$ is initialized once and are persistent along the connection. Also primes used are stored in a dynamic list, deterring the use of RSA common primes attack.As a matter of fact, $e$ is generated using 9 random bytes:</p>
+<p align="justify">Looking at source code it seems that RSA parameter $e$ is initialized once and is persistent along the connection. Also primes used are stored in a dynamic list, deterring the use of RSA common primes attack. As a matter of fact, $e$ is generated using 9 random bytes:</p>
 
 ````python
 class FlagFMChallenge():
